@@ -105,10 +105,13 @@ export default function HomePage() {
       {/* Hero Section */}
       <section className="relative min-h-[90vh] flex items-center">
         <div className="absolute inset-0">
-          <img
-            src={heroImage}
-            alt="Advanced flexible packaging manufacturing facility"
-            className="w-full h-full object-cover"
+          <iframe
+            src="https://www.youtube.com/embed/fbGZl4di4_Y?autoplay=1&mute=1&loop=1&playlist=fbGZl4di4_Y&controls=0&showinfo=0&rel=0&modestbranding=1&playsinline=1"
+            title="Manufacturing facility video"
+            className="w-full h-full object-cover pointer-events-none"
+            style={{ aspectRatio: '16/9', minHeight: '100%', minWidth: '100%', position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)' }}
+            allow="autoplay; encrypted-media"
+            allowFullScreen
           />
           <div className="absolute inset-0 hero-overlay" />
         </div>
