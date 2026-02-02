@@ -1,12 +1,12 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { useToast } from "@/hooks/use-toast";
-import { Mail, Phone, MapPin, Clock, Send, Factory, Award } from "lucide-react";
+import { Mail, Phone, MapPin, Clock, Send, Factory, Award, ArrowRight } from "lucide-react";
 import { FadeIn } from "@/components/animations/FadeIn";
-import { LocationsMap } from "@/components/LocationsMap";
 
 const productTypes = [
   "Thermoform Film",
@@ -352,8 +352,26 @@ export default function ContactPage() {
         </div>
       </section>
 
-      {/* Locations Map Section */}
-      <LocationsMap />
+      {/* Link to Locations */}
+      <section className="py-24 lg:py-32 section-gradient">
+        <div className="container-wide">
+          <FadeIn className="text-center max-w-3xl mx-auto">
+            <p className="text-sm font-bold uppercase tracking-wider text-accent mb-4">Global Presence</p>
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-black mb-6">
+              Visit Our Locations
+            </h2>
+            <p className="text-xl text-muted-foreground mb-10 leading-relaxed">
+              With facilities across North America, Europe, and Asia Pacific, we're positioned to serve you wherever you are.
+            </p>
+            <Link to="/contact/locations">
+              <Button variant="cta" size="xl">
+                View All Locations
+                <ArrowRight className="ml-2 h-5 w-5" />
+              </Button>
+            </Link>
+          </FadeIn>
+        </div>
+      </section>
     </main>
   );
 }
