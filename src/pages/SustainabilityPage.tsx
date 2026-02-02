@@ -1,83 +1,64 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Leaf, Recycle, TrendingDown, CheckCircle } from "lucide-react";
+import { ArrowRight, Leaf, Recycle, TrendingDown, Factory, CheckCircle, Award } from "lucide-react";
 import recyclableImage from "@/assets/product-recyclable.jpg";
 
 const initiatives = [
   {
     icon: Recycle,
     title: "Recyclable Mono-Materials",
-    description: "We offer PE and PP mono-material structures designed for existing recycling streams. These pouches provide functional barriers while remaining recyclable.",
-    details: [
-      "PE mono-material pouches (recyclable in PE stream)",
-      "PP mono-material options for higher temperature applications",
-      "How2Recycle labeling guidance",
-      "Compatibility testing with recycling facilities",
-    ],
-  },
-  {
-    icon: Leaf,
-    title: "Post-Consumer Recycled (PCR)",
-    description: "Incorporate recycled content into your packaging without compromising performance. We source certified PCR resins and validate food-contact compliance.",
-    details: [
-      "Up to 50% PCR content in non-food-contact layers",
-      "Certified PCR sources with traceability",
-      "Maintains mechanical properties and printability",
-      "Reduces virgin plastic demand",
-    ],
+    description: "PE and PP mono-material structures designed for compatibility with existing recycling infrastructure. No mixed materials to complicate sorting.",
+    stats: "100% recyclable in designated streams",
   },
   {
     icon: TrendingDown,
     title: "Material Reduction",
-    description: "Downgauging and optimizing film structures reduces material usage while maintaining protection. Often the most impactful sustainability measure.",
-    details: [
-      "Film structure optimization studies",
-      "Downgauging feasibility assessments",
-      "Performance testing to validate thinner materials",
-      "Carbon footprint reduction calculations",
-    ],
+    description: "Continuous downgauging initiatives reduce material consumption while maintaining performance through advanced polymer science and structure optimization.",
+    stats: "20-30% thickness reduction achieved",
+  },
+  {
+    icon: Leaf,
+    title: "Bio-Based Content",
+    description: "Integration of bio-based polymers and renewable feedstocks where performance requirements allow, reducing dependency on fossil-fuel derived materials.",
+    stats: "Up to 30% bio-based content available",
+  },
+  {
+    icon: Factory,
+    title: "Manufacturing Efficiency",
+    description: "Continuous improvement in energy efficiency, waste reduction, and water conservation across all manufacturing operations.",
+    stats: "15% energy reduction since 2020",
   },
 ];
 
-const realTalk = [
-  {
-    myth: "All 'eco-friendly' packaging is recyclable",
-    reality: "Recyclability depends on local infrastructure. A technically recyclable pouch is useless if collection and processing don't exist in your market. We focus on materials accepted by established recycling systems.",
-  },
-  {
-    myth: "Compostable packaging is always better",
-    reality: "Compostable films require industrial composting facilities, which are rare. If sent to landfill, they won't decompose properly. We recommend compostable options only where appropriate infrastructure exists.",
-  },
-  {
-    myth: "Paper packaging is always more sustainable",
-    reality: "Paper requires plastic or coating for moisture barrier. Paper production can have higher water and energy use. The best choice depends on a full lifecycle assessment, not assumptions.",
-  },
-  {
-    myth: "Flexible packaging is bad for the environment",
-    reality: "Flexible packaging often has a lower carbon footprint than rigid alternatives due to material efficiency and transportation benefits. The key is designing for recyclability and reducing food waste.",
-  },
+const commitments = [
+  { year: "2025", goal: "100% of portfolio recyclability-assessed" },
+  { year: "2027", goal: "50% reduction in manufacturing waste" },
+  { year: "2030", goal: "Carbon neutral manufacturing operations" },
+  { year: "2035", goal: "100% recyclable or compostable products" },
 ];
 
 const certifications = [
-  "How2Recycle labeling program",
-  "FSC-certified paper components",
-  "APR Design Guide compliance",
-  "RecyClass recyclability assessment",
-  "ISO 14001 environmental management",
+  "How2Recycle Program Member",
+  "APR Design Guide Compliant",
+  "FSC-Certified Paper Sourcing",
+  "ISO 14001 Environmental Management",
+  "RecyClass Recyclability Assessment",
+  "Certified B Corporation (In Progress)",
 ];
 
 export default function SustainabilityPage() {
   return (
     <main>
       {/* Hero */}
-      <section className="hero-gradient py-16 lg:py-24">
+      <section className="relative py-20 lg:py-28 bg-primary">
         <div className="container-wide">
           <div className="max-w-3xl">
-            <h1 className="text-4xl md:text-5xl font-bold text-primary-foreground mb-6">
+            <p className="text-sm font-bold uppercase tracking-wider text-accent mb-2">Environmental Responsibility</p>
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-black text-primary-foreground mb-6">
               Sustainability
             </h1>
             <p className="text-lg text-primary-foreground/80 leading-relaxed">
-              We take a pragmatic approach to sustainable packaging—focusing on solutions that work in real-world recycling systems while maintaining the protection your products need.
+              Practical, measurable progress toward more sustainable flexible packaging. We focus on solutions that work in real-world recycling systems today.
             </p>
           </div>
         </div>
@@ -88,18 +69,21 @@ export default function SustainabilityPage() {
         <div className="container-wide">
           <div className="grid lg:grid-cols-2 gap-12 items-center mb-16">
             <div>
-              <h2 className="text-3xl font-bold mb-6">Our Approach</h2>
+              <p className="text-sm font-bold uppercase tracking-wider text-accent mb-2">Our Approach</p>
+              <h2 className="text-3xl md:text-4xl font-black mb-6">
+                Progress Over Perfection
+              </h2>
               <p className="text-muted-foreground leading-relaxed mb-6">
-                Sustainability in packaging isn't simple. We avoid greenwashing and instead focus on measurable improvements: material reduction, designing for recyclability, and incorporating recycled content where feasible.
+                We believe the most sustainable packaging is one that actually gets recycled. That means designing for existing infrastructure, not theoretical systems.
               </p>
               <p className="text-muted-foreground leading-relaxed mb-6">
-                The most sustainable packaging is one that protects its contents effectively. A package that fails—causing product damage or food waste—has a far greater environmental impact than the packaging material itself.
+                Our approach prioritizes source reduction (less material), design for recyclability (mono-materials), and incorporation of recycled content—in that order of impact.
               </p>
               <p className="text-muted-foreground leading-relaxed">
-                We work with you to find the right balance between protection, cost, and environmental impact for your specific products and markets.
+                We're transparent about what works today and what's still in development. No greenwashing—just honest progress.
               </p>
             </div>
-            <div className="rounded-xl overflow-hidden">
+            <div className="rounded-lg overflow-hidden">
               <img
                 src={recyclableImage}
                 alt="Sustainable packaging options"
@@ -108,60 +92,50 @@ export default function SustainabilityPage() {
             </div>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-6">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {initiatives.map((initiative) => (
               <div
                 key={initiative.title}
-                className="bg-card rounded-xl p-6 border border-border card-elevated"
+                className="bg-card rounded-lg p-6 border border-border card-elevated"
               >
-                <div className="w-12 h-12 rounded-lg bg-accent/10 flex items-center justify-center mb-4">
+                <div className="w-12 h-12 rounded bg-accent/10 flex items-center justify-center mb-4">
                   <initiative.icon className="h-6 w-6 text-accent" />
                 </div>
-                <h3 className="text-xl font-semibold mb-3">{initiative.title}</h3>
-                <p className="text-muted-foreground text-sm mb-4 leading-relaxed">
+                <h3 className="text-lg font-bold mb-2">{initiative.title}</h3>
+                <p className="text-sm text-muted-foreground mb-4 leading-relaxed">
                   {initiative.description}
                 </p>
-                <ul className="space-y-2">
-                  {initiative.details.map((detail) => (
-                    <li key={detail} className="text-sm flex items-start gap-2">
-                      <CheckCircle className="h-4 w-4 text-accent mt-0.5 shrink-0" />
-                      <span className="text-muted-foreground">{detail}</span>
-                    </li>
-                  ))}
-                </ul>
+                <p className="text-sm font-bold text-accent">{initiative.stats}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Real Talk */}
-      <section className="py-16 lg:py-24 section-gradient">
+      {/* Roadmap */}
+      <section className="py-16 lg:py-24 bg-primary text-primary-foreground">
         <div className="container-wide">
-          <h2 className="text-3xl font-bold mb-4">Real Talk: Myths vs. Reality</h2>
-          <p className="text-muted-foreground mb-12 max-w-3xl">
-            Sustainability claims can be confusing. Here's our honest take on common misconceptions in packaging sustainability.
-          </p>
-          <div className="grid md:grid-cols-2 gap-6">
-            {realTalk.map((item, index) => (
-              <div
-                key={index}
-                className="bg-card rounded-xl p-6 border border-border"
-              >
-                <div className="mb-4">
-                  <span className="text-xs font-semibold uppercase tracking-wider text-destructive">
-                    Common Belief
-                  </span>
-                  <p className="text-lg font-medium mt-1">"{item.myth}"</p>
+          <div className="text-center max-w-3xl mx-auto mb-12">
+            <p className="text-sm font-bold uppercase tracking-wider text-accent mb-2">Long-Term Vision</p>
+            <h2 className="text-3xl md:text-4xl font-black mb-6">
+              Sustainability Roadmap
+            </h2>
+            <p className="text-primary-foreground/70">
+              Clear, measurable commitments with defined timelines. We report progress annually.
+            </p>
+          </div>
+          <div className="grid md:grid-cols-4 gap-6">
+            {commitments.map((item, index) => (
+              <div key={item.year} className="relative">
+                <div className="bg-primary-foreground/5 rounded-lg p-6 border border-primary-foreground/10">
+                  <p className="text-4xl font-black text-accent mb-2">{item.year}</p>
+                  <p className="text-sm text-primary-foreground/80">{item.goal}</p>
                 </div>
-                <div>
-                  <span className="text-xs font-semibold uppercase tracking-wider text-accent">
-                    Reality
-                  </span>
-                  <p className="text-muted-foreground text-sm mt-1 leading-relaxed">
-                    {item.reality}
-                  </p>
-                </div>
+                {index < commitments.length - 1 && (
+                  <div className="hidden md:block absolute top-1/2 -right-3 transform -translate-y-1/2 z-10">
+                    <ArrowRight className="h-5 w-5 text-primary-foreground/30" />
+                  </div>
+                )}
               </div>
             ))}
           </div>
@@ -173,29 +147,43 @@ export default function SustainabilityPage() {
         <div className="container-wide">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
-              <h2 className="text-3xl font-bold mb-6">Certifications & Standards</h2>
-              <p className="text-muted-foreground leading-relaxed mb-6">
-                We work with certified suppliers and follow established guidelines for sustainable packaging design. Our team stays current with evolving regulations and industry best practices.
+              <p className="text-sm font-bold uppercase tracking-wider text-accent mb-2">Verified Progress</p>
+              <h2 className="text-3xl md:text-4xl font-black mb-6">
+                Certifications & Standards
+              </h2>
+              <p className="text-muted-foreground leading-relaxed mb-8">
+                Third-party certifications validate our sustainability claims and ensure we're following recognized best practices.
               </p>
               <ul className="space-y-3">
                 {certifications.map((cert) => (
                   <li key={cert} className="flex items-center gap-3">
-                    <CheckCircle className="h-5 w-5 text-accent shrink-0" />
+                    <Award className="h-5 w-5 text-accent shrink-0" />
                     <span className="font-medium">{cert}</span>
                   </li>
                 ))}
               </ul>
             </div>
-            <div className="bg-primary rounded-xl p-8 text-primary-foreground">
-              <h3 className="text-xl font-semibold mb-4">
-                No False Promises
-              </h3>
-              <p className="text-primary-foreground/80 leading-relaxed mb-6">
-                We won't claim a package is "sustainable" without evidence. If you need certifications or data for sustainability reports, we provide documentation and testing to back up claims.
+            <div className="bg-secondary rounded-lg p-8">
+              <h3 className="text-xl font-bold mb-4">Recyclability Guidance</h3>
+              <p className="text-muted-foreground mb-6">
+                We provide How2Recycle labeling guidance and design our structures to meet APR Design Guide criteria for store drop-off or curbside recyclability.
               </p>
-              <p className="text-primary-foreground/80 leading-relaxed">
-                Our goal is helping you make informed decisions—not selling you on marketing buzzwords.
-              </p>
+              <div className="space-y-4">
+                <div className="flex items-start gap-3">
+                  <CheckCircle className="h-5 w-5 text-accent shrink-0 mt-0.5" />
+                  <div>
+                    <p className="font-medium">Pre-Consumer Waste Recycling</p>
+                    <p className="text-sm text-muted-foreground">95% of manufacturing scrap is recycled</p>
+                  </div>
+                </div>
+                <div className="flex items-start gap-3">
+                  <CheckCircle className="h-5 w-5 text-accent shrink-0 mt-0.5" />
+                  <div>
+                    <p className="font-medium">PCR Content Available</p>
+                    <p className="text-sm text-muted-foreground">Up to 50% post-consumer recycled content in select structures</p>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -204,16 +192,16 @@ export default function SustainabilityPage() {
       {/* CTA */}
       <section className="py-16 lg:py-24 section-gradient">
         <div className="container-wide">
-          <div className="bg-primary rounded-2xl p-8 md:p-12 text-center">
-            <h2 className="text-2xl md:text-3xl font-bold text-primary-foreground mb-4">
-              Explore Sustainable Options for Your Products
+          <div className="bg-primary rounded-lg p-8 md:p-12 text-center">
+            <h2 className="text-2xl md:text-3xl font-black text-primary-foreground mb-4">
+              Explore Sustainable Options
             </h2>
-            <p className="text-primary-foreground/80 mb-6 max-w-2xl mx-auto">
-              Let's discuss your sustainability goals and find packaging solutions that deliver both environmental benefits and product protection.
+            <p className="text-primary-foreground/70 mb-6 max-w-2xl mx-auto">
+              Our engineering team can assess your current packaging and recommend pathways to improved sustainability.
             </p>
             <Link to="/contact">
               <Button variant="hero" size="lg">
-                Start the Conversation
+                Schedule a Consultation
                 <ArrowRight className="ml-2 h-4 w-4" />
               </Button>
             </Link>

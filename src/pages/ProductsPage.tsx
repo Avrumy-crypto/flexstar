@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, CheckCircle } from "lucide-react";
 
 // Import images
 import standupPouches from "@/assets/product-standup-pouches.jpg";
@@ -8,112 +8,98 @@ import rollstock from "@/assets/product-rollstock.jpg";
 import sachets from "@/assets/product-sachets.jpg";
 import highBarrier from "@/assets/product-high-barrier.jpg";
 import recyclable from "@/assets/product-recyclable.jpg";
+import laminationImg from "@/assets/capability-lamination.jpg";
 
-const products = [
+const filmTypes = [
   {
-    name: "Stand-Up Pouches",
-    slug: "stand-up-pouches",
-    description: "Self-standing pouches with excellent shelf presence and consumer convenience. Available with resealable zippers, spouts, and tear notches.",
-    image: standupPouches,
-    useCases: ["Snacks & Confectionery", "Coffee & Tea", "Pet Food", "Dried Fruits & Nuts", "Frozen Foods"],
-    materials: ["PET/PE", "NY/PE", "Kraft/PE", "Metallized films", "Mono-PE recyclable"],
-    specs: [
-      "Sizes: 50ml to 5L capacity",
-      "Printing: Up to 10 colors rotogravure",
-      "Finishes: Matte, gloss, soft-touch",
-      "Closures: Zipper, slider, spout, velcro",
-    ],
-    industries: ["Food & Beverage", "Pet Food", "Coffee", "Household"],
+    name: "Thermoform Film",
+    slug: "thermoform-film",
+    description: "High-performance forming films for vacuum and MAP packaging applications. Designed for consistent thermoforming behavior with excellent clarity and seal integrity.",
+    image: laminationImg,
+    categories: ["Forming Film", "Non-Forming Film"],
+    features: ["Deep draw capability", "Consistent thickness distribution", "Excellent optical clarity", "Superior seal strength", "Puncture resistance"],
+    applications: ["Fresh meat packaging", "Cheese portions", "Ready meals", "Medical device trays"],
+    materials: ["Nylon/PE", "PET/PE", "Multilayer EVOH structures", "High-barrier laminates"],
   },
   {
-    name: "Flat Pouches",
-    slug: "flat-pouches",
-    description: "Three-side seal pouches ideal for single-use products, sampling, and cost-effective packaging. Simple yet versatile format.",
-    image: standupPouches, // Fallback
-    useCases: ["Sample Sachets", "Condiments", "Medical Supplies", "Cosmetic Samples", "Industrial Products"],
-    materials: ["PET/PE", "AL/PE", "Paper/PE", "Clear films", "High-barrier laminates"],
-    specs: [
-      "Sizes: 5ml to 500ml capacity",
-      "Printing: Flexographic or rotogravure",
-      "Features: Tear notch, hang hole",
-      "Sealing: Heat seal, cold seal",
-    ],
-    industries: ["Pharmaceuticals", "Cosmetics", "Food Service", "Industrial"],
-  },
-  {
-    name: "Rollstock",
-    slug: "rollstock",
-    description: "Continuous film rolls for form-fill-seal (FFS) and horizontal flow-wrap machines. Custom widths and structures for automated packaging lines.",
-    image: rollstock,
-    useCases: ["VFFS Packaging", "HFFS Flow-Wrap", "Thermoforming", "Lidding Films", "Shrink Wrap"],
-    materials: ["PE", "PP", "PET", "NY", "Aluminum foil laminates", "Coextruded films"],
-    specs: [
-      "Widths: 50mm to 1200mm",
-      "Core sizes: 76mm, 152mm standard",
-      "Printing: Registration marks available",
-      "Features: Peelable, anti-fog, high-slip",
-    ],
-    industries: ["Food Processing", "Dairy", "Meat & Poultry", "Industrial"],
-  },
-  {
-    name: "Sachets & Stick Packs",
-    slug: "sachets",
-    description: "Single-serve and portion-controlled packaging for powders, liquids, and granules. Precise dosing with compact form factor.",
-    image: sachets,
-    useCases: ["Supplements & Vitamins", "Instant Beverages", "Condiments", "Personal Care", "Pharmaceutical Doses"],
-    materials: ["AL/PE", "PET/AL/PE", "Paper/AL/PE", "High-barrier films"],
-    specs: [
-      "Sizes: 1ml to 50ml capacity",
-      "Printing: Multi-color with UV varnish",
-      "Features: Easy-tear, child-resistant options",
-      "Fill types: Powder, liquid, gel, granule",
-    ],
-    industries: ["Nutraceuticals", "Food Service", "Pharmaceuticals", "Cosmetics"],
-  },
-  {
-    name: "High-Barrier Packaging",
-    slug: "high-barrier",
-    description: "Multi-layer structures with aluminum or EVOH barriers for maximum product protection. Extends shelf life for sensitive products.",
+    name: "Shrink Bands & Sleeves",
+    slug: "shrink-bands-sleeves",
+    description: "Full-body and tamper-evident shrink solutions with high shrink ratios and consistent performance. Available in standard and high-barrier configurations.",
     image: highBarrier,
-    useCases: ["Vacuum Packaging", "Modified Atmosphere", "Coffee Valve Bags", "Medical Devices", "Electronics"],
-    materials: ["PET/AL/PE", "NY/EVOH/PE", "Metallized PET", "AlOx coated films", "SiOx barrier"],
-    specs: [
-      "OTR: <0.1 cc/m²/day achievable",
-      "WVTR: <0.1 g/m²/day achievable",
-      "Features: Degassing valves, retort-capable",
-      "Certifications: FDA, EU food contact",
-    ],
-    industries: ["Meat & Cheese", "Coffee", "Medical Devices", "Electronics"],
+    categories: ["Shrink Bands", "Shrink Sleeves"],
+    features: ["High shrink force", "Low shrink temperature", "Perforated tear lines", "360° coverage", "Tamper-evident options"],
+    applications: ["Beverage labeling", "Tamper evidence", "Multi-pack bundling", "Product protection"],
+    materials: ["PVC", "PETG", "OPS", "PLA"],
   },
   {
-    name: "Recyclable & Sustainable",
-    slug: "recyclable",
-    description: "Mono-material and PCR-content solutions for brands with sustainability commitments. Designed for real-world recycling streams.",
-    image: recyclable,
-    useCases: ["Eco-Conscious Brands", "Organic Products", "Refill Pouches", "E-commerce Mailers", "Consumer Goods"],
-    materials: ["Mono-PE", "Mono-PP", "Paper-based", "PCR content films", "Bio-based materials"],
-    specs: [
-      "Recyclability: PE or PP recycling streams",
-      "PCR content: Up to 50% available",
-      "Certifications: How2Recycle, FSC",
-      "Barrier: Functional barriers without aluminum",
-    ],
-    industries: ["Consumer Goods", "Organic Foods", "Personal Care", "E-commerce"],
+    name: "Pouches",
+    slug: "pouches",
+    description: "Complete range of pre-made pouches including stand-up, flat bottom, retort, and vacuum configurations. Custom sizes and features available.",
+    image: standupPouches,
+    categories: ["Stand-Up Pouch", "Flat Bottom Pouch", "Retort Pouch", "Vacuum Pouch"],
+    features: ["Zipper closures", "Spout fitments", "Easy-peel seals", "Hang holes", "Tear notches", "Degassing valves"],
+    applications: ["Snack foods", "Coffee", "Pet food", "Ready meals", "Sauces and condiments"],
+    materials: ["PET/PE", "Nylon/PE", "Kraft/PE", "Foil laminates", "Recyclable mono-PE"],
   },
+  {
+    name: "Roll Stock",
+    slug: "rollstock",
+    description: "Continuous film rolls for VFFS, HFFS, and thermoforming equipment. Precision wound with consistent tension and registration marks.",
+    image: rollstock,
+    categories: ["VFFS Film", "HFFS Film", "Thermoform Base", "Lidding Base"],
+    features: ["Precise gauge control", "Registration printing", "Cold seal options", "Anti-static treatment", "High-slip surfaces"],
+    applications: ["Snack packaging", "Confectionery wrapping", "Cheese slices", "Fresh produce"],
+    materials: ["BOPP", "CPP", "PE", "Metallized films", "Paper laminates"],
+  },
+  {
+    name: "Lidding Film",
+    slug: "lidding-film",
+    description: "Peelable and non-peelable lidding solutions for tray sealing applications. Engineered for reliable seal performance and controlled peel characteristics.",
+    image: sachets,
+    categories: ["Peelable Lidding", "Peel & Reseal", "Anti-Fog Lidding", "High-Barrier Lidding"],
+    features: ["Easy-peel technology", "Peel & reseal coatings", "Anti-fog properties", "Laser scored lines", "Micro-vent options"],
+    applications: ["Fresh meat trays", "Produce containers", "Ready meals", "Dairy products"],
+    materials: ["PET/PE", "APET/PE", "High-barrier EVOH", "Metallized structures"],
+  },
+];
+
+const sealTypes = [
+  "Easy-Peel Seal",
+  "Lock-Seal (Permanent)",
+  "Peel-Reseal",
+  "Weld Seal",
+  "Multi-Peel Systems",
+  "Hermetic Seal",
+  "Snap-Peel Technology",
+  "Dual-Zone Seal",
+];
+
+const printFinishes = [
+  "Matte Lamination",
+  "Gloss Lamination", 
+  "Soft-Touch Matte",
+  "Registered Matte/Gloss",
+  "Metallic Effects",
+  "Spot Varnish",
+  "Reverse Printing",
+  "Flexographic",
+  "Rotogravure",
+  "Digital Printing",
 ];
 
 export default function ProductsPage() {
   return (
     <main>
       {/* Hero */}
-      <section className="hero-gradient py-16 lg:py-24">
+      <section className="relative py-20 lg:py-28 bg-primary">
         <div className="container-wide">
           <div className="max-w-3xl">
-            <h1 className="text-4xl md:text-5xl font-bold text-primary-foreground mb-6">
-              Product Categories
+            <p className="text-sm font-bold uppercase tracking-wider text-accent mb-2">Product Portfolio</p>
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-black text-primary-foreground mb-6">
+              Film Types & Packaging Solutions
             </h1>
             <p className="text-lg text-primary-foreground/80 leading-relaxed">
-              From stand-up pouches to rollstock, we offer a complete range of flexible packaging formats. Each solution is customizable to your product specifications, branding requirements, and sustainability goals.
+              A comprehensive range of flexible packaging films engineered for performance, protection, and shelf appeal. Each product line is customizable to your exact specifications.
             </p>
           </div>
         </div>
@@ -121,17 +107,17 @@ export default function ProductsPage() {
 
       {/* Products Grid */}
       <section className="py-16 lg:py-24">
-        <div className="container-wide space-y-16">
-          {products.map((product, index) => (
+        <div className="container-wide space-y-20">
+          {filmTypes.map((product, index) => (
             <div
               key={product.slug}
               id={product.slug}
               className={`grid lg:grid-cols-2 gap-8 lg:gap-12 items-start ${
-                index % 2 === 1 ? "lg:flex-row-reverse" : ""
+                index % 2 === 1 ? "" : ""
               }`}
             >
               <div className={index % 2 === 1 ? "lg:order-2" : ""}>
-                <div className="aspect-[4/3] rounded-xl overflow-hidden bg-muted">
+                <div className="aspect-[4/3] rounded-lg overflow-hidden bg-muted">
                   <img
                     src={product.image}
                     alt={product.name}
@@ -140,106 +126,134 @@ export default function ProductsPage() {
                 </div>
               </div>
               <div className={index % 2 === 1 ? "lg:order-1" : ""}>
-                <h2 className="text-2xl md:text-3xl font-bold mb-4">{product.name}</h2>
+                <p className="text-sm font-bold uppercase tracking-wider text-accent mb-2">Film Type</p>
+                <h2 className="text-2xl md:text-3xl lg:text-4xl font-black mb-4">{product.name}</h2>
                 <p className="text-muted-foreground leading-relaxed mb-6">
                   {product.description}
                 </p>
 
-                <div className="space-y-6">
-                  {/* Use Cases */}
-                  <div>
-                    <h3 className="font-semibold text-sm uppercase tracking-wider text-muted-foreground mb-3">
-                      Common Applications
-                    </h3>
-                    <div className="flex flex-wrap gap-2">
-                      {product.useCases.map((useCase) => (
-                        <span
-                          key={useCase}
-                          className="text-sm px-3 py-1.5 rounded-full bg-secondary text-secondary-foreground"
-                        >
-                          {useCase}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-
-                  {/* Materials */}
-                  <div>
-                    <h3 className="font-semibold text-sm uppercase tracking-wider text-muted-foreground mb-3">
-                      Material Options
-                    </h3>
-                    <div className="flex flex-wrap gap-2">
-                      {product.materials.map((material) => (
-                        <span
-                          key={material}
-                          className="text-sm px-3 py-1.5 rounded-md bg-accent/10 text-accent font-medium"
-                        >
-                          {material}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-
-                  {/* Specs */}
-                  <div>
-                    <h3 className="font-semibold text-sm uppercase tracking-wider text-muted-foreground mb-3">
-                      Key Specifications
-                    </h3>
-                    <ul className="space-y-2">
-                      {product.specs.map((spec) => (
-                        <li key={spec} className="text-sm text-muted-foreground flex items-start gap-2">
-                          <span className="w-1.5 h-1.5 rounded-full bg-accent mt-2 shrink-0" />
-                          {spec}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-
-                  {/* Industries */}
-                  <div>
-                    <h3 className="font-semibold text-sm uppercase tracking-wider text-muted-foreground mb-3">
-                      Industries Served
-                    </h3>
-                    <div className="flex flex-wrap gap-2">
-                      {product.industries.map((industry) => (
-                        <span
-                          key={industry}
-                          className="text-sm px-3 py-1.5 rounded-md border border-border"
-                        >
-                          {industry}
-                        </span>
-                      ))}
-                    </div>
+                {/* Categories */}
+                <div className="mb-6">
+                  <h3 className="text-xs font-bold uppercase tracking-wider text-muted-foreground mb-3">
+                    Product Categories
+                  </h3>
+                  <div className="flex flex-wrap gap-2">
+                    {product.categories.map((cat) => (
+                      <span
+                        key={cat}
+                        className="text-sm px-3 py-1.5 rounded bg-accent/10 text-accent font-medium"
+                      >
+                        {cat}
+                      </span>
+                    ))}
                   </div>
                 </div>
 
-                <div className="mt-8">
-                  <Link to="/contact">
-                    <Button variant="cta">
-                      Request Quote for {product.name}
-                      <ArrowRight className="ml-2 h-4 w-4" />
-                    </Button>
-                  </Link>
+                {/* Features */}
+                <div className="mb-6">
+                  <h3 className="text-xs font-bold uppercase tracking-wider text-muted-foreground mb-3">
+                    Key Features
+                  </h3>
+                  <div className="grid grid-cols-2 gap-2">
+                    {product.features.map((feature) => (
+                      <div key={feature} className="flex items-center gap-2 text-sm">
+                        <CheckCircle className="h-4 w-4 text-accent shrink-0" />
+                        <span>{feature}</span>
+                      </div>
+                    ))}
+                  </div>
                 </div>
+
+                {/* Applications */}
+                <div className="mb-6">
+                  <h3 className="text-xs font-bold uppercase tracking-wider text-muted-foreground mb-3">
+                    Applications
+                  </h3>
+                  <div className="flex flex-wrap gap-2">
+                    {product.applications.map((app) => (
+                      <span
+                        key={app}
+                        className="text-sm px-3 py-1.5 rounded border border-border"
+                      >
+                        {app}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Materials */}
+                <div className="mb-8">
+                  <h3 className="text-xs font-bold uppercase tracking-wider text-muted-foreground mb-3">
+                    Material Options
+                  </h3>
+                  <p className="text-sm text-muted-foreground">
+                    {product.materials.join(" • ")}
+                  </p>
+                </div>
+
+                <Link to="/contact">
+                  <Button variant="cta" size="lg">
+                    Request Quote
+                    <ArrowRight className="ml-2 h-4 w-4" />
+                  </Button>
+                </Link>
               </div>
             </div>
           ))}
         </div>
       </section>
 
-      {/* CTA */}
-      <section className="py-16 lg:py-24 section-gradient">
+      {/* Seal Types & Print Finishes */}
+      <section className="py-16 lg:py-24 bg-primary text-primary-foreground">
         <div className="container-wide">
-          <div className="bg-primary rounded-2xl p-8 md:p-12 text-center">
-            <h2 className="text-2xl md:text-3xl font-bold text-primary-foreground mb-4">
-              Can't Find What You Need?
+          <div className="grid lg:grid-cols-2 gap-12">
+            <div>
+              <p className="text-sm font-bold uppercase tracking-wider text-accent mb-2">Sealing Technology</p>
+              <h2 className="text-3xl font-black mb-6">Seal Types</h2>
+              <p className="text-primary-foreground/70 mb-6">
+                Our advanced sealing technologies provide the right balance of security and convenience for every application.
+              </p>
+              <div className="grid grid-cols-2 gap-3">
+                {sealTypes.map((seal) => (
+                  <div key={seal} className="flex items-center gap-2 text-sm">
+                    <span className="w-2 h-2 rounded-full bg-accent" />
+                    <span>{seal}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+            <div>
+              <p className="text-sm font-bold uppercase tracking-wider text-accent mb-2">Graphics & Finishes</p>
+              <h2 className="text-3xl font-black mb-6">Print & Finishes</h2>
+              <p className="text-primary-foreground/70 mb-6">
+                Premium print quality and finishing options to maximize shelf impact and brand recognition.
+              </p>
+              <div className="grid grid-cols-2 gap-3">
+                {printFinishes.map((finish) => (
+                  <div key={finish} className="flex items-center gap-2 text-sm">
+                    <span className="w-2 h-2 rounded-full bg-accent" />
+                    <span>{finish}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* CTA */}
+      <section className="py-16 lg:py-24">
+        <div className="container-wide">
+          <div className="bg-secondary rounded-lg p-8 md:p-12 text-center">
+            <h2 className="text-2xl md:text-3xl font-black mb-4">
+              Need a Custom Solution?
             </h2>
-            <p className="text-primary-foreground/80 mb-6 max-w-2xl mx-auto">
-              We specialize in custom solutions. Describe your requirements and our team will develop a tailored packaging proposal.
+            <p className="text-muted-foreground mb-6 max-w-2xl mx-auto">
+              Our engineering team specializes in developing bespoke packaging structures. Let's discuss your requirements.
             </p>
             <Link to="/contact">
-              <Button variant="hero" size="lg">
-                Contact Our Team
+              <Button variant="industrial" size="lg">
+                Contact Engineering Team
                 <ArrowRight className="ml-2 h-4 w-4" />
               </Button>
             </Link>

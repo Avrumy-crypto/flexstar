@@ -4,25 +4,34 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { useToast } from "@/hooks/use-toast";
-import { Mail, Phone, MapPin, Clock, Send } from "lucide-react";
+import { Mail, Phone, MapPin, Clock, Send, Factory, Award } from "lucide-react";
 
 const productTypes = [
-  "Stand-Up Pouches",
-  "Flat Pouches",
-  "Rollstock",
-  "Sachets & Stick Packs",
-  "High-Barrier Packaging",
-  "Recyclable Packaging",
-  "Other / Not Sure",
+  "Thermoform Film",
+  "Shrink Bands & Sleeves",
+  "Pouches",
+  "Roll Stock",
+  "Lidding Film",
+  "High-Barrier Laminates",
+  "Custom Solution",
 ];
 
 const volumeRanges = [
-  "Less than 10,000 units",
+  "Prototype / Sampling",
   "10,000 - 50,000 units",
-  "50,000 - 100,000 units",
-  "100,000 - 500,000 units",
-  "500,000+ units",
-  "Not sure yet",
+  "50,000 - 250,000 units",
+  "250,000 - 1,000,000 units",
+  "1,000,000+ units",
+];
+
+const industries = [
+  "Food & Beverage",
+  "Meat & Protein",
+  "Dairy & Cheese",
+  "Pet Food",
+  "Medical & Pharma",
+  "Industrial",
+  "Other",
 ];
 
 export default function ContactPage() {
@@ -34,6 +43,7 @@ export default function ContactPage() {
     email: "",
     phone: "",
     productType: "",
+    industry: "",
     volume: "",
     message: "",
   });
@@ -47,7 +57,7 @@ export default function ContactPage() {
 
     toast({
       title: "Request Submitted",
-      description: "We'll get back to you within 1-2 business days.",
+      description: "Our team will contact you within 24 business hours.",
     });
 
     setFormData({
@@ -56,6 +66,7 @@ export default function ContactPage() {
       email: "",
       phone: "",
       productType: "",
+      industry: "",
       volume: "",
       message: "",
     });
@@ -74,14 +85,15 @@ export default function ContactPage() {
   return (
     <main>
       {/* Hero */}
-      <section className="hero-gradient py-16 lg:py-24">
+      <section className="relative py-20 lg:py-28 bg-primary">
         <div className="container-wide">
           <div className="max-w-3xl">
-            <h1 className="text-4xl md:text-5xl font-bold text-primary-foreground mb-6">
+            <p className="text-sm font-bold uppercase tracking-wider text-accent mb-2">Get Started</p>
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-black text-primary-foreground mb-6">
               Request a Quote
             </h1>
             <p className="text-lg text-primary-foreground/80 leading-relaxed">
-              Tell us about your packaging needs. Our team will respond within 1-2 business days with material recommendations, pricing, and lead time estimates.
+              Tell us about your packaging requirements. Our engineering team will respond within 24 hours with recommendations and preliminary pricing.
             </p>
           </div>
         </div>
@@ -96,7 +108,7 @@ export default function ContactPage() {
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="grid sm:grid-cols-2 gap-6">
                   <div className="space-y-2">
-                    <Label htmlFor="name">Full Name *</Label>
+                    <Label htmlFor="name" className="text-xs font-bold uppercase tracking-wider">Full Name *</Label>
                     <Input
                       id="name"
                       name="name"
@@ -104,10 +116,11 @@ export default function ContactPage() {
                       onChange={handleChange}
                       required
                       placeholder="Your name"
+                      className="h-12"
                     />
                   </div>
                   <div className="space-y-2">
-                    <Label htmlFor="company">Company Name *</Label>
+                    <Label htmlFor="company" className="text-xs font-bold uppercase tracking-wider">Company Name *</Label>
                     <Input
                       id="company"
                       name="company"
@@ -115,13 +128,14 @@ export default function ContactPage() {
                       onChange={handleChange}
                       required
                       placeholder="Your company"
+                      className="h-12"
                     />
                   </div>
                 </div>
 
                 <div className="grid sm:grid-cols-2 gap-6">
                   <div className="space-y-2">
-                    <Label htmlFor="email">Email Address *</Label>
+                    <Label htmlFor="email" className="text-xs font-bold uppercase tracking-wider">Email Address *</Label>
                     <Input
                       id="email"
                       name="email"
@@ -130,10 +144,11 @@ export default function ContactPage() {
                       onChange={handleChange}
                       required
                       placeholder="you@company.com"
+                      className="h-12"
                     />
                   </div>
                   <div className="space-y-2">
-                    <Label htmlFor="phone">Phone Number</Label>
+                    <Label htmlFor="phone" className="text-xs font-bold uppercase tracking-wider">Phone Number</Label>
                     <Input
                       id="phone"
                       name="phone"
@@ -141,22 +156,23 @@ export default function ContactPage() {
                       value={formData.phone}
                       onChange={handleChange}
                       placeholder="+1 (234) 567-890"
+                      className="h-12"
                     />
                   </div>
                 </div>
 
-                <div className="grid sm:grid-cols-2 gap-6">
+                <div className="grid sm:grid-cols-3 gap-6">
                   <div className="space-y-2">
-                    <Label htmlFor="productType">Product Type *</Label>
+                    <Label htmlFor="productType" className="text-xs font-bold uppercase tracking-wider">Product Type *</Label>
                     <select
                       id="productType"
                       name="productType"
                       value={formData.productType}
                       onChange={handleChange}
                       required
-                      className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+                      className="flex h-12 w-full rounded border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
                     >
-                      <option value="">Select product type</option>
+                      <option value="">Select type</option>
                       {productTypes.map((type) => (
                         <option key={type} value={type}>
                           {type}
@@ -165,16 +181,34 @@ export default function ContactPage() {
                     </select>
                   </div>
                   <div className="space-y-2">
-                    <Label htmlFor="volume">Estimated Volume *</Label>
+                    <Label htmlFor="industry" className="text-xs font-bold uppercase tracking-wider">Industry *</Label>
+                    <select
+                      id="industry"
+                      name="industry"
+                      value={formData.industry}
+                      onChange={handleChange}
+                      required
+                      className="flex h-12 w-full rounded border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+                    >
+                      <option value="">Select industry</option>
+                      {industries.map((ind) => (
+                        <option key={ind} value={ind}>
+                          {ind}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
+                  <div className="space-y-2">
+                    <Label htmlFor="volume" className="text-xs font-bold uppercase tracking-wider">Est. Volume *</Label>
                     <select
                       id="volume"
                       name="volume"
                       value={formData.volume}
                       onChange={handleChange}
                       required
-                      className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+                      className="flex h-12 w-full rounded border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
                     >
-                      <option value="">Select volume range</option>
+                      <option value="">Select volume</option>
                       {volumeRanges.map((range) => (
                         <option key={range} value={range}>
                           {range}
@@ -185,14 +219,14 @@ export default function ContactPage() {
                 </div>
 
                 <div className="space-y-2">
-                  <Label htmlFor="message">Project Details *</Label>
+                  <Label htmlFor="message" className="text-xs font-bold uppercase tracking-wider">Project Details *</Label>
                   <Textarea
                     id="message"
                     name="message"
                     value={formData.message}
                     onChange={handleChange}
                     required
-                    placeholder="Describe your product, packaging requirements, target dimensions, material preferences, and any specific features needed..."
+                    placeholder="Describe your product, packaging dimensions, barrier requirements, print specifications, and any specific features needed..."
                     rows={6}
                   />
                 </div>
@@ -200,7 +234,7 @@ export default function ContactPage() {
                 <Button
                   type="submit"
                   variant="cta"
-                  size="lg"
+                  size="xl"
                   disabled={isSubmitting}
                   className="w-full sm:w-auto"
                 >
@@ -217,19 +251,19 @@ export default function ContactPage() {
             </div>
 
             {/* Contact Info */}
-            <div className="space-y-8">
-              <div className="bg-card rounded-xl border border-border p-6">
-                <h2 className="text-lg font-semibold mb-6">Contact Information</h2>
+            <div className="space-y-6">
+              <div className="bg-primary rounded-lg p-6 text-primary-foreground">
+                <h2 className="text-lg font-bold mb-6">Contact Information</h2>
                 <div className="space-y-4">
                   <div className="flex items-start gap-3">
                     <Mail className="h-5 w-5 text-accent mt-0.5" />
                     <div>
                       <p className="font-medium text-sm">Email</p>
                       <a
-                        href="mailto:info@flexpackpro.com"
-                        className="text-muted-foreground hover:text-accent transition-colors"
+                        href="mailto:sales@laminapackaging.com"
+                        className="text-primary-foreground/70 hover:text-accent transition-colors"
                       >
-                        info@flexpackpro.com
+                        sales@laminapackaging.com
                       </a>
                     </div>
                   </div>
@@ -239,7 +273,7 @@ export default function ContactPage() {
                       <p className="font-medium text-sm">Phone</p>
                       <a
                         href="tel:+1234567890"
-                        className="text-muted-foreground hover:text-accent transition-colors"
+                        className="text-primary-foreground/70 hover:text-accent transition-colors"
                       >
                         +1 (234) 567-890
                       </a>
@@ -248,10 +282,10 @@ export default function ContactPage() {
                   <div className="flex items-start gap-3">
                     <MapPin className="h-5 w-5 text-accent mt-0.5" />
                     <div>
-                      <p className="font-medium text-sm">Address</p>
-                      <p className="text-muted-foreground">
-                        123 Packaging Way<br />
-                        Industrial District, ST 12345
+                      <p className="font-medium text-sm">Headquarters</p>
+                      <p className="text-primary-foreground/70">
+                        1234 Industrial Blvd<br />
+                        Manufacturing District, ST 12345
                       </p>
                     </div>
                   </div>
@@ -259,8 +293,8 @@ export default function ContactPage() {
                     <Clock className="h-5 w-5 text-accent mt-0.5" />
                     <div>
                       <p className="font-medium text-sm">Business Hours</p>
-                      <p className="text-muted-foreground">
-                        Mon - Fri: 8:00 AM - 6:00 PM<br />
+                      <p className="text-primary-foreground/70">
+                        Mon - Fri: 7:00 AM - 5:00 PM<br />
                         Sat - Sun: Closed
                       </p>
                     </div>
@@ -268,26 +302,29 @@ export default function ContactPage() {
                 </div>
               </div>
 
-              <div className="bg-secondary rounded-xl p-6">
-                <h3 className="font-semibold mb-3">What to Expect</h3>
-                <ul className="space-y-2 text-sm text-muted-foreground">
-                  <li className="flex items-start gap-2">
-                    <span className="w-1.5 h-1.5 rounded-full bg-accent mt-2 shrink-0" />
-                    Response within 1-2 business days
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="w-1.5 h-1.5 rounded-full bg-accent mt-2 shrink-0" />
-                    Initial consultation call if needed
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="w-1.5 h-1.5 rounded-full bg-accent mt-2 shrink-0" />
-                    Detailed quote with material options
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="w-1.5 h-1.5 rounded-full bg-accent mt-2 shrink-0" />
-                    Sample recommendations
-                  </li>
-                </ul>
+              <div className="bg-secondary rounded-lg p-6">
+                <div className="flex items-center gap-3 mb-4">
+                  <Factory className="h-6 w-6 text-accent" />
+                  <h3 className="font-bold">Manufacturing Facility</h3>
+                </div>
+                <p className="text-sm text-muted-foreground mb-4">
+                  200,000+ sq ft facility with state-of-the-art extrusion, lamination, printing, and converting equipment.
+                </p>
+                <p className="text-sm font-medium">Facility tours available by appointment.</p>
+              </div>
+
+              <div className="bg-secondary rounded-lg p-6">
+                <div className="flex items-center gap-3 mb-4">
+                  <Award className="h-6 w-6 text-accent" />
+                  <h3 className="font-bold">Certifications</h3>
+                </div>
+                <div className="flex flex-wrap gap-2">
+                  {["ISO 9001:2015", "FDA Compliant", "FSSC 22000", "SQF"].map((cert) => (
+                    <span key={cert} className="text-xs px-2 py-1 rounded bg-card font-medium">
+                      {cert}
+                    </span>
+                  ))}
+                </div>
               </div>
             </div>
           </div>
