@@ -165,11 +165,11 @@ export default function HomePage() {
       </section>
 
       {/* Film Types */}
-      <section className="py-20 lg:py-28">
+      <section className="py-28 lg:py-36">
         <div className="container-wide">
-          <FadeIn className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-12">
+          <FadeIn className="flex flex-col lg:flex-row lg:items-end justify-between gap-8 mb-16">
             <div>
-              <p className="text-sm font-bold uppercase tracking-wider text-accent mb-2">Product Portfolio</p>
+              <p className="text-sm font-bold uppercase tracking-wider text-accent mb-3">Product Portfolio</p>
               <h2 className="text-3xl md:text-4xl lg:text-5xl font-black">
                 Film Types
               </h2>
@@ -181,26 +181,26 @@ export default function HomePage() {
               </Button>
             </Link>
           </FadeIn>
-          <StaggerChildren staggerDelay={0.1} className="grid md:grid-cols-3 lg:grid-cols-5 gap-4">
+          <StaggerChildren staggerDelay={0.1} className="grid md:grid-cols-3 lg:grid-cols-5 gap-6">
             {filmTypes.map((film) => (
               <StaggerItem key={film.name}>
                 <Link
                   to={film.href}
-                  className="group relative overflow-hidden rounded bg-card card-elevated block"
+                  className="group relative overflow-hidden rounded-lg bg-card card-elevated block"
                 >
                   <div className="aspect-[4/5] overflow-hidden">
                     <img
                       src={film.image}
                       alt={film.name}
-                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-primary/90 via-primary/20 to-transparent" />
                   </div>
-                  <div className="absolute bottom-0 left-0 right-0 p-4">
+                  <div className="absolute bottom-0 left-0 right-0 p-5">
                     <h3 className="text-lg font-bold text-primary-foreground group-hover:text-accent transition-colors">
                       {film.name}
                     </h3>
-                    <ArrowRight className="h-4 w-4 text-accent mt-2 transform translate-x-0 group-hover:translate-x-2 transition-transform" />
+                    <ArrowRight className="h-4 w-4 text-accent mt-3 transform translate-x-0 group-hover:translate-x-2 transition-transform" />
                   </div>
                 </Link>
               </StaggerItem>
@@ -210,23 +210,23 @@ export default function HomePage() {
       </section>
 
       {/* Capabilities */}
-      <section className="py-20 lg:py-28 section-gradient">
+      <section className="py-28 lg:py-36 section-gradient">
         <div className="container-wide">
-          <FadeIn className="text-center max-w-3xl mx-auto mb-16">
-            <p className="text-sm font-bold uppercase tracking-wider text-accent mb-2">Manufacturing Excellence</p>
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-black mb-6">
+          <FadeIn className="text-center max-w-3xl mx-auto mb-20">
+            <p className="text-sm font-bold uppercase tracking-wider text-accent mb-3">Manufacturing Excellence</p>
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-black mb-8">
               Our Capabilities
             </h2>
-            <p className="text-lg text-muted-foreground">
+            <p className="text-lg text-muted-foreground leading-relaxed">
               State-of-the-art equipment and decades of expertise enable us to deliver consistent, high-quality flexible packaging solutions.
             </p>
           </FadeIn>
-          <StaggerChildren staggerDelay={0.15} className="grid md:grid-cols-2 gap-6">
+          <StaggerChildren staggerDelay={0.15} className="grid md:grid-cols-2 gap-8">
             {capabilities.map((cap) => (
               <StaggerItem key={cap.title}>
                 <Link
                   to={cap.href}
-                  className="group relative overflow-hidden rounded-lg bg-card card-elevated block"
+                  className="group relative overflow-hidden rounded-xl bg-card card-elevated block"
                 >
                   <div className="grid lg:grid-cols-2">
                     <div className="aspect-video lg:aspect-square overflow-hidden">
@@ -236,14 +236,14 @@ export default function HomePage() {
                         className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                       />
                     </div>
-                    <div className="p-6 lg:p-8 flex flex-col justify-center">
-                      <div className="w-12 h-12 rounded bg-accent/10 flex items-center justify-center mb-4">
-                        <cap.icon className="h-6 w-6 text-accent" />
+                    <div className="p-8 lg:p-10 flex flex-col justify-center">
+                      <div className="w-14 h-14 rounded-xl bg-accent/10 flex items-center justify-center mb-6">
+                        <cap.icon className="h-7 w-7 text-accent" />
                       </div>
-                      <h3 className="text-2xl font-bold mb-3 group-hover:text-accent transition-colors">
+                      <h3 className="text-2xl font-bold mb-4 group-hover:text-accent transition-colors">
                         {cap.title}
                       </h3>
-                      <p className="text-muted-foreground leading-relaxed mb-4">
+                      <p className="text-muted-foreground leading-relaxed mb-6">
                         {cap.description}
                       </p>
                       <div className="flex items-center gap-2 text-accent font-semibold text-sm uppercase tracking-wide">
@@ -260,15 +260,15 @@ export default function HomePage() {
       </section>
 
       {/* Features Grid */}
-      <section className="py-20 lg:py-28 bg-primary text-primary-foreground">
+      <section className="py-28 lg:py-36 bg-primary text-primary-foreground">
         <div className="container-wide">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
             <FadeIn direction="right">
-              <p className="text-sm font-bold uppercase tracking-wider text-accent mb-2">Technical Specifications</p>
-              <h2 className="text-3xl md:text-4xl lg:text-5xl font-black mb-6">
+              <p className="text-sm font-bold uppercase tracking-wider text-accent mb-3">Technical Specifications</p>
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-black mb-8">
                 Features & Options
               </h2>
-              <p className="text-lg text-primary-foreground/70 mb-8 leading-relaxed">
+              <p className="text-xl text-primary-foreground/70 mb-10 leading-relaxed">
                 Our flexible packaging solutions incorporate advanced features to meet the most demanding application requirements.
               </p>
               <Link to="/products">
@@ -278,12 +278,12 @@ export default function HomePage() {
                 </Button>
               </Link>
             </FadeIn>
-            <StaggerChildren staggerDelay={0.05} className="grid sm:grid-cols-2 gap-3">
+            <StaggerChildren staggerDelay={0.05} className="grid sm:grid-cols-2 gap-4">
               {features.map((feature) => (
                 <StaggerItem key={feature}>
-                  <div className="flex items-center gap-3 p-4 rounded bg-primary-foreground/5 border border-primary-foreground/10 feature-grid-item">
+                  <div className="flex items-center gap-4 p-5 rounded-lg bg-primary-foreground/5 border border-primary-foreground/10 feature-grid-item">
                     <CheckCircle className="h-5 w-5 text-accent shrink-0" />
-                    <span className="text-sm font-medium">{feature}</span>
+                    <span className="font-medium">{feature}</span>
                   </div>
                 </StaggerItem>
               ))}
@@ -293,22 +293,22 @@ export default function HomePage() {
       </section>
 
       {/* Materials & Structures */}
-      <section className="py-20 lg:py-28">
+      <section className="py-28 lg:py-36">
         <div className="container-wide">
-          <FadeIn className="text-center max-w-3xl mx-auto mb-12">
-            <p className="text-sm font-bold uppercase tracking-wider text-accent mb-2">Material Science</p>
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-black mb-6">
+          <FadeIn className="text-center max-w-3xl mx-auto mb-16">
+            <p className="text-sm font-bold uppercase tracking-wider text-accent mb-3">Material Science</p>
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-black mb-8">
               Materials & Structures
             </h2>
-            <p className="text-lg text-muted-foreground">
+            <p className="text-lg text-muted-foreground leading-relaxed">
               We work with a comprehensive range of film substrates and lamination structures to optimize performance for your specific application.
             </p>
           </FadeIn>
-          <StaggerChildren staggerDelay={0.1} className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <StaggerChildren staggerDelay={0.1} className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             <StaggerItem>
-              <div className="rounded-lg border border-border p-6 industrial-border h-full">
-                <h3 className="text-lg font-bold mb-4">Standard Laminates</h3>
-                <ul className="space-y-2 text-sm text-muted-foreground">
+              <div className="rounded-xl border border-border p-8 industrial-border h-full bg-card">
+                <h3 className="text-xl font-bold mb-6">Standard Laminates</h3>
+                <ul className="space-y-3 text-muted-foreground">
                   <li>• PET / LLDPE</li>
                   <li>• BOPP / CPP</li>
                   <li>• BOPP / Heat Seal</li>
@@ -318,9 +318,9 @@ export default function HomePage() {
               </div>
             </StaggerItem>
             <StaggerItem>
-              <div className="rounded-lg border border-border p-6 industrial-border h-full">
-                <h3 className="text-lg font-bold mb-4">High-Barrier Structures</h3>
-                <ul className="space-y-2 text-sm text-muted-foreground">
+              <div className="rounded-xl border border-border p-8 industrial-border h-full bg-card">
+                <h3 className="text-xl font-bold mb-6">High-Barrier Structures</h3>
+                <ul className="space-y-3 text-muted-foreground">
                   <li>• PET / AL / PE</li>
                   <li>• Metallized PET / PE</li>
                   <li>• Nylon / EVOH / PE</li>
@@ -330,9 +330,9 @@ export default function HomePage() {
               </div>
             </StaggerItem>
             <StaggerItem>
-              <div className="rounded-lg border border-border p-6 industrial-border h-full">
-                <h3 className="text-lg font-bold mb-4">Specialty Films</h3>
-                <ul className="space-y-2 text-sm text-muted-foreground">
+              <div className="rounded-xl border border-border p-8 industrial-border h-full bg-card">
+                <h3 className="text-xl font-bold mb-6">Specialty Films</h3>
+                <ul className="space-y-3 text-muted-foreground">
                   <li>• Retort-Capable Structures</li>
                   <li>• Cold Seal for HFFS</li>
                   <li>• Peelable Lidding</li>
@@ -346,23 +346,23 @@ export default function HomePage() {
       </section>
 
       {/* Markets Served */}
-      <section className="py-20 lg:py-28 section-gradient">
+      <section className="py-28 lg:py-36 section-gradient">
         <div className="container-wide">
-          <FadeIn className="text-center max-w-3xl mx-auto mb-12">
-            <p className="text-sm font-bold uppercase tracking-wider text-accent mb-2">Industries</p>
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-black mb-6">
+          <FadeIn className="text-center max-w-3xl mx-auto mb-16">
+            <p className="text-sm font-bold uppercase tracking-wider text-accent mb-3">Industries</p>
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-black mb-8">
               Markets We Serve
             </h2>
           </FadeIn>
-          <StaggerChildren staggerDelay={0.08} className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+          <StaggerChildren staggerDelay={0.08} className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
             {markets.map((market) => (
               <StaggerItem key={market.name}>
                 <Link
                   to={`/markets/${market.name.toLowerCase().replace(/ & /g, '-').replace(/ /g, '-')}`}
-                  className="bg-card rounded-lg p-6 text-center border border-border hover:border-accent transition-colors card-elevated block"
+                  className="bg-card rounded-xl p-8 text-center border border-border hover:border-accent transition-colors card-elevated block"
                 >
-                  <span className="text-4xl mb-3 block">{market.icon}</span>
-                  <p className="font-semibold text-sm">{market.name}</p>
+                  <span className="text-5xl mb-4 block">{market.icon}</span>
+                  <p className="font-semibold">{market.name}</p>
                 </Link>
               </StaggerItem>
             ))}
@@ -371,25 +371,27 @@ export default function HomePage() {
       </section>
 
       {/* Certifications */}
-      <section className="py-20 lg:py-28">
+      <section className="py-28 lg:py-36">
         <div className="container-wide">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
             <FadeIn direction="right">
-              <p className="text-sm font-bold uppercase tracking-wider text-accent mb-2">Quality Assurance</p>
-              <h2 className="text-3xl md:text-4xl lg:text-5xl font-black mb-6">
+              <p className="text-sm font-bold uppercase tracking-wider text-accent mb-3">Quality Assurance</p>
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-black mb-8">
                 Certified Excellence
               </h2>
-              <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
+              <p className="text-xl text-muted-foreground mb-10 leading-relaxed">
                 Our manufacturing facilities maintain the highest industry certifications, ensuring consistent quality, food safety, and regulatory compliance.
               </p>
-              <StaggerChildren staggerDelay={0.1} className="grid grid-cols-2 gap-4">
+              <StaggerChildren staggerDelay={0.1} className="grid grid-cols-2 gap-6">
                 {certifications.map((cert) => (
                   <StaggerItem key={cert.name}>
-                    <div className="flex items-start gap-3">
-                      <Award className="h-6 w-6 text-accent shrink-0 mt-0.5" />
+                    <div className="flex items-start gap-4">
+                      <div className="w-12 h-12 rounded-lg bg-accent/10 flex items-center justify-center shrink-0">
+                        <Award className="h-6 w-6 text-accent" />
+                      </div>
                       <div>
-                        <p className="font-bold">{cert.name}</p>
-                        <p className="text-sm text-muted-foreground">{cert.description}</p>
+                        <p className="font-bold text-lg">{cert.name}</p>
+                        <p className="text-muted-foreground">{cert.description}</p>
                       </div>
                     </div>
                   </StaggerItem>
@@ -397,15 +399,15 @@ export default function HomePage() {
               </StaggerChildren>
             </FadeIn>
             <ScaleIn delay={0.2}>
-              <div className="grid grid-cols-2 gap-4">
-                <div className="aspect-square rounded-lg overflow-hidden">
+              <div className="grid grid-cols-2 gap-6">
+                <div className="aspect-square rounded-xl overflow-hidden">
                   <img
                     src={extrusionImg}
                     alt="Manufacturing excellence"
                     className="w-full h-full object-cover"
                   />
                 </div>
-                <div className="aspect-square rounded-lg overflow-hidden mt-8">
+                <div className="aspect-square rounded-xl overflow-hidden mt-12">
                   <img
                     src={printingImg}
                     alt="Quality control"
@@ -419,16 +421,16 @@ export default function HomePage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 lg:py-28 bg-primary">
+      <section className="py-28 lg:py-36 bg-primary">
         <div className="container-wide">
           <FadeIn className="text-center max-w-4xl mx-auto">
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-black text-primary-foreground mb-6">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-black text-primary-foreground mb-8">
               Ready to Partner With a Leader?
             </h2>
-            <p className="text-lg text-primary-foreground/70 mb-10 max-w-2xl mx-auto">
+            <p className="text-xl text-primary-foreground/70 mb-12 max-w-2xl mx-auto leading-relaxed">
               From concept to production, our engineering team works alongside you to develop packaging solutions that meet your exact specifications.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <div className="flex flex-col sm:flex-row gap-5 justify-center">
               <Link to="/contact">
                 <Button variant="hero" size="xl">
                   Request Quote
