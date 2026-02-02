@@ -14,6 +14,7 @@ import MaterialsPage from "./pages/MaterialsPage";
 import SustainabilityPage from "./pages/SustainabilityPage";
 import FAQPage from "./pages/FAQPage";
 import ContactPage from "./pages/ContactPage";
+import LocationsPage from "./pages/LocationsPage";
 import AdminAuthPage from "./pages/AdminAuthPage";
 import AdminPage from "./pages/AdminPage";
 import NotFound from "./pages/NotFound";
@@ -51,6 +52,7 @@ const App = () => (
                       <Route path="/sustainability" element={<SustainabilityPage />} />
                       <Route path="/faq" element={<FAQPage />} />
                       <Route path="/contact" element={<ContactPage />} />
+                      <Route path="/contact/locations" element={<LocationsPage />} />
                       <Route path="*" element={<NotFound />} />
                     </Routes>
                   </div>
