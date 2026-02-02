@@ -1,44 +1,55 @@
 import { Link, useLocation } from "react-router-dom";
 import { useState } from "react";
-import { Menu, X, ChevronDown } from "lucide-react";
+import { Menu, X, ChevronDown, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+
+// Import product images
+import standupPouches from "@/assets/product-standup-pouches.jpg";
+import rollstock from "@/assets/product-rollstock.jpg";
+import sachets from "@/assets/product-sachets.jpg";
+import highBarrier from "@/assets/product-high-barrier.jpg";
+import laminationImg from "@/assets/capability-lamination.jpg";
+
+const productItems = [
+  {
+    name: "Pouches",
+    href: "/products#pouches",
+    description: "Stand-up, flat bottom, retort & vacuum pouches for every application",
+    image: standupPouches,
+  },
+  {
+    name: "Roll Stock",
+    href: "/products#rollstock",
+    description: "VFFS, HFFS, and thermoform-ready films for automated packaging",
+    image: rollstock,
+  },
+  {
+    name: "Lidding Film",
+    href: "/products#lidding-film",
+    description: "Peelable, resealable, and high-barrier lidding solutions",
+    image: sachets,
+  },
+  {
+    name: "Shrink Sleeves",
+    href: "/products#shrink-sleeves",
+    description: "Full-body shrink sleeves and tamper-evident bands",
+    image: highBarrier,
+  },
+  {
+    name: "Thermoforming Film",
+    href: "/products#thermoforming-film",
+    description: "High-performance forming and non-forming films for MAP & vacuum",
+    image: laminationImg,
+  },
+];
 
 const navigation = [
   { name: "Home", href: "/" },
   {
     name: "Products",
     href: "/products",
-    children: [
-      {
-        category: "Film Types",
-        items: [
-          { name: "Thermoform Film", href: "/products/thermoform-film" },
-          { name: "Shrink Bands & Sleeves", href: "/products/shrink-bands-sleeves" },
-          { name: "Pouches", href: "/products/pouches" },
-          { name: "Roll Stock", href: "/products/rollstock" },
-          { name: "Lidding Film", href: "/products/lidding-film" },
-        ],
-      },
-      {
-        category: "Pouch Types",
-        items: [
-          { name: "Stand-Up Pouches", href: "/products/stand-up-pouches" },
-          { name: "Flat Bottom Pouches", href: "/products/flat-bottom-pouches" },
-          { name: "Retort Pouches", href: "/products/retort-pouches" },
-          { name: "Vacuum Pouches", href: "/products/vacuum-pouches" },
-        ],
-      },
-      {
-        category: "Specialty Films",
-        items: [
-          { name: "High-Barrier Laminates", href: "/products/high-barrier" },
-          { name: "Cold Seal Films", href: "/products/cold-seal" },
-          { name: "Peelable Films", href: "/products/peelable" },
-          { name: "Anti-Fog Films", href: "/products/anti-fog" },
-        ],
-      },
-    ],
+    hasProductMenu: true,
   },
   {
     name: "Capabilities",
@@ -47,18 +58,18 @@ const navigation = [
       {
         category: "Film Converting",
         items: [
-          { name: "Extrusion", href: "/capabilities/extrusion" },
-          { name: "Lamination", href: "/capabilities/lamination" },
-          { name: "Printing", href: "/capabilities/printing" },
-          { name: "Slitting & Rewinding", href: "/capabilities/slitting" },
+          { name: "Extrusion", href: "/capabilities#extrusion" },
+          { name: "Lamination", href: "/capabilities#lamination" },
+          { name: "Printing", href: "/capabilities#printing" },
+          { name: "Slitting & Rewinding", href: "/capabilities#converting" },
         ],
       },
       {
         category: "Pouch Converting",
         items: [
-          { name: "Pre-Made Pouch Converting", href: "/capabilities/pouch-converting" },
-          { name: "Stand-Up Pouch Converting", href: "/capabilities/standup-converting" },
-          { name: "Flat Bottom Pouch", href: "/capabilities/flat-bottom-converting" },
+          { name: "Pre-Made Pouch Converting", href: "/capabilities#converting" },
+          { name: "Stand-Up Pouch Converting", href: "/capabilities#converting" },
+          { name: "Flat Bottom Pouch", href: "/capabilities#converting" },
         ],
       },
     ],
@@ -70,12 +81,12 @@ const navigation = [
       {
         category: "Industries",
         items: [
-          { name: "Food & Beverage", href: "/markets/food-beverage" },
-          { name: "Meat & Protein", href: "/markets/meat-protein" },
-          { name: "Dairy & Cheese", href: "/markets/dairy-cheese" },
-          { name: "Pet Food", href: "/markets/pet-food" },
-          { name: "Medical & Pharma", href: "/markets/medical-pharma" },
-          { name: "Industrial", href: "/markets/industrial" },
+          { name: "Food & Beverage", href: "/markets#food-beverage" },
+          { name: "Meat & Protein", href: "/markets#meat-protein" },
+          { name: "Dairy & Cheese", href: "/markets#dairy-cheese" },
+          { name: "Pet Food", href: "/markets#pet-food" },
+          { name: "Medical & Pharma", href: "/markets#medical-pharma" },
+          { name: "Industrial", href: "/markets#industrial" },
         ],
       },
     ],
@@ -87,6 +98,7 @@ const navigation = [
 export function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
+  const [hoveredProduct, setHoveredProduct] = useState<typeof productItems[0] | null>(null);
   const location = useLocation();
 
   const isActive = (href: string) => location.pathname === href || location.pathname.startsWith(href + "/");
@@ -127,8 +139,11 @@ export function Header() {
             <div
               key={item.name}
               className="relative"
-              onMouseEnter={() => item.children && setOpenDropdown(item.name)}
-              onMouseLeave={() => setOpenDropdown(null)}
+              onMouseEnter={() => (item.children || item.hasProductMenu) && setOpenDropdown(item.name)}
+              onMouseLeave={() => {
+                setOpenDropdown(null);
+                setHoveredProduct(null);
+              }}
             >
               <Link
                 to={item.href}
@@ -140,13 +155,91 @@ export function Header() {
                 )}
               >
                 {item.name}
-                {item.children && <ChevronDown className="h-4 w-4" />}
+                {(item.children || item.hasProductMenu) && <ChevronDown className="h-4 w-4" />}
               </Link>
 
-              {/* Mega Menu */}
-              {item.children && openDropdown === item.name && (
+              {/* Products Mega Menu with Hover Ads */}
+              {item.hasProductMenu && openDropdown === item.name && (
                 <div className="absolute left-0 top-full pt-2">
-                  <div className="min-w-[500px] rounded bg-card border border-border p-6 shadow-xl">
+                  <div className="flex rounded bg-card border border-border shadow-xl overflow-hidden">
+                    {/* Product List */}
+                    <div className="w-64 bg-secondary/50 p-4">
+                      <p className="text-xs font-bold uppercase tracking-wider text-muted-foreground mb-3 px-3">
+                        Our Products
+                      </p>
+                      <ul className="space-y-1">
+                        {productItems.map((product) => (
+                          <li key={product.name}>
+                            <Link
+                              to={product.href}
+                              className={cn(
+                                "flex items-center justify-between px-3 py-2.5 rounded text-sm font-medium transition-all",
+                                hoveredProduct?.name === product.name
+                                  ? "bg-accent text-accent-foreground"
+                                  : "text-foreground hover:bg-accent/10"
+                              )}
+                              onMouseEnter={() => setHoveredProduct(product)}
+                            >
+                              {product.name}
+                              <ArrowRight className="h-4 w-4 opacity-50" />
+                            </Link>
+                          </li>
+                        ))}
+                      </ul>
+                      <div className="mt-4 pt-4 border-t border-border">
+                        <Link
+                          to="/products"
+                          className="flex items-center gap-2 px-3 py-2 text-sm font-bold text-accent hover:underline"
+                        >
+                          View All Products
+                          <ArrowRight className="h-4 w-4" />
+                        </Link>
+                      </div>
+                    </div>
+
+                    {/* Product Preview Ad */}
+                    <div className="w-80 p-0 relative overflow-hidden">
+                      {hoveredProduct ? (
+                        <div className="h-full">
+                          <div className="aspect-[4/3] overflow-hidden">
+                            <img
+                              src={hoveredProduct.image}
+                              alt={hoveredProduct.name}
+                              className="w-full h-full object-cover"
+                            />
+                          </div>
+                          <div className="absolute inset-0 bg-gradient-to-t from-primary via-primary/60 to-transparent" />
+                          <div className="absolute bottom-0 left-0 right-0 p-5">
+                            <h3 className="text-xl font-black text-primary-foreground mb-1">
+                              {hoveredProduct.name}
+                            </h3>
+                            <p className="text-sm text-primary-foreground/70 mb-3">
+                              {hoveredProduct.description}
+                            </p>
+                            <span className="inline-flex items-center gap-1 text-xs font-bold text-accent uppercase tracking-wide">
+                              Explore Options
+                              <ArrowRight className="h-3 w-3" />
+                            </span>
+                          </div>
+                        </div>
+                      ) : (
+                        <div className="h-full flex items-center justify-center bg-secondary/30 p-8 text-center">
+                          <div>
+                            <p className="text-sm text-muted-foreground">
+                              Hover over a product to see details
+                            </p>
+                          </div>
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                </div>
+              )}
+
+              {/* Regular Mega Menu for other items */}
+              {item.children && !item.hasProductMenu && openDropdown === item.name && (
+                <div className="absolute left-0 top-full pt-2">
+                  <div className="min-w-[400px] rounded bg-card border border-border p-6 shadow-xl">
                     <div className="grid grid-cols-2 gap-8">
                       {item.children.map((category) => (
                         <div key={category.category}>
@@ -207,10 +300,24 @@ export function Header() {
                       ? "text-accent"
                       : "text-primary-foreground/80 hover:text-accent"
                   )}
-                  onClick={() => !item.children && setMobileMenuOpen(false)}
+                  onClick={() => !item.children && !item.hasProductMenu && setMobileMenuOpen(false)}
                 >
                   {item.name}
                 </Link>
+                {item.hasProductMenu && (
+                  <div className="ml-4 mt-1 space-y-1 border-l-2 border-primary-foreground/10 pl-4">
+                    {productItems.map((product) => (
+                      <Link
+                        key={product.name}
+                        to={product.href}
+                        className="block px-2 py-2 text-sm text-primary-foreground/60 hover:text-accent"
+                        onClick={() => setMobileMenuOpen(false)}
+                      >
+                        {product.name}
+                      </Link>
+                    ))}
+                  </div>
+                )}
                 {item.children && (
                   <div className="ml-4 mt-1 space-y-1 border-l-2 border-primary-foreground/10 pl-4">
                     {item.children.map((category) => (
