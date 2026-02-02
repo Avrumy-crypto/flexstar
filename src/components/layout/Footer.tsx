@@ -51,17 +51,17 @@ export function Footer() {
               Industry-leading manufacturer of flexible packaging films and pouches. Serving global brands with innovative, sustainable solutions.
             </p>
             <div className="space-y-3 text-sm">
-              <a href="mailto:info@laminapackaging.com" className="flex items-center gap-3 text-primary-foreground/70 hover:text-accent transition-colors">
+              <a href="mailto:sales@Fivestarcorr.com" className="flex items-center gap-3 text-primary-foreground/70 hover:text-accent transition-colors">
                 <Mail className="h-4 w-4" />
-                info@laminapackaging.com
+                sales@Fivestarcorr.com
               </a>
-              <a href="tel:+1234567890" className="flex items-center gap-3 text-primary-foreground/70 hover:text-accent transition-colors">
+              <a href="tel:718-875-0022" className="flex items-center gap-3 text-primary-foreground/70 hover:text-accent transition-colors">
                 <Phone className="h-4 w-4" />
-                +1 (234) 567-890
+                718-875-0022
               </a>
               <div className="flex items-start gap-3 text-primary-foreground/70">
                 <MapPin className="h-4 w-4 mt-0.5 shrink-0" />
-                <span>1234 Industrial Blvd, Manufacturing District, ST 12345</span>
+                <span>175 Classon Avenue, Brooklyn NY 11205</span>
               </div>
             </div>
 

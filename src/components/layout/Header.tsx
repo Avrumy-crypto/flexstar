@@ -93,7 +93,19 @@ const navigation = [
     ],
   },
   { name: "Sustainability", href: "/sustainability" },
-  { name: "Contact", href: "/contact" },
+  {
+    name: "Contact",
+    href: "/contact",
+    children: [
+      {
+        category: "Get In Touch",
+        items: [
+          { name: "Contact Us", href: "/contact" },
+          { name: "Our Locations", href: "/contact/locations" },
+        ],
+      },
+    ],
+  },
 ];
 
 export function Header() {
@@ -115,8 +127,8 @@ export function Header() {
             <span className="hidden sm:inline">FDA Compliant Manufacturing</span>
           </div>
           <div className="flex items-center gap-4">
-            <a href="tel:+1234567890" className="hover:text-accent transition-colors">
-              +1 (234) 567-890
+            <a href="tel:718-875-0022" className="hover:text-accent transition-colors">
+              718-875-0022
             </a>
           </div>
         </div>
