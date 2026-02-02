@@ -1,211 +1,329 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Leaf, Recycle, TrendingDown, Factory, CheckCircle, Award } from "lucide-react";
+import { ArrowRight, Leaf, Recycle, TrendingDown, Factory, CheckCircle, Award, Globe, Droplets } from "lucide-react";
+import { FadeIn } from "@/components/animations/FadeIn";
+import { StaggerChildren, StaggerItem } from "@/components/animations/StaggerChildren";
+import { ScaleIn } from "@/components/animations/ScaleIn";
 import recyclableImage from "@/assets/product-recyclable.jpg";
 
 const initiatives = [
   {
     icon: Recycle,
     title: "Recyclable Mono-Materials",
-    description: "PE and PP mono-material structures designed for compatibility with existing recycling infrastructure. No mixed materials to complicate sorting.",
-    stats: "100% recyclable in designated streams",
+    description: "PE and PP mono-material structures designed for compatibility with existing recycling infrastructure.",
+    stats: "100%",
+    statsLabel: "Recyclable",
   },
   {
     icon: TrendingDown,
     title: "Material Reduction",
-    description: "Continuous downgauging initiatives reduce material consumption while maintaining performance through advanced polymer science and structure optimization.",
-    stats: "20-30% thickness reduction achieved",
+    description: "Advanced polymer science enables downgauging while maintaining barrier performance.",
+    stats: "30%",
+    statsLabel: "Less Material",
   },
   {
     icon: Leaf,
     title: "Bio-Based Content",
-    description: "Integration of bio-based polymers and renewable feedstocks where performance requirements allow, reducing dependency on fossil-fuel derived materials.",
-    stats: "Up to 30% bio-based content available",
+    description: "Integration of bio-based polymers and renewable feedstocks reducing fossil-fuel dependency.",
+    stats: "30%",
+    statsLabel: "Bio-Based",
   },
   {
     icon: Factory,
-    title: "Manufacturing Efficiency",
-    description: "Continuous improvement in energy efficiency, waste reduction, and water conservation across all manufacturing operations.",
-    stats: "15% energy reduction since 2020",
+    title: "Clean Manufacturing",
+    description: "Energy efficiency, waste reduction, and water conservation across all operations.",
+    stats: "15%",
+    statsLabel: "Energy Saved",
   },
 ];
 
 const commitments = [
-  { year: "2025", goal: "100% of portfolio recyclability-assessed" },
-  { year: "2027", goal: "50% reduction in manufacturing waste" },
-  { year: "2030", goal: "Carbon neutral manufacturing operations" },
-  { year: "2035", goal: "100% recyclable or compostable products" },
+  { year: "2025", goal: "100% of portfolio recyclability-assessed", progress: 78 },
+  { year: "2027", goal: "50% reduction in manufacturing waste", progress: 45 },
+  { year: "2030", goal: "Carbon neutral manufacturing operations", progress: 28 },
+  { year: "2035", goal: "100% recyclable or compostable products", progress: 15 },
 ];
 
 const certifications = [
-  "How2Recycle Program Member",
-  "APR Design Guide Compliant",
-  "FSC-Certified Paper Sourcing",
-  "ISO 14001 Environmental Management",
-  "RecyClass Recyclability Assessment",
-  "Certified B Corporation (In Progress)",
+  { name: "How2Recycle", status: "Certified" },
+  { name: "APR Design Guide", status: "Compliant" },
+  { name: "FSC-Certified Paper", status: "Certified" },
+  { name: "ISO 14001", status: "Certified" },
+  { name: "RecyClass", status: "Assessed" },
+  { name: "B Corporation", status: "In Progress" },
+];
+
+const impactStats = [
+  { value: "12M+", label: "Pounds of plastic reduced annually", icon: TrendingDown },
+  { value: "95%", label: "Manufacturing scrap recycled", icon: Recycle },
+  { value: "50%", label: "PCR content available", icon: Globe },
+  { value: "0", label: "Landfill waste by 2030", icon: Droplets },
 ];
 
 export default function SustainabilityPage() {
   return (
-    <main>
-      {/* Hero */}
-      <section className="relative py-20 lg:py-28 bg-primary">
+    <main className="bg-background">
+      {/* Hero - Split screen with massive typography */}
+      <section className="min-h-[90vh] grid lg:grid-cols-2">
+        <div className="bg-primary flex items-center py-24 lg:py-32 order-2 lg:order-1">
+          <div className="px-8 lg:px-16 xl:px-24">
+            <FadeIn>
+              <p className="text-accent font-bold uppercase tracking-[0.2em] text-sm mb-6">
+                Environmental Responsibility
+              </p>
+            </FadeIn>
+            <FadeIn delay={0.1}>
+              <h1 className="text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black text-primary-foreground leading-[0.9] mb-8">
+                Building<br />
+                <span className="text-accent">Tomorrow</span>
+              </h1>
+            </FadeIn>
+            <FadeIn delay={0.2}>
+              <p className="text-xl text-primary-foreground/70 leading-relaxed max-w-md mb-10">
+                Practical, measurable progress toward packaging that works in real-world recycling systems.
+              </p>
+            </FadeIn>
+            <FadeIn delay={0.3}>
+              <Link to="/contact">
+                <Button variant="hero" size="xl">
+                  Partner With Us
+                  <ArrowRight className="ml-2 h-5 w-5" />
+                </Button>
+              </Link>
+            </FadeIn>
+          </div>
+        </div>
+        <div className="relative min-h-[50vh] lg:min-h-full order-1 lg:order-2 overflow-hidden">
+          <img
+            src={recyclableImage}
+            alt="Sustainable packaging"
+            className="absolute inset-0 w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t lg:bg-gradient-to-r from-primary/40 to-transparent" />
+        </div>
+      </section>
+
+      {/* Impact Stats - Full width with large numbers */}
+      <section className="py-24 lg:py-32 border-b border-border">
         <div className="container-wide">
-          <div className="max-w-3xl">
-            <p className="text-sm font-bold uppercase tracking-wider text-accent mb-2">Environmental Responsibility</p>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-black text-primary-foreground mb-6">
-              Sustainability
-            </h1>
-            <p className="text-lg text-primary-foreground/80 leading-relaxed">
-              Practical, measurable progress toward more sustainable flexible packaging. We focus on solutions that work in real-world recycling systems today.
+          <FadeIn className="mb-20 text-center">
+            <p className="text-accent font-bold uppercase tracking-[0.2em] text-sm mb-4">
+              Our Impact
             </p>
-          </div>
-        </div>
-      </section>
-
-      {/* Our Approach */}
-      <section className="py-16 lg:py-24">
-        <div className="container-wide">
-          <div className="grid lg:grid-cols-2 gap-12 items-center mb-16">
-            <div>
-              <p className="text-sm font-bold uppercase tracking-wider text-accent mb-2">Our Approach</p>
-              <h2 className="text-3xl md:text-4xl font-black mb-6">
-                Progress Over Perfection
-              </h2>
-              <p className="text-muted-foreground leading-relaxed mb-6">
-                We believe the most sustainable packaging is one that actually gets recycled. That means designing for existing infrastructure, not theoretical systems.
-              </p>
-              <p className="text-muted-foreground leading-relaxed mb-6">
-                Our approach prioritizes source reduction (less material), design for recyclability (mono-materials), and incorporation of recycled content—in that order of impact.
-              </p>
-              <p className="text-muted-foreground leading-relaxed">
-                We're transparent about what works today and what's still in development. No greenwashing—just honest progress.
-              </p>
-            </div>
-            <div className="rounded-lg overflow-hidden">
-              <img
-                src={recyclableImage}
-                alt="Sustainable packaging options"
-                className="w-full h-full object-cover"
-              />
-            </div>
-          </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {initiatives.map((initiative) => (
-              <div
-                key={initiative.title}
-                className="bg-card rounded-lg p-6 border border-border card-elevated"
-              >
-                <div className="w-12 h-12 rounded bg-accent/10 flex items-center justify-center mb-4">
-                  <initiative.icon className="h-6 w-6 text-accent" />
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-black max-w-3xl mx-auto">
+              Numbers That Matter
+            </h2>
+          </FadeIn>
+          <StaggerChildren staggerDelay={0.1} className="grid grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
+            {impactStats.map((stat) => (
+              <StaggerItem key={stat.label}>
+                <div className="text-center group">
+                  <div className="w-16 h-16 rounded-2xl bg-accent/10 flex items-center justify-center mx-auto mb-6 group-hover:bg-accent/20 transition-colors">
+                    <stat.icon className="h-8 w-8 text-accent" />
+                  </div>
+                  <p className="text-5xl lg:text-6xl font-black text-primary mb-2">{stat.value}</p>
+                  <p className="text-muted-foreground">{stat.label}</p>
                 </div>
-                <h3 className="text-lg font-bold mb-2">{initiative.title}</h3>
-                <p className="text-sm text-muted-foreground mb-4 leading-relaxed">
-                  {initiative.description}
-                </p>
-                <p className="text-sm font-bold text-accent">{initiative.stats}</p>
-              </div>
+              </StaggerItem>
             ))}
+          </StaggerChildren>
+        </div>
+      </section>
+
+      {/* Initiatives - Bento grid style */}
+      <section className="py-24 lg:py-32">
+        <div className="container-wide">
+          <div className="grid lg:grid-cols-3 gap-8 lg:gap-12">
+            <FadeIn direction="right" className="lg:col-span-1">
+              <div className="sticky top-32">
+                <p className="text-accent font-bold uppercase tracking-[0.2em] text-sm mb-4">
+                  Our Approach
+                </p>
+                <h2 className="text-4xl md:text-5xl font-black mb-6">
+                  Progress Over Perfection
+                </h2>
+                <p className="text-xl text-muted-foreground leading-relaxed mb-8">
+                  We believe the most sustainable packaging is one that actually gets recycled. That means designing for existing infrastructure.
+                </p>
+                <p className="text-muted-foreground leading-relaxed">
+                  No greenwashing—just honest, measurable progress toward packaging solutions that work in the real world.
+                </p>
+              </div>
+            </FadeIn>
+
+            <div className="lg:col-span-2">
+              <StaggerChildren staggerDelay={0.15} className="grid sm:grid-cols-2 gap-6">
+                {initiatives.map((initiative) => (
+                  <StaggerItem key={initiative.title}>
+                    <div className="group bg-card rounded-2xl p-8 border border-border hover:border-accent transition-all duration-500 card-elevated h-full">
+                      <div className="flex items-start justify-between mb-6">
+                        <div className="w-14 h-14 rounded-xl bg-accent/10 flex items-center justify-center group-hover:bg-accent group-hover:scale-110 transition-all duration-300">
+                          <initiative.icon className="h-7 w-7 text-accent group-hover:text-accent-foreground transition-colors" />
+                        </div>
+                        <div className="text-right">
+                          <p className="text-3xl font-black text-accent">{initiative.stats}</p>
+                          <p className="text-xs font-medium text-muted-foreground uppercase tracking-wider">{initiative.statsLabel}</p>
+                        </div>
+                      </div>
+                      <h3 className="text-xl font-bold mb-3">{initiative.title}</h3>
+                      <p className="text-muted-foreground leading-relaxed">
+                        {initiative.description}
+                      </p>
+                    </div>
+                  </StaggerItem>
+                ))}
+              </StaggerChildren>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Roadmap */}
-      <section className="py-16 lg:py-24 bg-primary text-primary-foreground">
+      {/* Roadmap - Horizontal timeline with progress bars */}
+      <section className="py-24 lg:py-32 bg-primary text-primary-foreground overflow-hidden">
         <div className="container-wide">
-          <div className="text-center max-w-3xl mx-auto mb-12">
-            <p className="text-sm font-bold uppercase tracking-wider text-accent mb-2">Long-Term Vision</p>
-            <h2 className="text-3xl md:text-4xl font-black mb-6">
+          <FadeIn className="text-center mb-20">
+            <p className="text-accent font-bold uppercase tracking-[0.2em] text-sm mb-4">
+              Long-Term Vision
+            </p>
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-black mb-6">
               Sustainability Roadmap
             </h2>
-            <p className="text-primary-foreground/70">
+            <p className="text-xl text-primary-foreground/60 max-w-2xl mx-auto">
               Clear, measurable commitments with defined timelines. We report progress annually.
             </p>
-          </div>
-          <div className="grid md:grid-cols-4 gap-6">
-            {commitments.map((item, index) => (
-              <div key={item.year} className="relative">
-                <div className="bg-primary-foreground/5 rounded-lg p-6 border border-primary-foreground/10">
-                  <p className="text-4xl font-black text-accent mb-2">{item.year}</p>
-                  <p className="text-sm text-primary-foreground/80">{item.goal}</p>
-                </div>
-                {index < commitments.length - 1 && (
-                  <div className="hidden md:block absolute top-1/2 -right-3 transform -translate-y-1/2 z-10">
-                    <ArrowRight className="h-5 w-5 text-primary-foreground/30" />
+          </FadeIn>
+
+          <div className="relative">
+            {/* Timeline line */}
+            <div className="hidden lg:block absolute top-[60px] left-0 right-0 h-px bg-primary-foreground/20" />
+            
+            <StaggerChildren staggerDelay={0.12} className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+              {commitments.map((item) => (
+                <StaggerItem key={item.year}>
+                  <div className="relative">
+                    {/* Timeline dot */}
+                    <div className="hidden lg:flex absolute -top-3 left-1/2 -translate-x-1/2 w-6 h-6 rounded-full bg-accent items-center justify-center">
+                      <div className="w-2 h-2 rounded-full bg-primary" />
+                    </div>
+                    
+                    <div className="bg-primary-foreground/5 rounded-2xl p-8 border border-primary-foreground/10 hover:border-accent/50 transition-colors">
+                      <p className="text-6xl font-black text-accent mb-4">{item.year}</p>
+                      <p className="text-primary-foreground/80 mb-6 min-h-[60px]">{item.goal}</p>
+                      
+                      {/* Progress bar */}
+                      <div className="space-y-2">
+                        <div className="flex justify-between text-sm">
+                          <span className="text-primary-foreground/50">Progress</span>
+                          <span className="font-bold text-accent">{item.progress}%</span>
+                        </div>
+                        <div className="h-2 bg-primary-foreground/10 rounded-full overflow-hidden">
+                          <div 
+                            className="h-full bg-accent rounded-full transition-all duration-1000"
+                            style={{ width: `${item.progress}%` }}
+                          />
+                        </div>
+                      </div>
+                    </div>
                   </div>
-                )}
-              </div>
-            ))}
+                </StaggerItem>
+              ))}
+            </StaggerChildren>
           </div>
         </div>
       </section>
 
-      {/* Certifications */}
-      <section className="py-16 lg:py-24">
+      {/* Certifications - Modern grid */}
+      <section className="py-24 lg:py-32">
         <div className="container-wide">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div>
-              <p className="text-sm font-bold uppercase tracking-wider text-accent mb-2">Verified Progress</p>
-              <h2 className="text-3xl md:text-4xl font-black mb-6">
+          <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-center">
+            <FadeIn direction="right">
+              <p className="text-accent font-bold uppercase tracking-[0.2em] text-sm mb-4">
+                Verified Progress
+              </p>
+              <h2 className="text-4xl md:text-5xl font-black mb-8">
                 Certifications & Standards
               </h2>
-              <p className="text-muted-foreground leading-relaxed mb-8">
+              <p className="text-xl text-muted-foreground leading-relaxed mb-12">
                 Third-party certifications validate our sustainability claims and ensure we're following recognized best practices.
               </p>
-              <ul className="space-y-3">
+
+              <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
                 {certifications.map((cert) => (
-                  <li key={cert} className="flex items-center gap-3">
-                    <Award className="h-5 w-5 text-accent shrink-0" />
-                    <span className="font-medium">{cert}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-            <div className="bg-secondary rounded-lg p-8">
-              <h3 className="text-xl font-bold mb-4">Recyclability Guidance</h3>
-              <p className="text-muted-foreground mb-6">
-                We provide How2Recycle labeling guidance and design our structures to meet APR Design Guide criteria for store drop-off or curbside recyclability.
-              </p>
-              <div className="space-y-4">
-                <div className="flex items-start gap-3">
-                  <CheckCircle className="h-5 w-5 text-accent shrink-0 mt-0.5" />
-                  <div>
-                    <p className="font-medium">Pre-Consumer Waste Recycling</p>
-                    <p className="text-sm text-muted-foreground">95% of manufacturing scrap is recycled</p>
+                  <div 
+                    key={cert.name}
+                    className="bg-card rounded-xl p-5 border border-border text-center hover:border-accent transition-colors"
+                  >
+                    <Award className="h-8 w-8 text-accent mx-auto mb-3" />
+                    <p className="font-bold text-sm mb-1">{cert.name}</p>
+                    <p className="text-xs text-muted-foreground">{cert.status}</p>
                   </div>
-                </div>
-                <div className="flex items-start gap-3">
-                  <CheckCircle className="h-5 w-5 text-accent shrink-0 mt-0.5" />
-                  <div>
-                    <p className="font-medium">PCR Content Available</p>
-                    <p className="text-sm text-muted-foreground">Up to 50% post-consumer recycled content in select structures</p>
+                ))}
+              </div>
+            </FadeIn>
+
+            <ScaleIn delay={0.2}>
+              <div className="bg-secondary rounded-3xl p-10 lg:p-12">
+                <h3 className="text-2xl font-bold mb-6">Recyclability Guidance</h3>
+                <p className="text-muted-foreground mb-10 text-lg leading-relaxed">
+                  We provide How2Recycle labeling guidance and design our structures to meet APR Design Guide criteria.
+                </p>
+                <div className="space-y-6">
+                  <div className="flex items-start gap-5 p-5 bg-card rounded-xl">
+                    <div className="w-12 h-12 rounded-lg bg-accent/10 flex items-center justify-center shrink-0">
+                      <CheckCircle className="h-6 w-6 text-accent" />
+                    </div>
+                    <div>
+                      <p className="font-bold text-lg mb-1">Pre-Consumer Waste</p>
+                      <p className="text-muted-foreground">95% of manufacturing scrap is recycled</p>
+                    </div>
+                  </div>
+                  <div className="flex items-start gap-5 p-5 bg-card rounded-xl">
+                    <div className="w-12 h-12 rounded-lg bg-accent/10 flex items-center justify-center shrink-0">
+                      <CheckCircle className="h-6 w-6 text-accent" />
+                    </div>
+                    <div>
+                      <p className="font-bold text-lg mb-1">PCR Content Available</p>
+                      <p className="text-muted-foreground">Up to 50% post-consumer recycled content</p>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
+            </ScaleIn>
           </div>
         </div>
       </section>
 
-      {/* CTA */}
-      <section className="py-16 lg:py-24 section-gradient">
-        <div className="container-wide">
-          <div className="bg-primary rounded-lg p-8 md:p-12 text-center">
-            <h2 className="text-2xl md:text-3xl font-black text-primary-foreground mb-4">
-              Explore Sustainable Options
+      {/* CTA - Full bleed with gradient */}
+      <section className="py-32 lg:py-40 relative overflow-hidden">
+        <div className="absolute inset-0 bg-primary" />
+        <div className="absolute top-0 right-0 w-1/2 h-full bg-accent/10 blur-3xl" />
+        <div className="absolute bottom-0 left-0 w-1/3 h-1/2 bg-accent/5 blur-3xl" />
+        
+        <div className="container-wide relative">
+          <FadeIn className="text-center max-w-4xl mx-auto">
+            <p className="text-accent font-bold uppercase tracking-[0.2em] text-sm mb-6">
+              Let's Build Together
+            </p>
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-primary-foreground mb-8">
+              Ready to Make<br />Packaging Sustainable?
             </h2>
-            <p className="text-primary-foreground/70 mb-6 max-w-2xl mx-auto">
+            <p className="text-xl text-primary-foreground/60 mb-12 max-w-2xl mx-auto leading-relaxed">
               Our engineering team can assess your current packaging and recommend pathways to improved sustainability.
             </p>
-            <Link to="/contact">
-              <Button variant="hero" size="lg">
-                Schedule a Consultation
-                <ArrowRight className="ml-2 h-4 w-4" />
-              </Button>
-            </Link>
-          </div>
+            <div className="flex flex-col sm:flex-row gap-5 justify-center">
+              <Link to="/contact">
+                <Button variant="hero" size="xl">
+                  Schedule a Consultation
+                  <ArrowRight className="ml-2 h-5 w-5" />
+                </Button>
+              </Link>
+              <Link to="/products">
+                <Button variant="heroOutline" size="xl">
+                  Explore Products
+                </Button>
+              </Link>
+            </div>
+          </FadeIn>
         </div>
       </section>
     </main>
