@@ -6,102 +6,102 @@
 
 @layer base {
   :root {
-    /* Modern Clean Palette */
+    /* Five Star Blue Palette */
     --background: 0 0% 100%;
-    --foreground: 220 30% 10%;
+    --foreground: 215 50% 15%;
 
     --card: 0 0% 100%;
-    --card-foreground: 220 30% 10%;
+    --card-foreground: 215 50% 15%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 220 30% 10%;
+    --popover-foreground: 215 50% 15%;
 
-    /* Deep Industrial Navy - Authority & Strength */
-    --primary: 220 60% 15%;
+    /* Deep Navy Blue - from logo */
+    --primary: 215 50% 20%;
     --primary-foreground: 0 0% 100%;
 
     /* Light Gray - Clean & Modern */
-    --secondary: 220 10% 96%;
-    --secondary-foreground: 220 30% 15%;
+    --secondary: 210 20% 96%;
+    --secondary-foreground: 215 50% 20%;
 
-    --muted: 220 10% 96%;
-    --muted-foreground: 220 15% 45%;
+    --muted: 210 20% 96%;
+    --muted-foreground: 210 15% 45%;
 
-    /* Bold Orange Accent - Energy & Innovation */
-    --accent: 25 95% 50%;
+    /* Steel Blue Accent - from logo bridge/star */
+    --accent: 205 55% 50%;
     --accent-foreground: 0 0% 100%;
 
     --destructive: 0 72% 51%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 220 10% 90%;
-    --input: 220 10% 90%;
-    --ring: 220 60% 15%;
+    --border: 210 15% 90%;
+    --input: 210 15% 90%;
+    --ring: 215 50% 20%;
 
     --radius: 0.5rem;
 
-    /* Modern custom tokens */
-    --hero-gradient: linear-gradient(135deg, hsl(220 60% 12%) 0%, hsl(220 50% 18%) 100%);
-    --hero-overlay: linear-gradient(180deg, hsl(220 60% 8% / 0.8) 0%, hsl(220 50% 12% / 0.6) 100%);
-    --card-shadow: 0 1px 3px 0 hsl(220 60% 15% / 0.04), 0 1px 2px -1px hsl(220 60% 15% / 0.04);
-    --card-shadow-hover: 0 10px 40px -10px hsl(220 60% 15% / 0.15);
-    --section-gradient: linear-gradient(180deg, hsl(220 10% 98%) 0%, hsl(220 10% 96%) 100%);
-    --accent-gradient: linear-gradient(135deg, hsl(25 95% 50%) 0%, hsl(15 90% 45%) 100%);
-    --steel-gradient: linear-gradient(180deg, hsl(220 10% 98%) 0%, hsl(220 10% 94%) 100%);
+    /* Five Star custom tokens */
+    --hero-gradient: linear-gradient(135deg, hsl(215 50% 18%) 0%, hsl(215 45% 25%) 100%);
+    --hero-overlay: linear-gradient(180deg, hsl(215 50% 12% / 0.85) 0%, hsl(215 45% 18% / 0.7) 100%);
+    --card-shadow: 0 1px 3px 0 hsl(215 50% 20% / 0.04), 0 1px 2px -1px hsl(215 50% 20% / 0.04);
+    --card-shadow-hover: 0 10px 40px -10px hsl(215 50% 20% / 0.15);
+    --section-gradient: linear-gradient(180deg, hsl(210 20% 98%) 0%, hsl(210 20% 96%) 100%);
+    --accent-gradient: linear-gradient(135deg, hsl(205 55% 50%) 0%, hsl(205 60% 40%) 100%);
+    --steel-gradient: linear-gradient(180deg, hsl(210 20% 98%) 0%, hsl(210 20% 94%) 100%);
 
     /* Sidebar tokens */
     --sidebar-background: 0 0% 100%;
-    --sidebar-foreground: 220 30% 20%;
-    --sidebar-primary: 220 60% 15%;
+    --sidebar-foreground: 215 50% 20%;
+    --sidebar-primary: 215 50% 20%;
     --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 220 10% 96%;
-    --sidebar-accent-foreground: 220 30% 15%;
-    --sidebar-border: 220 10% 92%;
-    --sidebar-ring: 25 95% 50%;
+    --sidebar-accent: 210 20% 96%;
+    --sidebar-accent-foreground: 215 50% 20%;
+    --sidebar-border: 210 15% 92%;
+    --sidebar-ring: 205 55% 50%;
   }
 
   .dark {
-    --background: 220 30% 6%;
-    --foreground: 220 10% 95%;
+    --background: 215 40% 6%;
+    --foreground: 210 15% 95%;
 
-    --card: 220 30% 10%;
-    --card-foreground: 220 10% 95%;
+    --card: 215 40% 10%;
+    --card-foreground: 210 15% 95%;
 
-    --popover: 220 30% 10%;
-    --popover-foreground: 220 10% 95%;
+    --popover: 215 40% 10%;
+    --popover-foreground: 210 15% 95%;
 
-    --primary: 25 95% 55%;
-    --primary-foreground: 220 30% 6%;
+    --primary: 205 55% 55%;
+    --primary-foreground: 215 40% 6%;
 
-    --secondary: 220 25% 15%;
-    --secondary-foreground: 220 10% 90%;
+    --secondary: 215 30% 15%;
+    --secondary-foreground: 210 15% 90%;
 
-    --muted: 220 25% 15%;
-    --muted-foreground: 220 10% 55%;
+    --muted: 215 30% 15%;
+    --muted-foreground: 210 15% 55%;
 
-    --accent: 25 95% 55%;
-    --accent-foreground: 220 30% 6%;
+    --accent: 205 55% 55%;
+    --accent-foreground: 215 40% 6%;
 
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 220 25% 18%;
-    --input: 220 25% 18%;
-    --ring: 25 95% 55%;
+    --border: 215 30% 18%;
+    --input: 215 30% 18%;
+    --ring: 205 55% 55%;
 
-    --hero-gradient: linear-gradient(135deg, hsl(220 30% 8%) 0%, hsl(220 30% 12%) 50%, hsl(220 25% 15%) 100%);
-    --hero-overlay: linear-gradient(180deg, hsl(220 30% 5% / 0.9) 0%, hsl(220 30% 8% / 0.8) 100%);
+    --hero-gradient: linear-gradient(135deg, hsl(215 40% 8%) 0%, hsl(215 35% 12%) 50%, hsl(215 30% 15%) 100%);
+    --hero-overlay: linear-gradient(180deg, hsl(215 40% 5% / 0.9) 0%, hsl(215 35% 8% / 0.8) 100%);
     --card-shadow: 0 4px 20px -2px hsl(0 0% 0% / 0.4);
     --card-shadow-hover: 0 16px 48px -8px hsl(0 0% 0% / 0.5);
 
-    --sidebar-background: 220 30% 8%;
-    --sidebar-foreground: 220 10% 92%;
-    --sidebar-primary: 25 95% 55%;
-    --sidebar-primary-foreground: 220 30% 6%;
-    --sidebar-accent: 220 25% 15%;
-    --sidebar-accent-foreground: 220 10% 92%;
-    --sidebar-border: 220 25% 18%;
-    --sidebar-ring: 25 95% 55%;
+    --sidebar-background: 215 40% 8%;
+    --sidebar-foreground: 210 15% 92%;
+    --sidebar-primary: 205 55% 55%;
+    --sidebar-primary-foreground: 215 40% 6%;
+    --sidebar-accent: 215 30% 15%;
+    --sidebar-accent-foreground: 210 15% 92%;
+    --sidebar-border: 215 30% 18%;
+    --sidebar-ring: 205 55% 55%;
   }
 }
 

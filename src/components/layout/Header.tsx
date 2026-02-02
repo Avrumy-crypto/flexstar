@@ -4,7 +4,8 @@ import { Menu, X, ChevronDown, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
-// Import product images
+// Import logo and product images
+import logo from "@/assets/logo.png";
 import standupPouches from "@/assets/product-standup-pouches.jpg";
 import rollstock from "@/assets/product-rollstock.jpg";
 import sachets from "@/assets/product-sachets.jpg";
@@ -123,14 +124,8 @@ export function Header() {
 
       {/* Main nav */}
       <nav className="container-wide flex h-20 items-center justify-between">
-        <Link to="/" className="flex items-center gap-3">
-          <div className="flex h-12 w-12 items-center justify-center bg-accent rounded">
-            <span className="text-xl font-black text-accent-foreground">LP</span>
-          </div>
-          <div className="hidden sm:block">
-            <span className="text-xl font-bold text-primary-foreground tracking-tight">LAMINA</span>
-            <p className="text-[10px] text-primary-foreground/60 uppercase tracking-widest">Packaging Solutions</p>
-          </div>
+        <Link to="/" className="flex items-center">
+          <img src={logo} alt="Five Star Flexible" className="h-14 w-auto" />
         </Link>
 
         {/* Desktop Navigation */}
