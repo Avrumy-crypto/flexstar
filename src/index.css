@@ -6,8 +6,8 @@
 
 @layer base {
   :root {
-    /* Industrial Manufacturing Palette - Bold & Powerful */
-    --background: 220 15% 97%;
+    /* Modern Clean Palette */
+    --background: 0 0% 100%;
     --foreground: 220 30% 10%;
 
     --card: 0 0% 100%;
@@ -20,12 +20,12 @@
     --primary: 220 60% 15%;
     --primary-foreground: 0 0% 100%;
 
-    /* Industrial Gray - Professional */
-    --secondary: 220 10% 92%;
+    /* Light Gray - Clean & Modern */
+    --secondary: 220 10% 96%;
     --secondary-foreground: 220 30% 15%;
 
-    --muted: 220 10% 94%;
-    --muted-foreground: 220 15% 40%;
+    --muted: 220 10% 96%;
+    --muted-foreground: 220 15% 45%;
 
     /* Bold Orange Accent - Energy & Innovation */
     --accent: 25 95% 50%;
@@ -34,29 +34,29 @@
     --destructive: 0 72% 51%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 220 15% 88%;
-    --input: 220 15% 88%;
+    --border: 220 10% 90%;
+    --input: 220 10% 90%;
     --ring: 220 60% 15%;
 
-    --radius: 0.375rem;
+    --radius: 0.5rem;
 
-    /* Industrial custom tokens */
-    --hero-gradient: linear-gradient(135deg, hsl(220 60% 12%) 0%, hsl(220 50% 20%) 50%, hsl(220 45% 25%) 100%);
-    --hero-overlay: linear-gradient(180deg, hsl(220 60% 10% / 0.85) 0%, hsl(220 50% 15% / 0.7) 100%);
-    --card-shadow: 0 4px 20px -2px hsl(220 60% 15% / 0.1);
-    --card-shadow-hover: 0 16px 48px -8px hsl(220 60% 15% / 0.2);
-    --section-gradient: linear-gradient(180deg, hsl(220 15% 97%) 0%, hsl(220 15% 94%) 100%);
+    /* Modern custom tokens */
+    --hero-gradient: linear-gradient(135deg, hsl(220 60% 12%) 0%, hsl(220 50% 18%) 100%);
+    --hero-overlay: linear-gradient(180deg, hsl(220 60% 8% / 0.8) 0%, hsl(220 50% 12% / 0.6) 100%);
+    --card-shadow: 0 1px 3px 0 hsl(220 60% 15% / 0.04), 0 1px 2px -1px hsl(220 60% 15% / 0.04);
+    --card-shadow-hover: 0 10px 40px -10px hsl(220 60% 15% / 0.15);
+    --section-gradient: linear-gradient(180deg, hsl(220 10% 98%) 0%, hsl(220 10% 96%) 100%);
     --accent-gradient: linear-gradient(135deg, hsl(25 95% 50%) 0%, hsl(15 90% 45%) 100%);
-    --steel-gradient: linear-gradient(180deg, hsl(220 10% 95%) 0%, hsl(220 10% 88%) 100%);
+    --steel-gradient: linear-gradient(180deg, hsl(220 10% 98%) 0%, hsl(220 10% 94%) 100%);
 
     /* Sidebar tokens */
-    --sidebar-background: 220 15% 98%;
+    --sidebar-background: 0 0% 100%;
     --sidebar-foreground: 220 30% 20%;
     --sidebar-primary: 220 60% 15%;
     --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 220 10% 94%;
+    --sidebar-accent: 220 10% 96%;
     --sidebar-accent-foreground: 220 30% 15%;
-    --sidebar-border: 220 15% 90%;
+    --sidebar-border: 220 10% 92%;
     --sidebar-ring: 25 95% 50%;
   }
 
@@ -144,7 +144,7 @@
 
   .card-elevated:hover {
     box-shadow: var(--card-shadow-hover);
-    transform: translateY(-4px);
+    transform: translateY(-2px);
   }
 
   .section-gradient {
@@ -152,11 +152,11 @@
   }
 
   .container-tight {
-    @apply max-w-6xl mx-auto px-4 sm:px-6 lg:px-8;
+    @apply max-w-5xl mx-auto px-6 sm:px-8 lg:px-12;
   }
 
   .container-wide {
-    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+    @apply max-w-6xl mx-auto px-6 sm:px-8 lg:px-12;
   }
 
   .industrial-border {
