@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { Mail, Phone, MapPin, Linkedin, ArrowRight } from "lucide-react";
+import logo from "@/assets/logo.png";
 
 const navigation = {
   products: [
@@ -43,14 +44,8 @@ export function Footer() {
         <div className="grid grid-cols-1 gap-12 md:grid-cols-2 lg:grid-cols-5">
           {/* Brand Column */}
           <div className="lg:col-span-2">
-            <div className="flex items-center gap-3 mb-6">
-              <div className="flex h-12 w-12 items-center justify-center bg-accent rounded">
-                <span className="text-xl font-black text-accent-foreground">LP</span>
-              </div>
-              <div>
-                <span className="text-xl font-bold tracking-tight">LAMINA</span>
-                <p className="text-[10px] text-primary-foreground/60 uppercase tracking-widest">Packaging Solutions</p>
-              </div>
+            <div className="mb-6">
+              <img src={logo} alt="Five Star Packaging" className="h-16 w-auto brightness-0 invert" />
             </div>
             <p className="text-primary-foreground/70 text-sm leading-relaxed mb-6 max-w-sm">
               Industry-leading manufacturer of flexible packaging films and pouches. Serving global brands with innovative, sustainable solutions.
@@ -165,7 +160,7 @@ export function Footer() {
       <div className="border-t border-primary-foreground/10">
         <div className="container-wide py-6">
           <div className="flex flex-col sm:flex-row justify-between items-center gap-4 text-xs text-primary-foreground/50">
-            <p>© {new Date().getFullYear()} Lamina Packaging. All rights reserved.</p>
+            <p>© {new Date().getFullYear()} Five Star Packaging. All rights reserved.</p>
             <div className="flex gap-6">
               <Link to="/privacy" className="hover:text-primary-foreground transition-colors">Privacy Policy</Link>
               <Link to="/terms" className="hover:text-primary-foreground transition-colors">Terms of Service</Link>
