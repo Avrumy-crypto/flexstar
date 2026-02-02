@@ -7,6 +7,8 @@ import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import HomePage from "./pages/HomePage";
 import ProductsPage from "./pages/ProductsPage";
+import CapabilitiesPage from "./pages/CapabilitiesPage";
+import MarketsPage from "./pages/MarketsPage";
 import MaterialsPage from "./pages/MaterialsPage";
 import SustainabilityPage from "./pages/SustainabilityPage";
 import FAQPage from "./pages/FAQPage";
@@ -28,6 +30,10 @@ const App = () => (
               <Route path="/" element={<HomePage />} />
               <Route path="/products" element={<ProductsPage />} />
               <Route path="/products/:slug" element={<ProductsPage />} />
+              <Route path="/capabilities" element={<CapabilitiesPage />} />
+              <Route path="/capabilities/:slug" element={<CapabilitiesPage />} />
+              <Route path="/markets" element={<MarketsPage />} />
+              <Route path="/markets/:slug" element={<MarketsPage />} />
               <Route path="/materials" element={<MaterialsPage />} />
               <Route path="/sustainability" element={<SustainabilityPage />} />
               <Route path="/faq" element={<FAQPage />} />
