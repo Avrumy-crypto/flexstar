@@ -8,6 +8,7 @@ import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import HomePage from "./pages/HomePage";
 import ProductsPage from "./pages/ProductsPage";
+import ProductCategoryPage from "./pages/ProductCategoryPage";
 import CapabilitiesPage from "./pages/CapabilitiesPage";
 import MarketsPage from "./pages/MarketsPage";
 import MaterialsPage from "./pages/MaterialsPage";
@@ -43,7 +44,7 @@ const App = () => (
                     <Routes>
                       <Route path="/" element={<HomePage />} />
                       <Route path="/products" element={<ProductsPage />} />
-                      <Route path="/products/:slug" element={<ProductsPage />} />
+                      <Route path="/products/:slug" element={<ProductCategoryPage />} />
                       <Route path="/capabilities" element={<CapabilitiesPage />} />
                       <Route path="/capabilities/:slug" element={<CapabilitiesPage />} />
                       <Route path="/markets" element={<MarketsPage />} />

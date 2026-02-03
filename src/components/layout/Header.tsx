@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { Menu, X, ChevronDown, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import { useProductCategories } from "@/hooks/useProductCategories";
 
 import logo from "@/assets/logo.png";
 import standupPouches from "@/assets/product-standup-pouches.jpg";
@@ -10,14 +11,29 @@ import rollstock from "@/assets/product-rollstock.jpg";
 import sachets from "@/assets/product-sachets.jpg";
 import highBarrier from "@/assets/product-high-barrier.jpg";
 import laminationImg from "@/assets/capability-lamination.jpg";
+import recyclable from "@/assets/product-recyclable.jpg";
 
-const productItems = [
-  { name: "Pouches", href: "/products#pouches", description: "Stand-up & flat bottom pouches", image: standupPouches },
-  { name: "Roll Stock", href: "/products#rollstock", description: "VFFS & HFFS films", image: rollstock },
-  { name: "Lidding Film", href: "/products#lidding-film", description: "Peelable & resealable", image: sachets },
-  { name: "Shrink Sleeves", href: "/products#shrink-sleeves", description: "Full-body sleeves", image: highBarrier },
-  { name: "Thermoforming", href: "/products#thermoforming-film", description: "High-performance films", image: laminationImg },
-];
+// Fallback images for product categories
+const categoryImages: Record<string, string> = {
+  "pouches": standupPouches,
+  "rollstock": rollstock,
+  "lidding-film": sachets,
+  "thermoform-film": laminationImg,
+  "sachets-stick-packs": sachets,
+  "high-barrier-packaging": highBarrier,
+  "recyclable-mono-material": recyclable,
+};
+
+// Short descriptions for menu hover
+const categoryDescriptions: Record<string, string> = {
+  "pouches": "Stand-up, flat bottom & spouted pouches",
+  "rollstock": "VFFS, HFFS & flow-wrap films",
+  "lidding-film": "Peelable & resealable lidding",
+  "thermoform-film": "Forming & non-forming films",
+  "sachets-stick-packs": "Single-serve & portion packs",
+  "high-barrier-packaging": "Retort & ultra-barrier solutions",
+  "recyclable-mono-material": "Sustainable mono-material options",
+};
 
 const navigation = [
   { name: "Home", href: "/" },
@@ -59,12 +75,20 @@ const navigation = [
   },
 ];
 
+interface HoveredProduct {
+  name: string;
+  slug: string;
+  description: string;
+  image: string;
+}
+
 export function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
-  const [hoveredProduct, setHoveredProduct] = useState<typeof productItems[0] | null>(null);
+  const [hoveredProduct, setHoveredProduct] = useState<HoveredProduct | null>(null);
   const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
+  const { categories } = useProductCategories();
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 20);
@@ -115,27 +139,31 @@ export function Header() {
               </Link>
 
               {/* Products Dropdown */}
-              {item.hasProductMenu && openDropdown === item.name && (
+              {item.hasProductMenu && openDropdown === item.name && categories.length > 0 && (
                 <div className="absolute left-1/2 -translate-x-1/2 top-full pt-4">
-                  <div className="glass rounded-2xl overflow-hidden min-w-[500px]">
+                  <div className="glass rounded-2xl overflow-hidden min-w-[560px]">
                     <div className="flex">
-                      <div className="w-56 p-4 space-y-1">
-                        {productItems.map((product) => (
-                          <Link
-                            key={product.name}
-                            to={product.href}
-                            className={cn(
-                              "flex items-center justify-between px-3 py-2.5 rounded-xl text-sm transition-all",
-                              hoveredProduct?.name === product.name
-                                ? "bg-accent text-accent-foreground"
-                                : "text-foreground/80 hover:bg-secondary"
-                            )}
-                            onMouseEnter={() => setHoveredProduct(product)}
-                          >
-                            {product.name}
-                            <ArrowRight className="h-3 w-3 opacity-40" />
-                          </Link>
-                        ))}
+                      <div className="w-64 p-4 space-y-1">
+                        {categories.map((cat) => {
+                          const image = cat.overview_image_url || categoryImages[cat.slug] || standupPouches;
+                          const desc = categoryDescriptions[cat.slug] || cat.overview_description.slice(0, 50) + "...";
+                          return (
+                            <Link
+                              key={cat.slug}
+                              to={`/products/${cat.slug}`}
+                              className={cn(
+                                "flex items-center justify-between px-3 py-2.5 rounded-xl text-sm transition-all",
+                                hoveredProduct?.slug === cat.slug
+                                  ? "bg-accent text-accent-foreground"
+                                  : "text-foreground/80 hover:bg-secondary"
+                              )}
+                              onMouseEnter={() => setHoveredProduct({ name: cat.name, slug: cat.slug, description: desc, image })}
+                            >
+                              {cat.name}
+                              <ArrowRight className="h-3 w-3 opacity-40" />
+                            </Link>
+                          );
+                        })}
                       </div>
                       <div className="w-60 relative overflow-hidden">
                         {hoveredProduct ? (
@@ -213,9 +241,35 @@ export function Header() {
 
       {/* Mobile Navigation */}
       {mobileMenuOpen && (
-        <div className="lg:hidden glass mt-2 mx-4 rounded-2xl overflow-hidden">
+        <div className="lg:hidden glass mt-2 mx-4 rounded-2xl overflow-hidden max-h-[80vh] overflow-y-auto">
           <div className="p-4 space-y-2">
-            {navigation.map((item) => (
+            <Link
+              to="/"
+              className="block px-4 py-3 text-foreground font-medium hover:text-foreground rounded-xl hover:bg-secondary transition-colors"
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              Home
+            </Link>
+            
+            {/* Products Section */}
+            <div className="px-4 py-2">
+              <p className="text-xs font-bold uppercase tracking-wider text-muted-foreground mb-2">Products</p>
+              <div className="space-y-1 ml-2">
+                {categories.map((cat) => (
+                  <Link
+                    key={cat.slug}
+                    to={`/products/${cat.slug}`}
+                    className="block px-3 py-2 text-sm text-foreground/80 hover:text-foreground rounded-lg hover:bg-secondary transition-colors"
+                    onClick={() => setMobileMenuOpen(false)}
+                  >
+                    {cat.name}
+                  </Link>
+                ))}
+              </div>
+            </div>
+
+            {/* Other nav items */}
+            {navigation.filter(item => item.name !== "Home" && item.name !== "Products").map((item) => (
               <Link
                 key={item.name}
                 to={item.href}
@@ -225,6 +279,7 @@ export function Header() {
                 {item.name}
               </Link>
             ))}
+            
             <div className="pt-4 border-t border-border">
               <Link to="/contact" onClick={() => setMobileMenuOpen(false)}>
                 <Button className="w-full rounded-full">Get Quote</Button>
