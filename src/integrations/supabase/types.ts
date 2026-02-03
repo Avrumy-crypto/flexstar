@@ -14,6 +14,75 @@ export type Database = {
   }
   public: {
     Tables: {
+      product_categories: {
+        Row: {
+          capabilities: Json
+          created_at: string
+          cta_button_link: string
+          cta_button_text: string
+          cta_description: string
+          cta_headline: string
+          format_options: Json
+          id: string
+          is_active: boolean
+          material_options: Json
+          materials_description: string
+          materials_headline: string
+          menu_order: number
+          name: string
+          overview_description: string
+          overview_headline: string
+          overview_image_url: string | null
+          overview_use_cases: string[]
+          slug: string
+          updated_at: string
+        }
+        Insert: {
+          capabilities?: Json
+          created_at?: string
+          cta_button_link?: string
+          cta_button_text?: string
+          cta_description?: string
+          cta_headline?: string
+          format_options?: Json
+          id?: string
+          is_active?: boolean
+          material_options?: Json
+          materials_description?: string
+          materials_headline?: string
+          menu_order?: number
+          name: string
+          overview_description?: string
+          overview_headline?: string
+          overview_image_url?: string | null
+          overview_use_cases?: string[]
+          slug: string
+          updated_at?: string
+        }
+        Update: {
+          capabilities?: Json
+          created_at?: string
+          cta_button_link?: string
+          cta_button_text?: string
+          cta_description?: string
+          cta_headline?: string
+          format_options?: Json
+          id?: string
+          is_active?: boolean
+          material_options?: Json
+          materials_description?: string
+          materials_headline?: string
+          menu_order?: number
+          name?: string
+          overview_description?: string
+          overview_headline?: string
+          overview_image_url?: string | null
+          overview_use_cases?: string[]
+          slug?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
       profiles: {
         Row: {
           created_at: string
