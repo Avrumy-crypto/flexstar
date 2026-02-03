@@ -171,7 +171,7 @@ export default function FAQPage() {
               Our team is ready to discuss your specific requirements and provide detailed answers.
             </p>
             <Link to="/contact">
-              <Button variant="hero" size="lg">
+              <Button size="lg" className="rounded-full">
                 Contact Us
                 <ArrowRight className="ml-2 h-4 w-4" />
               </Button>

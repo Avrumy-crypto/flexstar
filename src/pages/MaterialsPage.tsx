@@ -297,7 +297,7 @@ export default function MaterialsPage() {
               Our engineering team analyzes your product requirements and recommends optimal film structures.
             </p>
             <Link to="/contact">
-              <Button variant="industrial" size="lg">
+              <Button size="lg" className="rounded-full">
                 Contact Engineering
                 <ArrowRight className="ml-2 h-4 w-4" />
               </Button>

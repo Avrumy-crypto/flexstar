@@ -192,7 +192,7 @@ export default function AdminPage() {
           </div>
           <div className="flex items-center gap-4">
             <span className="text-sm text-primary-foreground/70">{user?.email}</span>
-            <Button variant="heroOutline" size="sm" onClick={handleLogout}>
+            <Button variant="outline" size="sm" onClick={handleLogout}>
               <LogOut className="h-4 w-4 mr-2" />
               Logout
             </Button>
@@ -236,7 +236,6 @@ export default function AdminPage() {
                 <Button
                   onClick={handleAddSection}
                   disabled={!newSectionKey}
-                  variant="cta"
                   size="sm"
                   className="w-full"
                 >
@@ -273,7 +272,7 @@ export default function AdminPage() {
                     <div className="flex items-center gap-2">
                       {editingSection === section.section_key ? (
                         <>
-                          <Button onClick={handleSave} variant="cta" size="sm">
+                          <Button onClick={handleSave} size="sm">
                             <Save className="h-4 w-4 mr-2" />
                             Save
                           </Button>

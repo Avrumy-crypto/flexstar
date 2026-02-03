@@ -293,7 +293,7 @@ export default function ProductsPage() {
                   </div>
 
                   <Link to="/contact">
-                    <Button variant="cta" size="lg">
+                    <Button size="lg" className="rounded-full">
                       Request Quote
                       <ArrowRight className="ml-2 h-4 w-4" />
                     </Button>
@@ -354,7 +354,7 @@ export default function ProductsPage() {
               Our engineering team specializes in developing bespoke packaging structures. Let's discuss your requirements.
             </p>
             <Link to="/contact">
-              <Button variant="industrial" size="lg">
+              <Button size="lg" className="rounded-full">
                 Contact Engineering Team
                 <ArrowRight className="ml-2 h-4 w-4" />
               </Button>

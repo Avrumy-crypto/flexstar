@@ -1,10 +1,8 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
-import { FadeIn } from "@/components/animations/FadeIn";
-import { StaggerChildren, StaggerItem } from "@/components/animations/StaggerChildren";
+import { motion } from "framer-motion";
 
-// Import images
 import extrusionImg from "@/assets/capability-extrusion.jpg";
 import printingImg from "@/assets/capability-printing.jpg";
 import laminationImg from "@/assets/capability-lamination.jpg";
@@ -15,11 +13,11 @@ import sachets from "@/assets/product-sachets.jpg";
 import highBarrier from "@/assets/product-high-barrier.jpg";
 
 const filmTypes = [
-  { name: "Thermoform Film", image: laminationImg },
+  { name: "Thermoform", image: laminationImg },
   { name: "Shrink Sleeves", image: highBarrier },
   { name: "Pouches", image: standupPouches },
   { name: "Roll Stock", image: rollstock },
-  { name: "Lidding Film", image: sachets },
+  { name: "Lidding", image: sachets },
 ];
 
 const capabilities = [
@@ -35,15 +33,20 @@ const stats = [
   { value: "50+", label: "Years Experience" },
 ];
 
+const fadeUp = {
+  hidden: { opacity: 0, y: 30 },
+  visible: { opacity: 1, y: 0 }
+};
+
 export default function HomePage() {
   return (
-    <main>
-      {/* Hero Section */}
-      <section className="relative min-h-[90vh] flex items-center">
+    <main className="overflow-hidden">
+      {/* Hero */}
+      <section className="relative min-h-screen flex items-center justify-center">
         <div className="absolute inset-0">
           <iframe
             src="https://www.youtube.com/embed/fbGZl4di4_Y?autoplay=1&mute=1&loop=1&playlist=fbGZl4di4_Y&controls=0&showinfo=0&rel=0&modestbranding=1&playsinline=1"
-            title="Manufacturing facility video"
+            title="Manufacturing"
             className="w-full h-full object-cover pointer-events-none"
             style={{ aspectRatio: '16/9', minHeight: '100%', minWidth: '100%', position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)' }}
             allow="autoplay; encrypted-media"
@@ -51,142 +54,216 @@ export default function HomePage() {
           />
           <div className="absolute inset-0 hero-overlay" />
         </div>
-        <div className="relative container-wide py-20">
-          <div className="max-w-2xl">
-            <FadeIn delay={0.1}>
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-black text-primary-foreground mb-6 leading-[1.1]">
-                Advanced Flexible
-                <span className="text-accent"> Packaging</span>
-              </h1>
-            </FadeIn>
-            <FadeIn delay={0.2}>
-              <p className="text-lg text-primary-foreground/80 mb-10 leading-relaxed">
-                From thermoform films to high-barrier pouches—precision packaging that protects products and elevates brands.
-              </p>
-            </FadeIn>
-            <FadeIn delay={0.3}>
-              <div className="flex flex-col sm:flex-row gap-4">
-                <Link to="/contact">
-                  <Button variant="hero" size="xl">
-                    Request Quote
-                    <ArrowRight className="ml-2 h-5 w-5" />
-                  </Button>
-                </Link>
-                <Link to="/capabilities">
-                  <Button variant="heroOutline" size="xl">
-                    Our Capabilities
-                  </Button>
-                </Link>
-              </div>
-            </FadeIn>
-          </div>
-        </div>
-      </section>
-
-      {/* Stats */}
-      <section className="py-12 bg-primary">
-        <div className="container-wide">
-          <div className="grid grid-cols-3 gap-8">
-            {stats.map((stat) => (
-              <div key={stat.label} className="text-center">
-                <p className="text-3xl md:text-4xl font-black text-accent">{stat.value}</p>
-                <p className="text-xs text-primary-foreground/60 mt-1 uppercase tracking-wider">{stat.label}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Products */}
-      <section className="py-24 lg:py-32">
-        <div className="container-wide">
-          <FadeIn className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
-            <div>
-              <p className="text-sm font-bold uppercase tracking-wider text-accent mb-2">Products</p>
-              <h2 className="text-3xl md:text-4xl font-black">Film Types</h2>
-            </div>
-            <Link to="/products">
-              <Button variant="ctaOutline">
-                View All
+        
+        <div className="relative z-10 text-center px-6 max-w-3xl">
+          <motion.h1 
+            className="text-5xl md:text-7xl font-semibold text-white mb-6 tracking-tight"
+            initial={{ opacity: 0, y: 40 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+          >
+            Advanced Flexible
+            <br />
+            <span className="text-white/60">Packaging</span>
+          </motion.h1>
+          
+          <motion.p 
+            className="text-lg text-white/70 mb-10 max-w-xl mx-auto"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.3, duration: 0.8 }}
+          >
+            Precision packaging that protects products and elevates brands.
+          </motion.p>
+          
+          <motion.div 
+            className="flex flex-col sm:flex-row gap-4 justify-center"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.5, duration: 0.6 }}
+          >
+            <Link to="/contact">
+              <Button size="lg" className="rounded-full px-8">
+                Request Quote
                 <ArrowRight className="ml-2 h-4 w-4" />
               </Button>
             </Link>
-          </FadeIn>
-          <StaggerChildren staggerDelay={0.08} className="grid grid-cols-2 md:grid-cols-5 gap-4">
+            <Link to="/capabilities">
+              <Button variant="outline" size="lg" className="rounded-full px-8 border-white/30 text-white hover:bg-white/10">
+                Our Capabilities
+              </Button>
+            </Link>
+          </motion.div>
+        </div>
+
+        {/* Scroll indicator */}
+        <motion.div 
+          className="absolute bottom-10 left-1/2 -translate-x-1/2"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 1 }}
+        >
+          <div className="w-6 h-10 border-2 border-white/30 rounded-full flex justify-center pt-2">
+            <motion.div 
+              className="w-1 h-2 bg-white/50 rounded-full"
+              animate={{ y: [0, 12, 0] }}
+              transition={{ repeat: Infinity, duration: 1.5, ease: "easeInOut" }}
+            />
+          </div>
+        </motion.div>
+      </section>
+
+      {/* Stats - Glass */}
+      <section className="relative -mt-20 z-20 px-6">
+        <motion.div 
+          className="container-wide"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+          variants={{ visible: { transition: { staggerChildren: 0.1 } } }}
+        >
+          <div className="glass rounded-3xl p-8 md:p-12">
+            <div className="grid grid-cols-3 gap-8">
+              {stats.map((stat, i) => (
+                <motion.div key={stat.label} className="text-center" variants={fadeUp}>
+                  <p className="text-4xl md:text-5xl font-semibold text-accent">{stat.value}</p>
+                  <p className="text-sm text-muted-foreground mt-2">{stat.label}</p>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </motion.div>
+      </section>
+
+      {/* Products */}
+      <section className="py-32">
+        <div className="container-wide">
+          <motion.div 
+            className="text-center mb-16"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={fadeUp}
+            transition={{ duration: 0.6 }}
+          >
+            <p className="text-accent text-sm font-medium mb-3">Products</p>
+            <h2 className="text-4xl md:text-5xl font-semibold">Film Types</h2>
+          </motion.div>
+
+          <motion.div 
+            className="grid grid-cols-2 md:grid-cols-5 gap-4"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+            variants={{ visible: { transition: { staggerChildren: 0.08 } } }}
+          >
             {filmTypes.map((film) => (
-              <StaggerItem key={film.name}>
+              <motion.div key={film.name} variants={fadeUp}>
                 <Link
                   to="/products"
-                  className="group relative overflow-hidden rounded-lg aspect-[3/4] block"
+                  className="group relative overflow-hidden rounded-2xl aspect-[3/4] block"
                 >
                   <img
                     src={film.image}
                     alt={film.name}
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-primary/90 via-primary/20 to-transparent" />
-                  <div className="absolute bottom-0 left-0 right-0 p-4">
-                    <h3 className="text-sm font-bold text-primary-foreground group-hover:text-accent transition-colors">
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+                  <div className="absolute bottom-0 left-0 right-0 p-5">
+                    <h3 className="text-white font-medium group-hover:text-accent transition-colors">
                       {film.name}
                     </h3>
                   </div>
                 </Link>
-              </StaggerItem>
+              </motion.div>
             ))}
-          </StaggerChildren>
+          </motion.div>
+
+          <motion.div 
+            className="text-center mt-12"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+          >
+            <Link to="/products">
+              <Button variant="outline" className="rounded-full">
+                View All Products
+                <ArrowRight className="ml-2 h-4 w-4" />
+              </Button>
+            </Link>
+          </motion.div>
         </div>
       </section>
 
       {/* Capabilities */}
-      <section className="py-24 lg:py-32 section-gradient">
+      <section className="py-32 section-gradient">
         <div className="container-wide">
-          <FadeIn className="text-center max-w-2xl mx-auto mb-12">
-            <p className="text-sm font-bold uppercase tracking-wider text-accent mb-2">What We Do</p>
-            <h2 className="text-3xl md:text-4xl font-black">Capabilities</h2>
-          </FadeIn>
-          <StaggerChildren staggerDelay={0.1} className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+          <motion.div 
+            className="text-center mb-16"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={fadeUp}
+          >
+            <p className="text-accent text-sm font-medium mb-3">What We Do</p>
+            <h2 className="text-4xl md:text-5xl font-semibold">Capabilities</h2>
+          </motion.div>
+
+          <motion.div 
+            className="grid grid-cols-2 lg:grid-cols-4 gap-4"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+            variants={{ visible: { transition: { staggerChildren: 0.1 } } }}
+          >
             {capabilities.map((cap) => (
-              <StaggerItem key={cap.title}>
+              <motion.div key={cap.title} variants={fadeUp}>
                 <Link
                   to="/capabilities"
-                  className="group relative overflow-hidden rounded-xl aspect-square block"
+                  className="group relative overflow-hidden rounded-2xl aspect-square block"
                 >
                   <img
                     src={cap.image}
                     alt={cap.title}
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-primary/90 to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
                   <div className="absolute bottom-0 left-0 right-0 p-6">
-                    <h3 className="text-xl font-bold text-primary-foreground group-hover:text-accent transition-colors">
+                    <h3 className="text-xl text-white font-medium group-hover:text-accent transition-colors">
                       {cap.title}
                     </h3>
                   </div>
                 </Link>
-              </StaggerItem>
+              </motion.div>
             ))}
-          </StaggerChildren>
+          </motion.div>
         </div>
       </section>
 
       {/* CTA */}
-      <section className="py-24 lg:py-32 bg-primary">
-        <div className="container-wide">
-          <FadeIn className="text-center max-w-2xl mx-auto">
-            <h2 className="text-3xl md:text-4xl font-black text-primary-foreground mb-6">
-              Ready to Get Started?
+      <section className="py-32">
+        <motion.div 
+          className="container-wide"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={fadeUp}
+        >
+          <div className="text-center max-w-2xl mx-auto">
+            <h2 className="text-4xl md:text-5xl font-semibold mb-6">
+              Ready to start?
             </h2>
-            <p className="text-lg text-primary-foreground/70 mb-10">
-              Our team is ready to help you find the perfect packaging solution.
+            <p className="text-lg text-muted-foreground mb-10">
+              Let's find the perfect packaging solution for your product.
             </p>
             <Link to="/contact">
-              <Button variant="hero" size="xl">
+              <Button size="lg" className="rounded-full px-10">
                 Contact Us
-                <ArrowRight className="ml-2 h-5 w-5" />
+                <ArrowRight className="ml-2 h-4 w-4" />
               </Button>
             </Link>
-          </FadeIn>
-        </div>
+          </div>
+        </motion.div>
       </section>
     </main>
   );
