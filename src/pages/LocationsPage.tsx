@@ -201,13 +201,13 @@ export default function LocationsPage() {
             </p>
             <div className="flex flex-col sm:flex-row gap-5 justify-center">
               <Link to="/contact">
-                <Button variant="hero" size="xl">
+                <Button size="lg" className="rounded-full">
                   Request a Quote
                   <ArrowRight className="ml-2 h-5 w-5" />
                 </Button>
               </Link>
-              <a href="mailto:sales@laminapackaging.com">
-                <Button variant="heroOutline" size="xl">
+              <a href="mailto:sales@Fivestarcorr.com">
+                <Button variant="outline" size="lg" className="rounded-full">
                   Email Us
                 </Button>
               </a>

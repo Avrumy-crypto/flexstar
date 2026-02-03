@@ -265,7 +265,7 @@ export default function MarketsPage() {
                   </div>
 
                   <Link to="/contact">
-                    <Button variant="cta" size="lg">
+                    <Button size="lg" className="rounded-full">
                       Discuss Your Application
                       <ArrowRight className="ml-2 h-4 w-4" />
                     </Button>
@@ -287,7 +287,7 @@ export default function MarketsPage() {
             We've successfully developed packaging solutions for countless niche applications. Let's discuss your specific requirements.
           </p>
           <Link to="/contact">
-            <Button variant="hero" size="lg">
+            <Button size="lg" className="rounded-full">
               Contact Our Team
               <ArrowRight className="ml-2 h-4 w-4" />
             </Button>

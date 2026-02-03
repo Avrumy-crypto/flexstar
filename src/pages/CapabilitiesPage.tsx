@@ -270,7 +270,7 @@ export default function CapabilitiesPage() {
               See our manufacturing capabilities firsthand. Schedule a facility tour with our engineering team.
             </p>
             <Link to="/contact">
-              <Button variant="industrial" size="lg">
+              <Button size="lg" className="rounded-full">
                 Schedule a Tour
                 <ArrowRight className="ml-2 h-4 w-4" />
               </Button>

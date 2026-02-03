@@ -85,7 +85,7 @@ export default function SustainabilityPage() {
             </FadeIn>
             <FadeIn delay={0.3}>
               <Link to="/contact">
-                <Button variant="hero" size="xl">
+                <Button size="lg" className="rounded-full">
                   Partner With Us
                   <ArrowRight className="ml-2 h-5 w-5" />
                 </Button>
@@ -312,13 +312,13 @@ export default function SustainabilityPage() {
             </p>
             <div className="flex flex-col sm:flex-row gap-5 justify-center">
               <Link to="/contact">
-                <Button variant="hero" size="xl">
+                <Button size="lg" className="rounded-full">
                   Schedule a Consultation
                   <ArrowRight className="ml-2 h-5 w-5" />
                 </Button>
               </Link>
               <Link to="/products">
-                <Button variant="heroOutline" size="xl">
+                <Button variant="outline" size="lg" className="rounded-full border-white/30 text-white hover:bg-white/10">
                   Explore Products
                 </Button>
               </Link>

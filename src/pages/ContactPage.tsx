@@ -242,10 +242,9 @@ export default function ContactPage() {
 
                 <Button
                   type="submit"
-                  variant="cta"
-                  size="xl"
+                  size="lg"
                   disabled={isSubmitting}
-                  className="w-full sm:w-auto"
+                  className="w-full sm:w-auto rounded-full"
                 >
                   {isSubmitting ? (
                     "Submitting..."
@@ -364,7 +363,7 @@ export default function ContactPage() {
               With facilities across North America, Europe, and Asia Pacific, we're positioned to serve you wherever you are.
             </p>
             <Link to="/contact/locations">
-              <Button variant="cta" size="xl">
+              <Button size="lg" className="rounded-full">
                 View All Locations
                 <ArrowRight className="ml-2 h-5 w-5" />
               </Button>

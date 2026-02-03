@@ -136,8 +136,7 @@ export default function AdminAuthPage() {
             </div>
             <Button
               type="submit"
-              variant="industrial"
-              className="w-full"
+              className="w-full rounded-xl"
               disabled={isSubmitting}
             >
               {isSubmitting ? "Processing..." : isLogin ? "Sign In" : "Sign Up"}
