@@ -17,6 +17,10 @@ const links = {
   ],
 };
 
+const scrollToTop = () => {
+  window.scrollTo(0, 0);
+};
+
 export function Footer() {
   return (
     <footer className="bg-foreground text-background">
@@ -50,7 +54,7 @@ export function Footer() {
             <ul className="space-y-3">
               {links.products.map((item) => (
                 <li key={item.name}>
-                  <Link to={item.href} className="text-sm text-background/60 hover:text-background transition-colors">
+                  <Link to={item.href} onClick={scrollToTop} className="text-sm text-background/60 hover:text-background transition-colors">
                     {item.name}
                   </Link>
                 </li>
@@ -64,7 +68,7 @@ export function Footer() {
             <ul className="space-y-3">
               {links.company.map((item) => (
                 <li key={item.name}>
-                  <Link to={item.href} className="text-sm text-background/60 hover:text-background transition-colors">
+                  <Link to={item.href} onClick={scrollToTop} className="text-sm text-background/60 hover:text-background transition-colors">
                     {item.name}
                   </Link>
                 </li>
@@ -80,9 +84,9 @@ export function Footer() {
           <div className="flex flex-col sm:flex-row justify-between items-center gap-4 text-xs text-background/40">
             <p>© {new Date().getFullYear()} Five Star Packaging</p>
             <div className="flex gap-6">
-              <Link to="/privacy" className="hover:text-background transition-colors">Privacy</Link>
-              <Link to="/terms" className="hover:text-background transition-colors">Terms</Link>
-              <Link to="/admin/auth" className="hover:text-background transition-colors">Admin</Link>
+              <Link to="/privacy" onClick={scrollToTop} className="hover:text-background transition-colors">Privacy</Link>
+              <Link to="/terms" onClick={scrollToTop} className="hover:text-background transition-colors">Terms</Link>
+              <Link to="/admin/auth" onClick={scrollToTop} className="hover:text-background transition-colors">Admin</Link>
             </div>
           </div>
         </div>

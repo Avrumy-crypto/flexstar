@@ -3,6 +3,8 @@ import { useProductCategories } from "@/hooks/useProductCategories";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 import { Skeleton } from "@/components/ui/skeleton";
+import { motion } from "framer-motion";
+import { useRef, useEffect, useState } from "react";
 
 // Import images for categories
 import standupPouches from "@/assets/product-standup-pouches.jpg";
@@ -85,38 +87,61 @@ export default function ProductsPage() {
       {/* Product Categories Grid */}
       <section className="py-16 lg:py-24">
         <div className="container-wide">
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <motion.div 
+            className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+            variants={{ visible: { transition: { staggerChildren: 0.1 } } }}
+          >
             {categories.map((category) => {
               const image = category.overview_image_url || categoryImages[category.slug] || standupPouches;
               return (
-                <Link
+                <motion.div
                   key={category.slug}
-                  to={`/products/${category.slug}`}
-                  className="group relative bg-card border border-border rounded-2xl overflow-hidden hover:border-accent transition-all duration-300"
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  whileHover={{ y: -8 }}
+                  transition={{ duration: 0.3 }}
+                  viewport={{ once: true }}
                 >
-                  <div className="aspect-[4/3] overflow-hidden">
-                    <img
-                      src={image}
-                      alt={category.name}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                    />
-                  </div>
-                  <div className="p-6">
-                    <h2 className="text-xl font-bold text-foreground mb-2 group-hover:text-accent transition-colors">
-                      {category.name}
-                    </h2>
-                    <p className="text-sm text-muted-foreground line-clamp-2 mb-4">
-                      {category.overview_description}
-                    </p>
-                    <div className="flex items-center gap-2 text-accent font-medium text-sm">
-                      View Details
-                      <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                  <Link
+                    to={`/products/${category.slug}`}
+                    className="group relative flex flex-col h-full overflow-hidden rounded-3xl transition-all duration-300"
+                    style={{
+                      boxShadow: "0 4px 6px rgba(0, 0, 0, 0.07), 0 10px 20px rgba(0, 0, 0, 0.06)"
+                    }}
+                  >
+                    {/* Image Container */}
+                    <div className="aspect-[4/3] overflow-hidden bg-muted">
+                      <img
+                        src={image}
+                        alt={category.name}
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                      />
                     </div>
-                  </div>
-                </Link>
+                    
+                    {/* Content Container */}
+                    <div className="flex-1 p-8 bg-background flex flex-col justify-between">
+                      <div>
+                        <h2 className="text-2xl font-semibold text-foreground mb-3 group-hover:text-accent transition-colors duration-300">
+                          {category.name}
+                        </h2>
+                        <p className="text-base text-muted-foreground leading-relaxed line-clamp-2">
+                          {category.overview_description}
+                        </p>
+                      </div>
+                      
+                      <div className="flex items-center gap-2 text-accent font-medium mt-6 group-hover:gap-3 transition-all duration-300">
+                        <span>Explore</span>
+                        <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                      </div>
+                    </div>
+                  </Link>
+                </motion.div>
               );
             })}
-          </div>
+          </motion.div>
         </div>
       </section>
 

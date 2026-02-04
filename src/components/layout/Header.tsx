@@ -19,9 +19,6 @@ const categoryImages: Record<string, string> = {
   "rollstock": rollstock,
   "lidding-film": sachets,
   "thermoform-film": laminationImg,
-  "sachets-stick-packs": sachets,
-  "high-barrier-packaging": highBarrier,
-  "recyclable-mono-material": recyclable,
 };
 
 // Short descriptions for menu hover
@@ -30,9 +27,7 @@ const categoryDescriptions: Record<string, string> = {
   "rollstock": "VFFS, HFFS & flow-wrap films",
   "lidding-film": "Peelable & resealable lidding",
   "thermoform-film": "Forming & non-forming films",
-  "sachets-stick-packs": "Single-serve & portion packs",
-  "high-barrier-packaging": "Retort & ultra-barrier solutions",
-  "recyclable-mono-material": "Sustainable mono-material options",
+  "Shrink Sleeves": "Single-serve & portion packs",
 };
 
 const navigation = [
@@ -63,6 +58,7 @@ const navigation = [
     ],
   },
   { name: "Sustainability", href: "/sustainability" },
+  { name: "About", href: "/about" },
   {
     name: "Contact",
     href: "/contact",
@@ -97,6 +93,23 @@ export function Header() {
   }, []);
 
   const isActive = (href: string) => location.pathname === href;
+
+  // Limit product menu to specific ordered items
+  const productMenuOrder = [
+    { key: "pouches", label: "Pouches" },
+    { key: "rollstock", label: "Rollstock" },
+    { key: "lidding-film", label: "Lidding Film" },
+    { key: "shrink-sleeves", label: "Shrink Sleeves & Bands" },
+    { key: "thermoform-film", label: "Thermoforming film" },
+  ];
+
+  const productCategories = productMenuOrder
+    .map((p) => {
+      // try match by slug first, then by name contains
+      const found = categories.find((c) => c.slug === p.key) || categories.find((c) => c.name?.toLowerCase().includes(p.label.toLowerCase().split(" ")[0]));
+      return found ? found : null;
+    })
+    .filter(Boolean) as typeof categories;
 
   return (
     <header className={cn(
@@ -144,7 +157,7 @@ export function Header() {
                   <div className="glass rounded-2xl overflow-hidden min-w-[560px]">
                     <div className="flex">
                       <div className="w-64 p-4 space-y-1">
-                        {categories.map((cat) => {
+                        {productCategories.map((cat) => {
                           const image = cat.overview_image_url || categoryImages[cat.slug] || standupPouches;
                           const desc = categoryDescriptions[cat.slug] || cat.overview_description.slice(0, 50) + "...";
                           return (
@@ -165,10 +178,10 @@ export function Header() {
                           );
                         })}
                       </div>
-                      <div className="w-60 relative overflow-hidden">
+                      <div className="flex-1 relative overflow-hidden">
                         {hoveredProduct ? (
                           <>
-                            <img src={hoveredProduct.image} alt="" className="w-full h-full object-cover" />
+                            <img src={hoveredProduct.image} alt="" className="absolute inset-0 w-full h-full object-cover" />
                             <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
                             <div className="absolute bottom-4 left-4 right-4">
                               <p className="text-white font-medium">{hoveredProduct.name}</p>
@@ -177,7 +190,7 @@ export function Header() {
                           </>
                         ) : (
                           <div className="h-full bg-secondary flex items-center justify-center p-6">
-                            <p className="text-muted-foreground text-sm text-center">Hover to preview</p>
+                            <p className="text-muted-foreground text-sm text-center"></p>
                           </div>
                         )}
                       </div>
@@ -252,10 +265,10 @@ export function Header() {
             </Link>
             
             {/* Products Section */}
-            <div className="px-4 py-2">
+                      <div className="px-4 py-2">
               <p className="text-xs font-bold uppercase tracking-wider text-muted-foreground mb-2">Products</p>
               <div className="space-y-1 ml-2">
-                {categories.map((cat) => (
+                {productCategories.map((cat) => (
                   <Link
                     key={cat.slug}
                     to={`/products/${cat.slug}`}

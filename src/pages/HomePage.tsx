@@ -1,23 +1,32 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { ArrowRight } from "lucide-react";
-import { motion } from "framer-motion";
+import { ArrowRight, Factory, CheckCircle, Layers, Zap, Target } from "lucide-react";
+import { useEffect } from "react";
+import { getFeatureDefinitions, motion } from "framer-motion";
 
-import extrusionImg from "@/assets/capability-extrusion.jpg";
+import extrusionImg from "@/assets/ChatGPT Image Feb 3, 2026, 11_57_16 AM.png";
 import printingImg from "@/assets/capability-printing.jpg";
-import laminationImg from "@/assets/capability-lamination.jpg";
+import laminationImg from "@/assets/ChatGPT Image Feb 3, 2026, 11_58_48 AM.png";
 import convertingImg from "@/assets/capability-converting.jpg";
-import standupPouches from "@/assets/product-standup-pouches.jpg";
-import rollstock from "@/assets/product-rollstock.jpg";
+import standupPouches from "@/assets/ChatGPT Image Feb 3, 2026, 11_52_21 AM.png";
+import rollstock from "@/assets/ChatGPT Image Jan 29, 2026, 03_56_26 PM.png";
 import sachets from "@/assets/product-sachets.jpg";
-import highBarrier from "@/assets/product-high-barrier.jpg";
+import highBarrier from "@/assets/ChatGPT Image Feb 3, 2026, 11_50_37 AM.png";
+import ReadyMadePouches from "@/assets/Poucheshome.png";
+import openvid from "@/assets/Five star flexible website Vid.mp4";
+import ManufacturingFlow from "@/components/ManufacturingFlow";
+
+// Add your company logos here:
+// Using public paths for easier management
+// Just add the filename from /src/assets/
+
 
 const filmTypes = [
-  { name: "Thermoform", image: laminationImg },
-  { name: "Shrink Sleeves", image: highBarrier },
-  { name: "Pouches", image: standupPouches },
-  { name: "Roll Stock", image: rollstock },
-  { name: "Lidding", image: sachets },
+  { name: "Ready Made Pouches", image: ReadyMadePouches },
+  { name: "Roll Stock", image: highBarrier },
+  { name: "Lidding Film", image: standupPouches },
+  { name: "Shrink Sleeves", image: rollstock },
+  { name: "Thermoform Film", image: sachets },
 ];
 
 const capabilities = [
@@ -28,9 +37,21 @@ const capabilities = [
 ];
 
 const stats = [
-  { value: "500M+", label: "Sq Ft Annually" },
+  { value: "99.5%", label: "On-Time Delivery" },
   { value: "200+", label: "Global Customers" },
-  { value: "50+", label: "Years Experience" },
+  { value: "30+", label: "Years Experience" },
+];
+
+const trustedCompanies = [
+  { id: 1, name: "Gefen", logo: "/src/assets/gefen.png" },
+  { id: 2, name: "Kellogs", logo: "/src/assets/kellogs.png" },
+  { id: 3, name: "Pop Corners", logo: "/src/assets/popcorners.png" },
+  { id: 4, name: "Beechnut", logo: "/src/assets/beechnut.png" },
+  { id: 5, name: "Manischewitz", logo: "/src/assets/manischewitz.png" },
+  { id: 6, name: "Ricola", logo: "/src/assets/ricola.png" },
+  { id: 7, name: "Sellon", logo: "/src/assets/sellon.png" },
+  { id: 8, name: "Weight Watchers", logo: "/src/assets/weightwatchers.png" },
+  { id: 9, name: "Wyn", logo: "/src/assets/wyn.png" },
 ];
 
 const fadeUp = {
@@ -39,13 +60,23 @@ const fadeUp = {
 };
 
 export default function HomePage() {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <main className="overflow-hidden">
       {/* Hero */}
-      <section className="relative min-h-screen flex items-center justify-center">
-        <div className="absolute inset-0">
-          <iframe
-            src="https://www.youtube.com/embed/fbGZl4di4_Y?autoplay=1&mute=1&loop=1&playlist=fbGZl4di4_Y&controls=0&showinfo=0&rel=0&modestbranding=1&playsinline=1"
+      <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+      {/* Background video */}
+      <div className="absolute inset-0">
+          <video
+            className="absolute inset-0 w-full h-full object-cover"
+            src={openvid}
+            autoPlay
+            muted
+            loop
+            playsInline
             title="Manufacturing"
             className="w-full h-full object-cover pointer-events-none"
             style={{ aspectRatio: '16/9', minHeight: '100%', minWidth: '100%', position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)' }}
@@ -89,9 +120,9 @@ export default function HomePage() {
               </Button>
             </Link>
             <Link to="/capabilities">
-              <Button variant="outline" size="lg" className="rounded-full px-8 border-white/30 text-white hover:bg-white/10">
+                <Button variant="outline" size="lg" className="rounded-full px-8 border-white/20 text-primary hover:bg-white/10 hover:text-white">
                 Our Capabilities
-              </Button>
+                </Button>
             </Link>
           </motion.div>
         </div>
@@ -135,8 +166,10 @@ export default function HomePage() {
         </motion.div>
       </section>
 
-      {/* Products */}
-      <section className="py-32">
+      {/* Removed: Our Process and Capabilities sections per request */}
+
+      {/* Trusted By */}
+      <section className="py-32 bg-muted/40">
         <div className="container-wide">
           <motion.div 
             className="text-center mb-16"
@@ -144,101 +177,175 @@ export default function HomePage() {
             whileInView="visible"
             viewport={{ once: true }}
             variants={fadeUp}
-            transition={{ duration: 0.6 }}
           >
-            <p className="text-accent text-sm font-medium mb-3">Products</p>
-            <h2 className="text-4xl md:text-5xl font-semibold">Film Types</h2>
+            <h2 className="text-4xl md:text-5xl font-semibold mb-4">
+              Trusted by Industry Leaders
+            </h2>
           </motion.div>
 
           <motion.div 
-            className="grid grid-cols-2 md:grid-cols-5 gap-4"
+            className="grid grid-cols-2 md:grid-cols-3 gap-6 items-center"
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-100px" }}
             variants={{ visible: { transition: { staggerChildren: 0.08 } } }}
           >
-            {filmTypes.map((film) => (
-              <motion.div key={film.name} variants={fadeUp}>
-                <Link
-                  to="/products"
-                  className="group relative overflow-hidden rounded-2xl aspect-[3/4] block"
-                >
-                  <img
-                    src={film.image}
-                    alt={film.name}
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
-                  <div className="absolute bottom-0 left-0 right-0 p-5">
-                    <h3 className="text-white font-medium group-hover:text-accent transition-colors">
-                      {film.name}
-                    </h3>
-                  </div>
-                </Link>
+            {trustedCompanies.map((company) => (
+              <motion.div 
+                key={company.id}
+                variants={fadeUp}
+                whileHover={{ scale: 1.03 }}
+                transition={{ duration: 0.3 }}
+                className="flex items-center justify-center h-24 rounded-lg bg-transparent"
+              >
+                {typeof company.logo === "string" && company.logo.includes("/") ? (
+                  <img src={company.logo} alt={company.name} className="h-12 object-contain" />
+                ) : (
+                  <span className="text-2xl font-bold text-accent">{company.logo}</span>
+                )}
               </motion.div>
             ))}
-          </motion.div>
-
-          <motion.div 
-            className="text-center mt-12"
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-          >
-            <Link to="/products">
-              <Button variant="outline" className="rounded-full">
-                View All Products
-                <ArrowRight className="ml-2 h-4 w-4" />
-              </Button>
-            </Link>
           </motion.div>
         </div>
       </section>
 
-      {/* Capabilities */}
-      <section className="py-32 section-gradient">
+      {/* Sustainability & Future-Ready Materials */}
+      <section className="py-24 bg-white">
         <div className="container-wide">
-          <motion.div 
-            className="text-center mb-16"
+          <motion.div
+            className="text-center mb-8"
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
             variants={fadeUp}
           >
-            <p className="text-accent text-sm font-medium mb-3">What We Do</p>
-            <h2 className="text-4xl md:text-5xl font-semibold">Capabilities</h2>
+            <p className="text-accent text-sm font-medium mb-2">Engineered for Sustainability</p>
+            <h2 className="text-3xl md:text-4xl font-semibold">Sustainability & Future‑Ready Materials (But Done Right)</h2>
+            <p className="text-muted-foreground max-w-2xl mx-auto mt-4">
+              We invest in material science, testing, and compliance to deliver packaging that’s ready for today’s supply chains and tomorrow’s regulations — technical, verifiable, and performance-driven.
+            </p>
           </motion.div>
 
-          <motion.div 
-            className="grid grid-cols-2 lg:grid-cols-4 gap-4"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-100px" }}
-            variants={{ visible: { transition: { staggerChildren: 0.1 } } }}
-          >
-            {capabilities.map((cap) => (
-              <motion.div key={cap.title} variants={fadeUp}>
-                <Link
-                  to="/capabilities"
-                  className="group relative overflow-hidden rounded-2xl aspect-square block"
-                >
-                  <img
-                    src={cap.image}
-                    alt={cap.title}
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
-                  <div className="absolute bottom-0 left-0 right-0 p-6">
-                    <h3 className="text-xl text-white font-medium group-hover:text-accent transition-colors">
-                      {cap.title}
-                    </h3>
-                  </div>
-                </Link>
-              </motion.div>
-            ))}
+          <motion.div className="grid lg:grid-cols-2 gap-8 items-center" initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}>
+            <div className="space-y-6">
+              <div className="p-6 rounded-lg bg-slate-50">
+                <h3 className="text-lg font-bold mb-2">Recyclable & mono-material structures</h3>
+                <p className="text-muted-foreground">We engineer film stacks and sealant layers to simplify end-of-life recycling and enable mono-material constructions where feasible.</p>
+              </div>
+
+              <div className="p-6 rounded-lg bg-slate-50">
+                <h3 className="text-lg font-bold mb-2">Lightweighting & downgauging</h3>
+                <p className="text-muted-foreground">Optimized layer design reduces material use while preserving barrier, strength, and running performance on automated lines.</p>
+              </div>
+
+              <div className="p-6 rounded-lg bg-slate-50">
+                <h3 className="text-lg font-bold mb-2">Compliance with evolving regulations</h3>
+                <p className="text-muted-foreground">Proactive testing, documentation, and material traceability to meet food contact, chemical, and recycling requirements.</p>
+              </div>
+
+              <div className="p-6 rounded-lg bg-slate-50">
+                <h3 className="text-lg font-bold mb-2">Performance without compromise</h3>
+                <p className="text-muted-foreground">Sustainability decisions are balanced with seal integrity, barrier performance, and fill-line compatibility — not marketing claims.</p>
+              </div>
+
+              <p className="text-sm text-muted-foreground/80 mt-2">Visuals: material textures, film cross-sections, and schematic layers help demonstrate engineering choices — not green imagery.</p>
+            </div>
+
+            <div className="rounded-lg overflow-hidden bg-slate-100 h-64 flex items-center justify-center">
+              <img src={highBarrier} alt="Film layers" className="w-full h-full object-cover" />
+            </div>
           </motion.div>
         </div>
       </section>
+
+      {/* CTA */}
+      {/* The Five Star Approach */}
+      <section className="py-24">
+        <div className="container-wide">
+          <motion.div className="text-center mb-8" initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}>
+            <p className="text-accent text-sm font-medium mb-2">Who We Are</p>
+            <h2 className="text-3xl md:text-4xl font-semibold">The Five Star Approach</h2>
+            <p className="text-muted-foreground max-w-2xl mx-auto mt-4">A practical, technical approach to flexible packaging — vertical integration, rigorous quality systems, and materials engineering that deliver measurable performance.</p>
+          </motion.div>
+
+          <motion.div className="grid lg:grid-cols-2 gap-8 items-start" initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}>
+            {/* Photo mosaic */}
+            <div className="grid grid-cols-2 gap-4">
+              <div className="rounded-lg overflow-hidden">
+                <img src={extrusionImg} alt="Extrusion line" className="w-full h-48 object-cover" />
+              </div>
+              <div className="rounded-lg overflow-hidden">
+                <img src={printingImg} alt="Printing press" className="w-full h-48 object-cover" />
+              </div>
+              <div className="rounded-lg overflow-hidden col-span-2">
+                <img src={highBarrier} alt="Film layers" className="w-full h-64 object-cover" />
+              </div>
+            </div>
+
+            {/* Pillars with icons */}
+            <div className="space-y-4">
+              <div className="p-4 rounded-lg border bg-white shadow-sm flex items-start gap-4">
+                <div className="flex-none w-12 h-12 rounded-md bg-accent/10 text-accent flex items-center justify-center">
+                  <Factory className="h-6 w-6" />
+                </div>
+                <div>
+                  <h3 className="text-lg font-semibold">Vertically Integrated Manufacturing</h3>
+                  <p className="text-muted-foreground">Control across extrusion, printing, lamination and converting ensures consistent quality and faster turnarounds.</p>
+                </div>
+              </div>
+
+              <div className="p-4 rounded-lg border bg-white shadow-sm flex items-start gap-4">
+                <div className="flex-none w-12 h-12 rounded-md bg-accent/10 text-accent flex items-center justify-center">
+                  <CheckCircle className="h-6 w-6" />
+                </div>
+                <div>
+                  <h3 className="text-lg font-semibold">Quality & Compliance</h3>
+                  <p className="text-muted-foreground">Testing, traceability and documentation backed by lab validation — no fluff, just data you can use.</p>
+                </div>
+              </div>
+
+              <div className="p-4 rounded-lg border bg-white shadow-sm flex items-start gap-4">
+                <div className="flex-none w-12 h-12 rounded-md bg-accent/10 text-accent flex items-center justify-center">
+                  <Layers className="h-6 w-6" />
+                </div>
+                <div>
+                  <h3 className="text-lg font-semibold">Materials Expertise</h3>
+                  <p className="text-muted-foreground">Material stacks engineered for recyclability, barrier performance and production compatibility.</p>
+                </div>
+              </div>
+
+              <div className="p-4 rounded-lg border bg-white shadow-sm flex items-start gap-4">
+                <div className="flex-none w-12 h-12 rounded-md bg-accent/10 text-accent flex items-center justify-center">
+                  <Target className="h-6 w-6" />
+                </div>
+                <div>
+                  <h3 className="text-lg font-semibold">Customer‑First Engineering</h3>
+                  <p className="text-muted-foreground">We optimize constructions for your product, fill-line and brand priorities — runnability first, not vanity specs.</p>
+                </div>
+              </div>
+
+              <div className="p-4 rounded-lg border bg-white shadow-sm flex items-start gap-4">
+                <div className="flex-none w-12 h-12 rounded-md bg-accent/10 text-accent flex items-center justify-center">
+                  <Zap className="h-6 w-6" />
+                </div>
+                <div>
+                  <h3 className="text-lg font-semibold">Continuous Improvement</h3>
+                  <p className="text-muted-foreground">We reduce waste, improve yields and drive material innovation through ongoing process optimization.</p>
+                </div>
+              </div>
+
+              <div className="pt-2">
+                <Link to="/about">
+                  <Button variant="outline" className="rounded-full">Learn More About Us</Button>
+                </Link>
+              </div>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Manufacturing flow visualization */}
+      <ManufacturingFlow />
 
       {/* CTA */}
       <section className="py-32">

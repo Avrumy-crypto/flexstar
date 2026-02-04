@@ -49,7 +49,9 @@
 
     /* Gradient tokens */
     --gradient-subtle: linear-gradient(180deg, hsl(220 14% 98%) 0%, hsl(220 14% 96%) 100%);
-    --hero-overlay: linear-gradient(180deg, hsl(215 45% 8% / 0.6) 0%, hsl(215 45% 12% / 0.4) 100%);
+    /* lighter brand-blue tint over hero video */
+    /* darker hero overlay: solid 40% black */
+    --hero-overlay: linear-gradient(180deg, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.4) 100%);
 
     /* Sidebar tokens */
     --sidebar-background: 0 0% 100%;
@@ -94,7 +96,8 @@
     --glass-bg: 220 16% 10% / 0.7;
     --glass-border: 220 13% 90% / 0.1;
     --glass-shadow: 0 8px 32px hsl(0 0% 0% / 0.3);
-    --hero-overlay: linear-gradient(180deg, hsl(220 16% 4% / 0.7) 0%, hsl(220 16% 8% / 0.5) 100%);
+    /* dark theme hero overlay: 40% black */
+    --hero-overlay: linear-gradient(180deg, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.4) 100%);
 
     --sidebar-background: 220 16% 8%;
     --sidebar-foreground: 220 13% 92%;

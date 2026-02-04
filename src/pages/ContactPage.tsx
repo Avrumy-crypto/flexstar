@@ -54,25 +54,54 @@ export default function ContactPage() {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Simulate form submission
-    await new Promise((resolve) => setTimeout(resolve, 1000));
+    // Prepare payload
+    const payload = {
+      to: "avrumy@fivestarcorr.com",
+      subject: `Quote Request from ${formData.company || formData.name}`,
+      formData,
+    };
 
-    toast({
-      title: "Request Submitted",
-      description: "Our team will contact you within 24 business hours.",
-    });
+    try {
+      // Try sending to a backend endpoint first (/api/send-email)
+      const res = await fetch("/api/send-email", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
 
-    setFormData({
-      name: "",
-      company: "",
-      email: "",
-      phone: "",
-      productType: "",
-      industry: "",
-      volume: "",
-      message: "",
-    });
-    setIsSubmitting(false);
+      if (res.ok) {
+        toast({ title: "Request Submitted", description: "Email sent successfully." });
+        setFormData({ name: "", company: "", email: "", phone: "", productType: "", industry: "", volume: "", message: "" });
+        setIsSubmitting(false);
+        return;
+      }
+
+      // If server responded but not OK, fall through to mailto fallback
+      throw new Error("Server error");
+    } catch (err) {
+      // Fallback: open user's email client with prefilled message (mailto)
+      const subject = encodeURIComponent(payload.subject);
+      const bodyLines = [
+        `Name: ${formData.name}`,
+        `Company: ${formData.company}`,
+        `Email: ${formData.email}`,
+        `Phone: ${formData.phone}`,
+        `Product Type: ${formData.productType}`,
+        `Industry: ${formData.industry}`,
+        `Estimated Volume: ${formData.volume}`,
+        "",
+        "Message:",
+        formData.message,
+      ];
+      const body = encodeURIComponent(bodyLines.join("\n"));
+      const mailto = `mailto:avrumy@fivestarcorr.com?subject=${subject}&body=${body}`;
+
+      // Open mail client (user must send manually)
+      window.location.href = mailto;
+      toast({ title: "Email Client Opened", description: "Please review and send the email to complete your request." });
+
+      setIsSubmitting(false);
+    }
   };
 
   const handleChange = (
@@ -273,7 +302,7 @@ export default function ContactPage() {
                         href="mailto:sales@laminapackaging.com"
                         className="text-primary-foreground/70 hover:text-accent transition-colors"
                       >
-                        sales@laminapackaging.com
+                        sales@fivestarcorr.com
                       </a>
                     </div>
                   </div>
@@ -284,10 +313,10 @@ export default function ContactPage() {
                     <div>
                       <p className="font-medium">Phone</p>
                       <a
-                        href="tel:+1234567890"
+                        href="tel:+7188750022"
                         className="text-primary-foreground/70 hover:text-accent transition-colors"
                       >
-                        +1 (234) 567-890
+                        +1 (718) 875-0022
                       </a>
                     </div>
                   </div>
@@ -298,8 +327,8 @@ export default function ContactPage() {
                     <div>
                       <p className="font-medium">Headquarters</p>
                       <p className="text-primary-foreground/70">
-                        1234 Industrial Blvd<br />
-                        Manufacturing District, TX 75001
+                        175 Classon Ave<br />
+                        Brooklyn, NY 11205
                       </p>
                     </div>
                   </div>
@@ -310,25 +339,13 @@ export default function ContactPage() {
                     <div>
                       <p className="font-medium">Business Hours</p>
                       <p className="text-primary-foreground/70">
-                        Mon - Fri: 7:00 AM - 5:00 PM<br />
+                        Mon - Thur: 9:00 AM - 5:00 PM<br />
+                        Fri: 9:00 AM - 1:00 PM<br />
                         Sat - Sun: Closed
                       </p>
                     </div>
                   </div>
                 </div>
-              </div>
-
-              <div className="bg-card border border-border rounded-xl p-8">
-                <div className="flex items-center gap-4 mb-5">
-                  <div className="w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center">
-                    <Factory className="h-5 w-5 text-accent" />
-                  </div>
-                  <h3 className="font-bold text-lg">Manufacturing Facility</h3>
-                </div>
-                <p className="text-muted-foreground mb-4 leading-relaxed">
-                  200,000+ sq ft facility with state-of-the-art extrusion, lamination, printing, and converting equipment.
-                </p>
-                <p className="font-medium">Facility tours available by appointment.</p>
               </div>
 
               <div className="bg-card border border-border rounded-xl p-8">

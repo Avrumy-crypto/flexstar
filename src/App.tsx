@@ -7,9 +7,14 @@ import { AuthProvider } from "@/hooks/useAuth";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import HomePage from "./pages/HomePage";
+import AboutPage from "./pages/AboutPage";
 import ProductsPage from "./pages/ProductsPage";
 import ProductCategoryPage from "./pages/ProductCategoryPage";
 import CapabilitiesPage from "./pages/CapabilitiesPage";
+import ExtrusionPage from "./pages/capabilities/ExtrusionPage";
+import LaminationPage from "./pages/capabilities/LaminationPage";
+import PrintingPage from "./pages/capabilities/PrintingPage";
+import ConvertingPage from "./pages/capabilities/ConvertingPage";
 import MarketsPage from "./pages/MarketsPage";
 import MaterialsPage from "./pages/MaterialsPage";
 import SustainabilityPage from "./pages/SustainabilityPage";
@@ -43,10 +48,14 @@ const App = () => (
                   <div className="flex-1">
                     <Routes>
                       <Route path="/" element={<HomePage />} />
+                      <Route path="/about" element={<AboutPage />} />
                       <Route path="/products" element={<ProductsPage />} />
                       <Route path="/products/:slug" element={<ProductCategoryPage />} />
+                      <Route path="/capabilities/extrusion" element={<ExtrusionPage />} />
+                      <Route path="/capabilities/lamination" element={<LaminationPage />} />
+                      <Route path="/capabilities/printing" element={<PrintingPage />} />
+                      <Route path="/capabilities/converting" element={<ConvertingPage />} />
                       <Route path="/capabilities" element={<CapabilitiesPage />} />
-                      <Route path="/capabilities/:slug" element={<CapabilitiesPage />} />
                       <Route path="/markets" element={<MarketsPage />} />
                       <Route path="/markets/:slug" element={<MarketsPage />} />
                       <Route path="/materials" element={<MaterialsPage />} />
