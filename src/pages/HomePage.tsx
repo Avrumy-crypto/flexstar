@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Factory, CheckCircle, Layers, Zap, Target } from "lucide-react";
 import { useEffect } from "react";
-import { getFeatureDefinitions, motion } from "framer-motion";
+import { motion } from "framer-motion";
 
 import extrusionImg from "@/assets/ChatGPT Image Feb 3, 2026, 11_57_16 AM.png";
 import printingImg from "@/assets/capability-printing.jpg";
@@ -11,10 +11,9 @@ import convertingImg from "@/assets/capability-converting.jpg";
 import standupPouches from "@/assets/ChatGPT Image Feb 3, 2026, 11_52_21 AM.png";
 import rollstock from "@/assets/ChatGPT Image Jan 29, 2026, 03_56_26 PM.png";
 import sachets from "@/assets/product-sachets.jpg";
-import highBarrier from "@/assets/ChatGPT Image Feb 3, 2026, 11_50_37 AM.png";
+import highBarrier from "@/assets/ChatGPT Image Feb 4, 2026, 05_19_16 PM.png";
 import ReadyMadePouches from "@/assets/Poucheshome.png";
 import openvid from "@/assets/Five star flexible website Vid.mp4";
-import ManufacturingFlow from "@/components/ManufacturingFlow";
 
 // Add your company logos here:
 // Using public paths for easier management
@@ -69,19 +68,16 @@ export default function HomePage() {
       {/* Hero */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Background video */}
-      <div className="absolute inset-0">
+        <div className="absolute inset-0">
           <video
-            className="absolute inset-0 w-full h-full object-cover"
             src={openvid}
             autoPlay
             muted
             loop
             playsInline
-            title="Manufacturing"
-            className="w-full h-full object-cover pointer-events-none"
+            className="absolute inset-0 w-full h-full object-cover pointer-events-none"
             style={{ aspectRatio: '16/9', minHeight: '100%', minWidth: '100%', position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)' }}
             allow="autoplay; encrypted-media"
-            allowFullScreen
           />
           <div className="absolute inset-0 hero-overlay" />
         </div>
@@ -143,6 +139,8 @@ export default function HomePage() {
           </div>
         </motion.div>
       </section>
+
+      
 
       {/* Stats - Glass */}
       <section className="relative -mt-20 z-20 px-6">
@@ -209,143 +207,131 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Sustainability & Future-Ready Materials */}
-      <section className="py-24 bg-white">
-        <div className="container-wide">
-          <motion.div
-            className="text-center mb-8"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            variants={fadeUp}
-          >
-            <p className="text-accent text-sm font-medium mb-2">Engineered for Sustainability</p>
-            <h2 className="text-3xl md:text-4xl font-semibold">Sustainability & Future‑Ready Materials (But Done Right)</h2>
-            <p className="text-muted-foreground max-w-2xl mx-auto mt-4">
-              We invest in material science, testing, and compliance to deliver packaging that’s ready for today’s supply chains and tomorrow’s regulations — technical, verifiable, and performance-driven.
-            </p>
-          </motion.div>
+      
 
-          <motion.div className="grid lg:grid-cols-2 gap-8 items-center" initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}>
-            <div className="space-y-6">
-              <div className="p-6 rounded-lg bg-slate-50">
-                <h3 className="text-lg font-bold mb-2">Recyclable & mono-material structures</h3>
-                <p className="text-muted-foreground">We engineer film stacks and sealant layers to simplify end-of-life recycling and enable mono-material constructions where feasible.</p>
-              </div>
+      
 
-              <div className="p-6 rounded-lg bg-slate-50">
-                <h3 className="text-lg font-bold mb-2">Lightweighting & downgauging</h3>
-                <p className="text-muted-foreground">Optimized layer design reduces material use while preserving barrier, strength, and running performance on automated lines.</p>
-              </div>
+      
 
-              <div className="p-6 rounded-lg bg-slate-50">
-                <h3 className="text-lg font-bold mb-2">Compliance with evolving regulations</h3>
-                <p className="text-muted-foreground">Proactive testing, documentation, and material traceability to meet food contact, chemical, and recycling requirements.</p>
-              </div>
-
-              <div className="p-6 rounded-lg bg-slate-50">
-                <h3 className="text-lg font-bold mb-2">Performance without compromise</h3>
-                <p className="text-muted-foreground">Sustainability decisions are balanced with seal integrity, barrier performance, and fill-line compatibility — not marketing claims.</p>
-              </div>
-
-              <p className="text-sm text-muted-foreground/80 mt-2">Visuals: material textures, film cross-sections, and schematic layers help demonstrate engineering choices — not green imagery.</p>
-            </div>
-
-            <div className="rounded-lg overflow-hidden bg-slate-100 h-64 flex items-center justify-center">
-              <img src={highBarrier} alt="Film layers" className="w-full h-full object-cover" />
-            </div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* CTA */}
-      {/* The Five Star Approach */}
-      <section className="py-24">
+      {/* How It Works */}
+      <section className="py-20 bg-white">
         <div className="container-wide">
           <motion.div className="text-center mb-8" initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}>
-            <p className="text-accent text-sm font-medium mb-2">Who We Are</p>
-            <h2 className="text-3xl md:text-4xl font-semibold">The Five Star Approach</h2>
-            <p className="text-muted-foreground max-w-2xl mx-auto mt-4">A practical, technical approach to flexible packaging — vertical integration, rigorous quality systems, and materials engineering that deliver measurable performance.</p>
+            <p className="text-accent text-sm font-medium mb-2">How It Works</p>
+            <h2 className="text-3xl md:text-4xl font-semibold">Four simple steps to reliable packaging</h2>
+            <p className="text-muted-foreground max-w-2xl mx-auto mt-3">We keep the process predictable and low-risk so your brand can move confidently.</p>
           </motion.div>
 
-          <motion.div className="grid lg:grid-cols-2 gap-8 items-start" initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}>
-            {/* Photo mosaic */}
-            <div className="grid grid-cols-2 gap-4">
-              <div className="rounded-lg overflow-hidden">
-                <img src={extrusionImg} alt="Extrusion line" className="w-full h-48 object-cover" />
-              </div>
-              <div className="rounded-lg overflow-hidden">
-                <img src={printingImg} alt="Printing press" className="w-full h-48 object-cover" />
-              </div>
-              <div className="rounded-lg overflow-hidden col-span-2">
-                <img src={highBarrier} alt="Film layers" className="w-full h-64 object-cover" />
-              </div>
-            </div>
-
-            {/* Pillars with icons */}
-            <div className="space-y-4">
-              <div className="p-4 rounded-lg border bg-white shadow-sm flex items-start gap-4">
-                <div className="flex-none w-12 h-12 rounded-md bg-accent/10 text-accent flex items-center justify-center">
-                  <Factory className="h-6 w-6" />
-                </div>
+          <motion.div
+            className="grid grid-cols-1 md:grid-cols-4 gap-6"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+            variants={{ visible: { transition: { staggerChildren: 0.06 } } }}
+          >
+            <motion.div className="p-6 rounded-lg bg-slate-50" variants={fadeUp}>
+              <div className="flex items-center gap-4">
+                <div className="flex-none w-10 h-10 rounded-full bg-accent text-white flex items-center justify-center font-semibold">1</div>
                 <div>
-                  <h3 className="text-lg font-semibold">Vertically Integrated Manufacturing</h3>
-                  <p className="text-muted-foreground">Control across extrusion, printing, lamination and converting ensures consistent quality and faster turnarounds.</p>
+                  <h3 className="text-lg font-semibold">Consultation</h3>
+                  <p className="text-sm text-muted-foreground mt-1">We learn your product, volume, materials and business goals.</p>
                 </div>
               </div>
+            </motion.div>
 
-              <div className="p-4 rounded-lg border bg-white shadow-sm flex items-start gap-4">
-                <div className="flex-none w-12 h-12 rounded-md bg-accent/10 text-accent flex items-center justify-center">
-                  <CheckCircle className="h-6 w-6" />
-                </div>
+            <motion.div className="p-6 rounded-lg bg-slate-50" variants={fadeUp}>
+              <div className="flex items-center gap-4">
+                <div className="flex-none w-10 h-10 rounded-full bg-accent text-white flex items-center justify-center font-semibold">2</div>
                 <div>
-                  <h3 className="text-lg font-semibold">Quality & Compliance</h3>
-                  <p className="text-muted-foreground">Testing, traceability and documentation backed by lab validation — no fluff, just data you can use.</p>
+                  <h3 className="text-lg font-semibold">Design & Material Selection</h3>
+                  <p className="text-sm text-muted-foreground mt-1">We recommend the right structure, films and print options for performance and cost.</p>
                 </div>
               </div>
+            </motion.div>
 
-              <div className="p-4 rounded-lg border bg-white shadow-sm flex items-start gap-4">
-                <div className="flex-none w-12 h-12 rounded-md bg-accent/10 text-accent flex items-center justify-center">
-                  <Layers className="h-6 w-6" />
-                </div>
+            <motion.div className="p-6 rounded-lg bg-slate-50" variants={fadeUp}>
+              <div className="flex items-center gap-4">
+                <div className="flex-none w-10 h-10 rounded-full bg-accent text-white flex items-center justify-center font-semibold">3</div>
                 <div>
-                  <h3 className="text-lg font-semibold">Materials Expertise</h3>
-                  <p className="text-muted-foreground">Material stacks engineered for recyclability, barrier performance and production compatibility.</p>
+                  <h3 className="text-lg font-semibold">Production</h3>
+                  <p className="text-sm text-muted-foreground mt-1">In-house manufacturing with strict quality control and dependable lead times.</p>
                 </div>
               </div>
+            </motion.div>
 
-              <div className="p-4 rounded-lg border bg-white shadow-sm flex items-start gap-4">
-                <div className="flex-none w-12 h-12 rounded-md bg-accent/10 text-accent flex items-center justify-center">
-                  <Target className="h-6 w-6" />
-                </div>
+            <motion.div className="p-6 rounded-lg bg-slate-50" variants={fadeUp}>
+              <div className="flex items-center gap-4">
+                <div className="flex-none w-10 h-10 rounded-full bg-accent text-white flex items-center justify-center font-semibold">4</div>
                 <div>
-                  <h3 className="text-lg font-semibold">Customer‑First Engineering</h3>
-                  <p className="text-muted-foreground">We optimize constructions for your product, fill-line and brand priorities — runnability first, not vanity specs.</p>
+                  <h3 className="text-lg font-semibold">Delivery</h3>
+                  <p className="text-sm text-muted-foreground mt-1">On-time delivery with clear communication every step of the way.</p>
                 </div>
               </div>
-
-              <div className="p-4 rounded-lg border bg-white shadow-sm flex items-start gap-4">
-                <div className="flex-none w-12 h-12 rounded-md bg-accent/10 text-accent flex items-center justify-center">
-                  <Zap className="h-6 w-6" />
-                </div>
-                <div>
-                  <h3 className="text-lg font-semibold">Continuous Improvement</h3>
-                  <p className="text-muted-foreground">We reduce waste, improve yields and drive material innovation through ongoing process optimization.</p>
-                </div>
-              </div>
-
-              <div className="pt-2">
-                <Link to="/about">
-                  <Button variant="outline" className="rounded-full">Learn More About Us</Button>
-                </Link>
-              </div>
-            </div>
+            </motion.div>
           </motion.div>
         </div>
       </section>
 
-      {/* Manufacturing flow visualization */}
-      <ManufacturingFlow />
+      {/* Sustainability Without Compromise */}
+      <section className="py-20 bg-white">
+        <div className="container-wide">
+          <motion.div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center" initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}>
+            <div>
+              <motion.div className="text-left mb-4" variants={fadeUp}>
+                <p className="text-accent text-sm font-medium mb-2">Sustainability</p>
+                <h2 className="text-3xl md:text-4xl font-semibold">Sustainability Without Compromise</h2>
+                <p className="text-muted-foreground max-w-2xl mt-3">Practical, manufacturable choices that reduce impact without trading protection or cost.</p>
+              </motion.div>
+
+              <motion.div className="grid grid-cols-1 gap-4 mt-6" variants={fadeUp}>
+                <div className="flex items-start gap-3">
+                  <div className="flex-none w-10 h-10 rounded-full bg-accent text-white flex items-center justify-center">
+                    <Layers className="h-5 w-5" />
+                  </div>
+                  <div>
+                    <h4 className="font-semibold">Recyclable & mono-material</h4>
+                    <p className="text-sm text-muted-foreground mt-1">We favor mono-material stacks and validated film constructions to enable recycling where performance allows.</p>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-3">
+                  <div className="flex-none w-10 h-10 rounded-full bg-accent text-white flex items-center justify-center">
+                    <Zap className="h-5 w-5" />
+                  </div>
+                  <div>
+                    <h4 className="font-semibold">Lightweighting</h4>
+                    <p className="text-sm text-muted-foreground mt-1">Reduce film gauge and remove non‑essential layers to cut material and transport footprint without losing barrier performance.</p>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-3">
+                  <div className="flex-none w-10 h-10 rounded-full bg-accent text-white flex items-center justify-center">
+                    <CheckCircle className="h-5 w-5" />
+                  </div>
+                  <div>
+                    <h4 className="font-semibold">PCR & recycled content</h4>
+                    <p className="text-sm text-muted-foreground mt-1">We offer PCR blends and verified recycled content where supply and product requirements align.</p>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-3">
+                  <div className="flex-none w-10 h-10 rounded-full bg-accent text-white flex items-center justify-center">
+                    <Target className="h-5 w-5" />
+                  </div>
+                  <div>
+                    <h4 className="font-semibold">Compliance & material support</h4>
+                    <p className="text-sm text-muted-foreground mt-1">Material validation and regulatory guidance to ensure manufacturability and supply continuity in production.</p>
+                  </div>
+                </div>
+              </motion.div>
+            </div>
+
+            <motion.div className="rounded-2xl overflow-hidden bg-slate-100 h-96 md:h-[520px] lg:h-[640px] flex items-center justify-center shadow-lg ring-1 ring-black/5" variants={fadeUp}>
+              <img src={highBarrier} alt="Sustainable materials" className="w-full h-full object-cover" />
+            </motion.div>
+          </motion.div>
+        </div>
+      </section>
 
       {/* CTA */}
       <section className="py-32">

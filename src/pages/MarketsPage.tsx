@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, CheckCircle } from "lucide-react";
 
@@ -154,144 +155,214 @@ const markets = [
 import laminationImg from "@/assets/capability-lamination.jpg";
 
 export default function MarketsPage() {
+  const [selected, setSelected] = useState<string>(markets[0].id);
+  const market = markets.find((m) => m.id === selected) || markets[0];
+
   return (
     <main>
       {/* Hero */}
       <section className="relative py-20 lg:py-28 bg-primary">
-        <div className="container-wide">
+        <div className="container-wide flex flex-col lg:flex-row lg:items-center lg:justify-between gap-8">
           <div className="max-w-3xl">
-            <p className="text-sm font-bold uppercase tracking-wider text-accent mb-2">Industries</p>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-black text-primary-foreground mb-6">
-              Markets We Serve
-            </h1>
-            <p className="text-lg text-primary-foreground/80 leading-relaxed">
-              Deep expertise across diverse industries enables us to understand your unique challenges and deliver packaging solutions that perform.
-            </p>
+            <p className="text-sm font-bold uppercase tracking-wider text-accent mb-2">{market.name}</p>
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-black text-primary-foreground mb-4">Flexible packaging for {market.name}</h1>
+            <p className="text-lg text-primary-foreground/80 leading-relaxed max-w-2xl">Performance packaging: compliant, scalable, reliable.</p>
+          </div>
+
+          <div className="flex gap-4">
+            <Link to="/contact">
+              <Button size="lg" className="rounded-full">Request a Quote</Button>
+            </Link>
+            <a href="#samples" className="inline-flex items-center"> 
+              <Button variant="outline" size="lg" className="rounded-full">Get Samples</Button>
+            </a>
           </div>
         </div>
       </section>
 
-      {/* Market Icons Quick Nav */}
-      <section className="py-12 border-b border-border">
+      {/* Market selector */}
+      <section className="py-6 border-b border-border">
         <div className="container-wide">
-          <div className="flex flex-wrap justify-center gap-4">
-            {markets.map((market) => (
-              <a
-                key={market.id}
-                href={`#${market.id}`}
-                className="flex items-center gap-2 px-4 py-2 rounded-full bg-secondary hover:bg-accent/10 transition-colors"
+          <div className="flex flex-wrap gap-3">
+            {markets.map((m) => (
+              <button
+                key={m.id}
+                onClick={() => setSelected(m.id)}
+                className={`px-4 py-2 rounded-full text-sm font-medium ${selected === m.id ? 'bg-accent text-white' : 'bg-secondary hover:bg-accent/10'}`}
               >
-                <span className="text-2xl">{market.icon}</span>
-                <span className="text-sm font-medium">{market.name}</span>
-              </a>
+                {m.name}
+              </button>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Markets Detail */}
-      <section className="py-16 lg:py-24">
-        <div className="container-wide space-y-24">
-          {markets.map((market, index) => (
-            <div key={market.id} id={market.id} className="scroll-mt-32">
-              <div className={`grid lg:grid-cols-2 gap-8 lg:gap-16 items-start`}>
-                <div className={index % 2 === 1 ? "lg:order-2" : ""}>
-                  <div className="aspect-[4/3] rounded-lg overflow-hidden bg-muted">
-                    <img
-                      src={market.image}
-                      alt={market.name}
-                      className="w-full h-full object-cover"
-                    />
-                  </div>
-                </div>
-                <div className={index % 2 === 1 ? "lg:order-1" : ""}>
-                  <div className="flex items-center gap-4 mb-4">
-                    <span className="text-5xl">{market.icon}</span>
-                    <div>
-                      <p className="text-sm font-bold uppercase tracking-wider text-accent">Industry</p>
-                      <h2 className="text-3xl md:text-4xl font-black">{market.name}</h2>
-                    </div>
-                  </div>
-                  
-                  <p className="text-muted-foreground leading-relaxed mb-8">
-                    {market.description}
-                  </p>
+      {/* Market Challenges */}
+      <section className="py-12">
+        <div className="container-wide grid lg:grid-cols-3 gap-8 items-start">
+          <div className="lg:col-span-1">
+            <h2 className="text-2xl font-bold mb-3">Market Challenges</h2>
+            <p className="text-muted-foreground mb-4">Key challenges we solve.</p>
+            <ul className="space-y-3">
+              {[
+                'Shelf life',
+                'Regulatory compliance',
+                'Production consistency',
+                'Cost control',
+              ].map((r) => (
+                <li key={r} className="flex items-start gap-3 text-sm">
+                  <CheckCircle className="h-5 w-5 text-accent mt-1" />
+                  <span>{r}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
 
-                  {/* Applications */}
-                  <div className="mb-8">
-                    <h3 className="text-xs font-bold uppercase tracking-wider text-muted-foreground mb-4">
-                      Applications
-                    </h3>
-                    <div className="grid grid-cols-2 gap-2">
-                      {market.applications.map((app) => (
-                        <div key={app} className="flex items-center gap-2 text-sm">
-                          <span className="w-1.5 h-1.5 rounded-full bg-accent" />
-                          <span>{app}</span>
-                        </div>
-                      ))}
-                    </div>
+          {/* Packaging Solutions */}
+          <div className="lg:col-span-2">
+            <h3 className="text-xl font-semibold mb-2">Packaging Solutions</h3>
+            <p className="text-muted-foreground mb-4">Formats and common use-cases.</p>
+            <div className="flex flex-wrap gap-2 mb-4">
+              {market.products.map((p) => (
+                <span key={p} className="px-3 py-2 rounded bg-accent/10 text-accent text-sm font-medium">{p}</span>
+              ))}
+            </div>
+            <div>
+              <h4 className="text-sm font-semibold mb-2">Common use cases</h4>
+              <div className="grid grid-cols-2 gap-2">
+                {market.applications.slice(0,8).map((a) => (
+                  <div key={a} className="text-sm flex items-center gap-2">
+                    <span className="w-1.5 h-1.5 rounded-full bg-accent" />
+                    <span>{a}</span>
                   </div>
-
-                  {/* Requirements */}
-                  <div className="mb-8">
-                    <h3 className="text-xs font-bold uppercase tracking-wider text-muted-foreground mb-4">
-                      Key Requirements
-                    </h3>
-                    <ul className="space-y-2">
-                      {market.requirements.map((req) => (
-                        <li key={req} className="flex items-start gap-3 text-sm">
-                          <CheckCircle className="h-4 w-4 text-accent shrink-0 mt-0.5" />
-                          <span>{req}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-
-                  {/* Products */}
-                  <div className="mb-8">
-                    <h3 className="text-xs font-bold uppercase tracking-wider text-muted-foreground mb-4">
-                      Recommended Products
-                    </h3>
-                    <div className="flex flex-wrap gap-2">
-                      {market.products.map((product) => (
-                        <span
-                          key={product}
-                          className="text-sm px-4 py-2 rounded bg-accent/10 text-accent font-medium"
-                        >
-                          {product}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-
-                  <Link to="/contact">
-                    <Button size="lg" className="rounded-full">
-                      Discuss Your Application
-                      <ArrowRight className="ml-2 h-4 w-4" />
-                    </Button>
-                  </Link>
-                </div>
+                ))}
               </div>
             </div>
-          ))}
+          </div>
         </div>
       </section>
 
-      {/* CTA */}
-      <section className="py-16 lg:py-24 bg-primary">
+      {/* Materials & Performance */}
+      <section className="py-12 bg-muted/20">
+        <div className="container-wide grid lg:grid-cols-3 gap-8 items-start">
+          <div>
+            <h3 className="text-xl font-semibold mb-2">Materials & Performance</h3>
+            <p className="text-muted-foreground mb-4">High-barrier films and food-safe constructions built for production and shelf life.</p>
+            <ul className="space-y-3 text-sm">
+              <li>High-barrier films for oxygen & moisture control</li>
+              <li>Food-contact compliant materials</li>
+              <li>Structures tuned to common filling lines</li>
+            </ul>
+          </div>
+
+          <div className="lg:col-span-2">
+            <img src={market.image} alt={market.name} className="w-full h-64 object-cover rounded-lg shadow-md" />
+          </div>
+        </div>
+      </section>
+
+      {/* Sustainability Options */}
+      <section className="py-12">
+        <div className="container-wide grid lg:grid-cols-3 gap-8">
+          <div>
+            <h3 className="text-xl font-semibold mb-2">Sustainability Options</h3>
+            <p className="text-muted-foreground mb-4">Practical sustainability options.</p>
+            <ul className="space-y-3 text-sm">
+              <li>Mono-material & recyclable constructions</li>
+              <li>Lightweighting to cut material and freight</li>
+              <li>PCR and verified recycled-content options</li>
+            </ul>
+          </div>
+
+          <div className="lg:col-span-2">
+            <h4 className="text-sm font-semibold mb-2">How we apply sustainability</h4>
+            <p className="text-sm text-muted-foreground mb-4">We evaluate performance requirements and supply-chain implications, then recommend pragmatic changes that meet recycling and weight goals without compromising shelf life or manufacturing reliability.</p>
+          </div>
+        </div>
+      </section>
+
+      {/* Why Brands Choose Us */}
+      <section className="py-12 bg-muted/20">
+        <div className="container-wide grid lg:grid-cols-3 gap-8 items-start">
+          <div>
+            <h3 className="text-xl font-semibold mb-2">Why Brands Choose Us</h3>
+            <ul className="space-y-3 text-sm">
+              <li>Years of experience in {market.name.toLowerCase()}</li>
+              <li>Consistent manufacturing and QC</li>
+              <li>Cost-effective production and on-time runs</li>
+              <li>Practical technical support</li>
+            </ul>
+          </div>
+
+          <div className="lg:col-span-2">
+            <h4 className="text-sm font-semibold mb-2">Selected results</h4>
+            <p className="text-sm text-muted-foreground">We work with both growing regional brands and national retailers to solve shelf-life and handling problems at scale. Our focus is predictable performance and low risk for production.</p>
+          </div>
+        </div>
+      </section>
+
+      {/* Quality & Compliance */}
+      <section className="py-12">
+        <div className="container-wide grid lg:grid-cols-3 gap-8">
+          <div>
+            <h3 className="text-xl font-semibold mb-2">Quality & Compliance</h3>
+            <ul className="space-y-3 text-sm">
+              <li>Regulatory guidance for food contact</li>
+              <li>Traceable quality control</li>
+              <li>Third-party testing support</li>
+            </ul>
+          </div>
+
+          <div className="lg:col-span-2">
+            <h4 className="text-sm font-semibold mb-2">Certifications</h4>
+            <p className="text-sm text-muted-foreground">ISO, food-contact compliance, and other certifications available where applicable. We validate materials and processes to meet customer and regulatory needs.</p>
+          </div>
+        </div>
+      </section>
+
+      {/* How It Works */}
+      <section className="py-12 bg-muted/10">
+        <div className="container-wide">
+          <h3 className="text-xl font-semibold mb-4">How It Works</h3>
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+            <div className="p-4 rounded-lg bg-white shadow-sm">
+              <div className="text-accent font-semibold">1. Consultation</div>
+              <div className="text-sm text-muted-foreground">Discuss product, volume, timeline.</div>
+            </div>
+            <div className="p-4 rounded-lg bg-white shadow-sm">
+              <div className="text-accent font-semibold">2. Material selection</div>
+              <div className="text-sm text-muted-foreground">Choose structure for shelf life and line fit.</div>
+            </div>
+            <div className="p-4 rounded-lg bg-white shadow-sm">
+              <div className="text-accent font-semibold">3. Production</div>
+              <div className="text-sm text-muted-foreground">Pilot, QC, scale.</div>
+            </div>
+            <div className="p-4 rounded-lg bg-white shadow-sm">
+              <div className="text-accent font-semibold">4. Delivery</div>
+              <div className="text-sm text-muted-foreground">On-time shipments.</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Social Proof */}
+      <section className="py-12">
+        <div className="container-wide max-w-3xl mx-auto text-center">
+          <p className="text-accent font-medium mb-2">Trusted by growing and national brands</p>
+          <blockquote className="text-lg italic text-muted-foreground">“Reliable technical partner — met our shelf-life targets.”</blockquote>
+          <p className="text-sm text-muted-foreground mt-3">— Product Manager, Regional Snack Brand</p>
+        </div>
+      </section>
+
+      {/* Samples anchor + Final CTA */}
+      <section id="samples" className="py-12 bg-primary">
         <div className="container-wide text-center">
-          <h2 className="text-3xl md:text-4xl font-black text-primary-foreground mb-6">
-            Don't See Your Industry?
-          </h2>
-          <p className="text-primary-foreground/70 mb-8 max-w-2xl mx-auto">
-            We've successfully developed packaging solutions for countless niche applications. Let's discuss your specific requirements.
-          </p>
-          <Link to="/contact">
-            <Button size="lg" className="rounded-full">
-              Contact Our Team
-              <ArrowRight className="ml-2 h-4 w-4" />
-            </Button>
-          </Link>
+          <h2 className="text-3xl font-black text-primary-foreground mb-4">Ready to evaluate?</h2>
+          <p className="text-primary-foreground/80 mb-6 max-w-2xl mx-auto">Request samples or a detailed quote — we’ll match materials and formats to your production needs.</p>
+          <div className="flex items-center justify-center gap-4">
+            <Link to="/contact"><Button size="lg" className="rounded-full">Request a Quote</Button></Link>
+            <a href="#samples"><Button variant="outline" size="lg" className="rounded-full">Get Samples</Button></a>
+          </div>
         </div>
       </section>
     </main>

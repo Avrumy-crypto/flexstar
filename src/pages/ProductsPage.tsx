@@ -26,6 +26,8 @@ const categoryImages: Record<string, string> = {
 };
 
 function ProductsSkeleton() {
+  
+
   return (
     <main>
       <section className="py-20 lg:py-28 bg-primary">
@@ -64,6 +66,16 @@ export default function ProductsPage() {
     );
   }
 
+  const allowedSlugs = [
+    "pouches",
+    "rollstock",
+    "lidding-film",
+    "shrink-sleeves",
+    "thermoform-film",
+  ];
+
+  const filtered = categories.filter((c) => allowedSlugs.includes(c.slug));
+
   return (
     <main>
       {/* Hero */}
@@ -76,9 +88,8 @@ export default function ProductsPage() {
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-black text-primary-foreground mb-6 leading-tight">
               Flexible Packaging Solutions
             </h1>
-            <p className="text-lg lg:text-xl text-primary-foreground/80 leading-relaxed">
-              Seven product categories engineered for performance, protection, and shelf appeal. 
-              Each solution is fully customizable to your exact specifications.
+              <p className="text-lg lg:text-xl text-primary-foreground/80 leading-relaxed">
+              {filtered.length} product categories engineered for performance and protection.
             </p>
           </div>
         </div>
@@ -94,7 +105,7 @@ export default function ProductsPage() {
             viewport={{ once: true, margin: "-100px" }}
             variants={{ visible: { transition: { staggerChildren: 0.1 } } }}
           >
-            {categories.map((category) => {
+            {filtered.map((category) => {
               const image = category.overview_image_url || categoryImages[category.slug] || standupPouches;
               return (
                 <motion.div
