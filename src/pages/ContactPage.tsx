@@ -290,7 +290,7 @@ export default function ContactPage() {
             {/* Contact Info */}
             <FadeIn delay={0.2} className="space-y-8">
               <div className="bg-primary rounded-xl p-8 text-primary-foreground">
-                <h2 className="text-xl font-bold mb-8">Contact Information</h2>
+                <h2 className="text-xl font-bold mb-8 text-[#f0b61b]">Contact Information</h2>
                 <div className="space-y-6">
                   <div className="flex items-start gap-4">
                     <div className="w-10 h-10 rounded-lg bg-accent/20 flex items-center justify-center shrink-0">
@@ -300,7 +300,7 @@ export default function ContactPage() {
                       <p className="font-medium">Email</p>
                       <a
                         href="mailto:sales@laminapackaging.com"
-                        className="text-primary-foreground/70 hover:text-accent transition-colors"
+                        className="text-[#f0b61b] hover:text-accent transition-colors"
                       >
                         sales@fivestarcorr.com
                       </a>
@@ -314,7 +314,7 @@ export default function ContactPage() {
                       <p className="font-medium">Phone</p>
                       <a
                         href="tel:+7188750022"
-                        className="text-primary-foreground/70 hover:text-accent transition-colors"
+                        className="text-[#f0b61b] hover:text-accent transition-colors"
                       >
                         +1 (718) 875-0022
                       </a>
@@ -325,7 +325,7 @@ export default function ContactPage() {
                       <MapPin className="h-5 w-5 text-accent" />
                     </div>
                     <div>
-                      <p className="font-medium">Headquarters</p>
+                      <p className="font-medium text-[#f0b61b]">Headquarters</p>
                       <p className="text-primary-foreground/70">
                         175 Classon Ave<br />
                         Brooklyn, NY 11205
@@ -337,7 +337,7 @@ export default function ContactPage() {
                       <Clock className="h-5 w-5 text-accent" />
                     </div>
                     <div>
-                      <p className="font-medium">Business Hours</p>
+                      <p className="font-medium text-[#f0b61b]">Business Hours</p>
                       <p className="text-primary-foreground/70">
                         Mon - Thur: 9:00 AM - 5:00 PM<br />
                         Fri: 9:00 AM - 1:00 PM<br />

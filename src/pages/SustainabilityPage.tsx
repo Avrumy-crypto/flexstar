@@ -75,7 +75,7 @@ export default function SustainabilityPage() {
             <FadeIn delay={0.1}>
               <h1 className="text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black text-primary-foreground leading-[0.9] mb-8">
                 Building<br />
-                <span className="text-accent">Tomorrow</span>
+                <span className="text-[#f0b61b]">Tomorrow</span>
               </h1>
             </FadeIn>
             <FadeIn delay={0.2}>
@@ -85,9 +85,9 @@ export default function SustainabilityPage() {
             </FadeIn>
             <FadeIn delay={0.3}>
               <Link to="/contact">
-                <Button size="lg" className="rounded-full">
+                <Button size="lg" className="rounded-full bg-[#f0b61b] text-white hover:bg-[#d99f14]">
                   Partner With Us
-                  <ArrowRight className="ml-2 h-5 w-5" />
+                  <ArrowRight className="ml-2 h-5 w-5 text-white" />
                 </Button>
               </Link>
             </FadeIn>
@@ -185,7 +185,7 @@ export default function SustainabilityPage() {
             <p className="text-accent font-bold uppercase tracking-[0.2em] text-sm mb-4">
               Long-Term Vision
             </p>
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-black mb-6">
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-black mb-6 text-[#f0b61b]">
               Sustainability Roadmap
             </h2>
             <p className="text-xl text-primary-foreground/60 max-w-2xl mx-auto">
@@ -206,15 +206,15 @@ export default function SustainabilityPage() {
                       <div className="w-2 h-2 rounded-full bg-primary" />
                     </div>
                     
-                    <div className="bg-primary-foreground/5 rounded-2xl p-8 border border-primary-foreground/10 hover:border-accent/50 transition-colors">
-                      <p className="text-6xl font-black text-accent mb-4">{item.year}</p>
-                      <p className="text-primary-foreground/80 mb-6 min-h-[60px]">{item.goal}</p>
-                      
+                    <div className="bg-[#f0b61b]/50 rounded-2xl p-8 border border-[#f0b61b]/50 hover:border-[#f0b61b]/60 transition-colors text-white">
+                      <p className="text-6xl font-black text-white mb-4">{item.year}</p>
+                      <p className="text-white/90 mb-6 min-h-[60px]">{item.goal}</p>
+
                       {/* Progress bar */}
                       <div className="space-y-2">
                         <div className="flex justify-between text-sm">
-                          <span className="text-primary-foreground/50">Progress</span>
-                          <span className="font-bold text-accent">{item.progress}%</span>
+                          <span className="text-white/80">Progress</span>
+                          <span className="font-bold text-white">{item.progress}%</span>
                         </div>
                         <div className="h-2 bg-primary-foreground/10 rounded-full overflow-hidden">
                           <div 
@@ -312,13 +312,13 @@ export default function SustainabilityPage() {
             </p>
             <div className="flex flex-col sm:flex-row gap-5 justify-center">
               <Link to="/contact">
-                <Button size="lg" className="rounded-full">
+                <Button size="lg" className="rounded-full bg-[#f0b61b] text-white hover:bg-[#d99f14]">
                   Schedule a Consultation
-                  <ArrowRight className="ml-2 h-5 w-5" />
+                  <ArrowRight className="ml-2 h-5 w-5 text-white" />
                 </Button>
               </Link>
               <Link to="/products">
-                <Button variant="outline" size="lg" className="rounded-full border-white/30 text-white hover:bg-white/10">
+                <Button variant="outline" size="lg" className="rounded-full border-white/30 text-[#082a44] hover:bg-white/10">
                   Explore Products
                 </Button>
               </Link>

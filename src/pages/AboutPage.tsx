@@ -78,7 +78,7 @@ export default function AboutPage() {
             transition={{ duration: 0.6 }}
             className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-6"
           >
-            About Flexstar
+            About FormaPac
           </motion.h1>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -132,7 +132,7 @@ export default function AboutPage() {
       {/* Stats Section */}
       <section className="py-16 px-4 sm:px-6 lg:px-8 bg-slate-900 text-white">
         <div className="max-w-6xl mx-auto">
-          <h2 className="text-3xl font-bold text-center mb-12">By The Numbers</h2>
+          <h2 className="text-3xl font-bold text-center mb-12 text-white">By The Numbers</h2>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             {stats.map((stat, index) => (
               <motion.div
@@ -311,17 +311,18 @@ export default function AboutPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-slate-900 text-white">
+      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-white text-slate-900">
         <div className="max-w-4xl mx-auto text-center">
           <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="text-3xl sm:text-4xl font-bold mb-6"
-          >
-            Ready to Partner With Us?
-          </motion.h2>
+  initial={{ opacity: 0, y: 20 }}
+  whileInView={{ opacity: 1, y: 0 }}
+  viewport={{ once: true }}
+  transition={{ duration: 0.6 }}
+  className="text-3xl sm:text-4xl font-bold mb-6"
+>
+  Ready to Partner With Us?
+</motion.h2>
+
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -329,7 +330,7 @@ export default function AboutPage() {
             transition={{ duration: 0.6, delay: 0.1 }}
             className="text-xl text-slate-300 mb-8 max-w-2xl mx-auto"
           >
-            Let's discuss how Flexstar can help you achieve your packaging goals while delivering exceptional value and quality.
+            Let's discuss how FormaPac can help you achieve your packaging goals while delivering exceptional value and quality.
           </motion.p>
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -344,9 +345,13 @@ export default function AboutPage() {
               </Button>
             </Link>
             <Link to="/products">
-              <Button variant="outline" className="border-white text-white hover:bg-white hover:text-slate-900 px-8 py-3 text-lg">
-                View Our Products
-              </Button>
+              <Button
+  className="bg-[#f0b61b] hover:bg-[#f0b61b]/90 text-white px-8 py-3 text-lg"
+>
+  View Our Products
+</Button>
+
+
             </Link>
           </motion.div>
         </div>

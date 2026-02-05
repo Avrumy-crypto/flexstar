@@ -13,6 +13,7 @@ import sachets from "@/assets/product-sachets.jpg";
 import highBarrier from "@/assets/product-high-barrier.jpg";
 import laminationImg from "@/assets/capability-lamination.jpg";
 import recyclable from "@/assets/product-recyclable.jpg";
+import capabilityConverting from "@/assets/capability-converting.jpg";
 
 // Map slugs to images (fallback images)
 const categoryImages: Record<string, string> = {
@@ -23,6 +24,7 @@ const categoryImages: Record<string, string> = {
   "sachets-stick-packs": sachets,
   "high-barrier-packaging": highBarrier,
   "recyclable-mono-material": recyclable,
+  "shrink-sleeves": capabilityConverting,
 };
 
 function ProductsSkeleton() {
@@ -39,9 +41,9 @@ function ProductsSkeleton() {
       </section>
       <section className="py-16">
         <div className="container-wide">
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="flex flex-wrap justify-center gap-8">
             {[1, 2, 3, 4, 5, 6, 7].map((i) => (
-              <Skeleton key={i} className="h-80 rounded-2xl" />
+              <Skeleton key={i} className="w-full md:w-1/2 lg:w-1/3 h-80 rounded-2xl" />
             ))}
           </div>
         </div>
@@ -99,7 +101,7 @@ export default function ProductsPage() {
       <section className="py-16 lg:py-24">
         <div className="container-wide">
           <motion.div 
-            className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
+            className="flex flex-wrap justify-center gap-8"
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-100px" }}
@@ -110,6 +112,7 @@ export default function ProductsPage() {
               return (
                 <motion.div
                   key={category.slug}
+                  className="w-full md:w-1/2 lg:w-1/3"
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   whileHover={{ y: -8 }}
@@ -157,7 +160,7 @@ export default function ProductsPage() {
       </section>
 
       {/* CTA */}
-      <section className="py-16 lg:py-20 bg-secondary/50">
+      <section className="py-16 lg:py-20 bg-gray">
         <div className="container-wide">
           <div className="max-w-3xl mx-auto text-center">
             <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">

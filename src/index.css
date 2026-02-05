@@ -17,19 +17,19 @@
     --popover: 0 0% 100%;
     --popover-foreground: 0 0% 10%;
 
-    /* Deep navy primary */
-    --primary: 215 45% 12%;
+    /* Brand primary: #082a44 (HSL ~ 206 79% 15%) */
+    --primary: 206 79% 15%;
     --primary-foreground: 0 0% 100%;
 
-    /* Soft neutral secondary */
-    --secondary: 220 14% 96%;
-    --secondary-foreground: 215 45% 12%;
+    /* Brand secondary: #f0b61b (HSL ~ 44 88% 52%) */
+    --secondary: 44 88% 52%;
+    --secondary-foreground: 206 79% 15%;
 
     --muted: 220 14% 96%;
     --muted-foreground: 220 9% 46%;
 
-    /* Accent blue - Apple-like */
-    --accent: 211 100% 50%;
+    /* Accent matches brand primary */
+    --accent: 206 79% 15%;
     --accent-foreground: 0 0% 100%;
 
     --destructive: 0 84% 60%;
@@ -45,7 +45,7 @@
     --glass-bg: 0 0% 100% / 0.7;
     --glass-border: 0 0% 100% / 0.3;
     --glass-blur: 24px;
-    --glass-shadow: 0 8px 32px hsl(215 45% 12% / 0.08);
+    --glass-shadow: 0 8px 32px hsl(206 79% 15% / 0.08);
 
     /* Gradient tokens */
     --gradient-subtle: linear-gradient(180deg, hsl(220 14% 98%) 0%, hsl(220 14% 96%) 100%);
@@ -56,10 +56,10 @@
     /* Sidebar tokens */
     --sidebar-background: 0 0% 100%;
     --sidebar-foreground: 215 45% 12%;
-    --sidebar-primary: 211 100% 50%;
+    --sidebar-primary: 206 79% 15%;
     --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 220 14% 96%;
-    --sidebar-accent-foreground: 215 45% 12%;
+    --sidebar-accent: 44 88% 52%;
+    --sidebar-accent-foreground: 206 79% 15%;
     --sidebar-border: 220 13% 91%;
     --sidebar-ring: 211 100% 50%;
   }
@@ -198,3 +198,4 @@
     text-wrap: balance;
   }
 }
+

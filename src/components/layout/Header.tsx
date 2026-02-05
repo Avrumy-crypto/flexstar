@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { useProductCategories } from "@/hooks/useProductCategories";
 
-import logo from "@/assets/logo.png";
+import logo from "@/assets/FormaPack Logo.svg";
 import standupPouches from "@/assets/product-standup-pouches.jpg";
 import rollstock from "@/assets/product-rollstock.jpg";
 import sachets from "@/assets/product-sachets.jpg";
@@ -118,14 +118,14 @@ export function Header() {
     )}>
       <nav className="container-wide flex items-center justify-between">
         <Link to="/" className="flex items-center">
-          <img 
-            src={logo} 
-            alt="Five Star" 
+          <img
+            src={logo}
+            alt="FormaPack"
             className={cn(
               "transition-all duration-300",
-              scrolled ? "h-10" : "h-12",
+              scrolled ? "h-14" : "h-12",
               !scrolled && "brightness-0 invert"
-            )} 
+            )}
           />
         </Link>
 
@@ -141,11 +141,11 @@ export function Header() {
               <Link
                 to={item.href}
                 className={cn(
-                  "flex items-center gap-1 px-4 py-2 text-sm font-medium transition-colors rounded-full",
-                  isActive(item.href)
-                    ? "text-accent"
-                    : scrolled ? "text-foreground/80 hover:text-foreground" : "text-white/80 hover:text-white"
-                )}
+                    "flex items-center gap-1 px-4 py-2 text-sm font-medium transition-colors rounded-full",
+                    isActive(item.href)
+                      ? "text-secondary"
+                      : scrolled ? "text-foreground/80 hover:text-foreground" : "text-white/80 hover:text-white"
+                  )}
               >
                 {item.name}
                 {(item.children || item.hasProductMenu) && <ChevronDown className="h-3 w-3 opacity-50" />}
@@ -234,9 +234,13 @@ export function Header() {
             718-875-0022
           </a>
           <Link to="/contact">
-            <Button variant="default" size="sm" className="rounded-full">
-              Get Quote
-            </Button>
+            <Button
+  size="sm"
+  className="rounded-full bg-[#f0b61b] hover:bg-[#f0b61b]/90 text-white"
+>
+  Get Quote
+</Button>
+
           </Link>
         </div>
 
@@ -258,7 +262,10 @@ export function Header() {
           <div className="p-4 space-y-2">
             <Link
               to="/"
-              className="block px-4 py-3 text-foreground font-medium hover:text-foreground rounded-xl hover:bg-secondary transition-colors"
+              className={cn(
+                "block px-4 py-3 font-medium rounded-xl hover:bg-secondary transition-colors",
+                isActive("/") ? "text-secondary" : "text-foreground hover:text-foreground"
+              )}
               onClick={() => setMobileMenuOpen(false)}
             >
               Home
@@ -272,7 +279,10 @@ export function Header() {
                   <Link
                     key={cat.slug}
                     to={`/products/${cat.slug}`}
-                    className="block px-3 py-2 text-sm text-foreground/80 hover:text-foreground rounded-lg hover:bg-secondary transition-colors"
+                    className={cn(
+                      "block px-3 py-2 text-sm rounded-lg hover:bg-secondary transition-colors",
+                      isActive(`/products/${cat.slug}`) ? "text-secondary" : "text-foreground/80 hover:text-foreground"
+                    )}
                     onClick={() => setMobileMenuOpen(false)}
                   >
                     {cat.name}
@@ -286,7 +296,10 @@ export function Header() {
               <Link
                 key={item.name}
                 to={item.href}
-                className="block px-4 py-3 text-foreground/80 hover:text-foreground rounded-xl hover:bg-secondary transition-colors"
+                className={cn(
+                  "block px-4 py-3 rounded-xl hover:bg-secondary transition-colors",
+                  isActive(item.href) ? "text-secondary" : "text-foreground/80 hover:text-foreground"
+                )}
                 onClick={() => setMobileMenuOpen(false)}
               >
                 {item.name}
